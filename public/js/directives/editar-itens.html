@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+    <h4 class="modal-title">Adicionar Itens</h4>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group col-sm-8">
+            <select class="form-control" id="decricao">
+                <option value="">Selecione a Descrição</option>
+                <option value="descricao 1">Descrição 1</option>
+                <option value="descricao 2">Descrição 2</option>
+                <option value="descricao 3">Descrição 3</option>
+                <option value="descricao 4">Descrição 4</option>
+                <option value="descricao 5">Descrição 5</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 col-sm-2">
+            <input type="text" class="form-control" id="item" placeholder="Codigo">
+        </div>
+        <div class="form-group col-xs-6 col-sm-2">
+            <input type="text" class="form-control" id="quantidade" placeholder="Quantidade">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label for="dtinicio">Código do Item: </label>
+            <input type="text" class="form-control" id="classeEmpenho">
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="dtinicio">Tipo do Item: </label>
+            <input type="text" class="form-control" id="tipoItem">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label for="quatPrev">Quant. Previsto:</label>
+            <input type="text" class="form-control" id="quatPrev">
+        </div>
+        <div class="form-group col-xs-6 col-sm-4">
+            <label for="quantProj">Quant. Proj. Executivo:</label>
+            <input type="text" class="form-control" id="quantProj">
+        </div>
+        <div class="form-group col-xs-6 col-sm-4">
+            <label for="quantTerm">Quant. termo instal.:</label>
+            <input type="text" class="form-control" id="quantTerm">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-5 col-md-6">
+            <label>Valor : </label>
+            <input type="text" class="form-control" value="R$ 2.987" readonly>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <center>
+        <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary ">Registrar Item</button>
+    </center>
+</div>

@@ -1,0 +1,66 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
+        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/lotes">Lotes</a></li>
+        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Lote</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <section>
+        <div class="painel-pid panel panel-default">
+            <div class="panel-heading" id="divPanelHeadingForm">
+                <h4>Adicionar Lote</h4>
+            </div>
+
+            <div class="panel-body" id="divPanelBodyForm">
+                <div id="mesagemError"></div>
+                <form class="addUsuarioLotes" ng-submit="submitLotes()" name="formularioAddLotes">
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>N° lote: </label>
+                            <input type="number" class="form-control" ng-model="lotes.codLote" placeholder="Digite o Nº do lote" required>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Entidade: </label>
+                            <select class="form-control" ng-controller="visuEntidadeController" ng-model="lotes.entidadeCnpj" ng-options="entidade.cnpj as entidade.nome for entidade in entidades" required>
+                                <option value="">Selecione a entidade</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Contrato: </label>
+                            <input type="text" class="form-control" ng-model="lotes.contrato" placeholder="Digite o contrato" required>
+                        </div>
+
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data início da vigência: </label>
+                            <input type="date" class="form-control" ng-model="lotes.dtInicioVig" required>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data fim da vigência: </label>
+                            <input type="date" class="form-control" ng-model="lotes.dtFinalVig" required>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data de reajuste: </label>
+                            <input type="month" class="form-control" ng-model="lotes.dtReajuste" required>
+                        </div>
+
+                        <center>
+                            <button type="submit" class="btn btn-primary" ng-disabled="formularioAddLotes.$invalid">Cadastrar</button>
+                        </center>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

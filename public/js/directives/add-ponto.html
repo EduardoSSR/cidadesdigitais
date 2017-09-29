@@ -1,0 +1,69 @@
+<div class="form-gruop" ng-controller="addCdPontoController">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">Adicionar Ponto</h4>
+    </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.cod_ponto" placeholder="Digite o número do ponto">
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.nome" placeholder="Digite o nome do ponto"> </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <select class="form-control" ng-model="pontoCd.categoria_cod_categoria" ng-options="categoria.cod_categoria as categoria.descricao for categoria in categorias">
+            <option value="">Selecione a categoria</option>
+        </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <select class="form-control" ng-model="pontoCd.descricao" ng-change="armTempTipo(pontoCd)" ng-options="tipologia.descricao for tipologia in tipologias">
+           <option value="">Selecione para adicionar uma tipologia no ponto</option>
+        </select>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-3" ng-repeat="mTipologia in mostrarTipologia">
+                    <label class="btn btn-primary btn-block" style="font-size: 10px;"><strong class="glyphicon glyphicon-remove pull-left" ng-click="remover(mTipologia)"></strong> {{mTipologia.descricao}}</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-9 col-sm-6 col-xs-8">
+                    <input type="text" class="form-control" ng-model="pontoCd.endereco" placeholder="Digite o endereço">
+                </div>
+                <div class="form-group col-md-3 col-sm-6 col-xs-4">
+                    <input type="text" class="form-control" ng-model="pontoCd.numero" placeholder="Digite o número">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-6 col-xs-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.bairro" placeholder="Digite o bairro">
+                </div>
+                <div class="form-group col-md-4 col-sm-6 col-xs-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.cep" placeholder="Digite o cep">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.latitude" placeholder="Digite o latitude">
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    <input type="text" class="form-control" ng-model="pontoCd.longitude" placeholder="Digite o longitude">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <center>
+                <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+                <button type="submit" ng-click="enviarPonto(pontoCd, cidadeDigital)" class="btn btn-primary ">Registrar</button>
+            </center>
+        </div>
+</div>

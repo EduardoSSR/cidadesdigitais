@@ -1,0 +1,49 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/administracao">Administração</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/tipoDoItem">Tipo do Item</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Tipo do Item</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <section>
+        <div class="painel-pid panel panel-default">
+            <div class="panel-heading" id="divPanelHeadingForm">
+                <h4>Adicionar Tipo do Item</h4>
+            </div>
+
+            <div class="panel-body contact-container" id="divPanelBodyForm">
+                <form novalidate name="formAddTipoDoItem" ng-submit="submitTipoDoitem(tipoDoItem)">
+                    <div class="row">
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddTipoDoItem.cod_tipoDoItem.$invalid && !formAddTipoDoItem.cod_tipoDoItem.$pristine }">
+                            <label>Código do tipo do item:</label>
+                            <input type="text" class="form-control" name="cod_tipoDoItem" ng-model="tipoDoItem.cod_tipoDoItem" placeholder="Digite o código do tipo do item" required>
+                             <p ng-show="formAddTipoDoItem.cod_tipoDoItem.$invalid && !formAddTipoDoItem.cod_tipoDoItem.$pristine" class="help-block">
+                                Código do tipo do item obrigatório!
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddTipoDoItem.descricao.$invalid && !formAddTipoDoItem.descricao.$pristine }">
+                            <label>Descrição: </label>
+                            <input type="text" class="form-control" name="descricao" ng-model="tipoDoItem.descricao" placeholder="Digite a Descrição" required> 
+                             <p ng-show="formAddTipoDoItem.descricao.$invalid && !formAddTipoDoItem.descricao.$pristine" class="help-block">
+                                Descrição obrigatória!
+                            </p>
+                            </div>
+
+                        <center>
+                            <div class="col-sm-1">
+                                <label> &nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary" ng-disabled="formAddTipoDoItem.$invalid">Cadastrar</button>
+                            </div>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

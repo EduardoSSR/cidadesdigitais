@@ -1,0 +1,89 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
+        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/usuario">Usuário</a></li>
+        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Usuários</li>
+    </ol>
+</nav>
+
+<div class="container" ng-controller="addUsuarioController">
+    <section>
+        <div class="painel-pid panel panel-default">
+            <div id="divPanelHeadingForm" class="panel-heading">
+                <h4>Adicionar Usuário</h4>
+            </div>
+            <div id="divPanelBodyForm" class="panel-body">
+
+                <form novalidate class="addUsuarioForm" name="formularioAddUsuario" ng-submit="submeter()">
+
+                    <div class="row">
+                        <div class="form-group col-sm-2 col-md-3" ng-controller="visuPerfilController">
+                            <label>Perfil :</label>
+                            <select class="form-control" id="perfil" name="perfil" ng-model="usuario.perfil" ng-options="perfil.cod_perfil as perfil.descricao for perfil in perfisUsuarios" required>
+                                <option value="">Selecione</option>
+                            </select>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.perfil.$error.required"> Perfil obrigatório
+                            </span>
+                        </div>
+                        
+                        <div class="form-group col-sm-4 col-md-3">
+                            <label>Nome :</label>
+                            <input type="text" id="nome" name="nome" class="form-control" ng-model="usuario.nome" ng-maxlength="50" placeholder="Digite seu usuário" required/>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.nome.$error.required"> Nome obrigatório
+                            </span>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.nome.$error.maxlength"> Tamanho máximo de 50 caracteres
+                            </span>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Login :</label>
+                            <input type="text" id="login" name="login" class="form-control" ng-model="usuario.login" ng-maxlength="45" placeholder="Digite seu login" required/>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.login.$error.required"> Login obrigatório
+                            </span>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Email :</label>
+                            <input type="email" id="email" name="email" class="form-control" ng-model="usuario.email" ng-maxlength="45" placeholder="Digite seu email" required/>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.email.$error.required"> Email obrigatório
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-3">
+                            <label>Senha :</label>
+                            <input type="password" id="senha" name="senha" class="form-control" ng-model="usuario.senha" ng-maxlength="45" placeholder="Digite sua senha" required/>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.senha.$error.required"> Senha obrigatório
+                            </span>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Confirme a senha :</label>
+                            <input type="password" id="senhac" name="senhac" ng-model="usuario.confSenha" class="form-control" ng-maxlength="45" placeholder="Confirme sua senha" onblur="validarSenha()" />
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Telefone :</label>
+                            <input type="text" id="Telefone" name="telefone" class="form-control" ng-model="usuario.telefone" placeholder="Digite seu telefone" required/>
+                            <span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.telefone.$error.required"> Telefone obrigatório
+                            </span>
+                        </div>
+
+                        <center>
+                            <div class="col-sm-3">
+                                <label for=""> &nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary" ng-disabled="formularioAddUsuario.$invalid">Cadastrar</button>
+                            </div>
+                        </center>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

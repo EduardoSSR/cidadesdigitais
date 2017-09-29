@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Adicionar Responsaveis</h4>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="nome" name="nome" ng-model="contato.nome" ng-required="true" placeholder="Digite o nome do responsavel">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="funcao" name="funcao" ng-model="contato.funcao" ng-required="true" placeholder="Digite o funcao">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="email" name="email" ng-model="contato.email" ng-required="true" placeholder="Digite o email">
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <center>
+        <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+        <button type="submit" id="demo" class="btn btn-primary" ng-click='AddContatos(contato)'>Salvar</button>
+    </center>
+</div>
