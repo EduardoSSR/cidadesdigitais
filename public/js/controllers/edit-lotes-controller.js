@@ -22,6 +22,7 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
                         dt_final_vig: new Date($filter('date')(data.dt_final_vig, "yyyy-MM-dd")),
                         dt_reajuste: new Date($filter('date')(data.dt_reajuste, "yyyy-MM-dd"))
                     };
+                    $scope.getEntidades();
                 })
                 .error(function (error) {
                     $scope.msg = "<strong>"+ error +"</strong><br><p>Ocorreu um erro ao carregar os lotes do banco de dados. Por favor tente novamente mais tarde.</p>";
@@ -33,7 +34,7 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
     
     /*============== Funcao para carregar os itens do banco de dados =================*/
     $scope.getItens = function(){
-        $http.get("read/itens")
+        $http.get("read/loteItens/" + $routeParams.loteId)
             .success(function (item) {
                 $scope.itens = item;
             })
@@ -67,6 +68,17 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
                 $scope.msg = "<strong>"+ error +"</strong><br><p>Ocorreu um erro ao carregar os reajustes do banco de dados. Por favor tente novamente mais tarde.</p>";
                 $scope.mensagem($scope.msg, "error", 10000);
         });
+    };
+    
+    $scope.getEntidades = function(){
+        $http.get('read/entidades')
+        .success(function(entidade){
+            $scope.entidades = entidade;
+        })
+        .error(function(error){
+            $scope.msg = "<strong>"+ error +"</strong><br><p>Ocorreu um erro ao carregar as entidades do banco de dados. Por favor tente novamente mais tarde.</p>";
+            $scope.mensagem($scope.msg, "error", 10000);
+        })
     };
 
     
@@ -109,18 +121,15 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
                 preco: itens[r].preco
             }
         }
-
-        $http.put('read/itens/', $scope.itensLote)
-            .success(function () {
-                console.log($scope.itensLote);
-                $scope.mensagem = 'itens editados!';
+        $http.put('read/loteItens/', $scope.itensLote)
+            .success(function (){
+                $scope.msg = "<strong>Atualizado</strong><br><p>Os Itens foram atualizados com sucesso.</p>";
+                $scope.mensagem($scope.msg, "success", 5000);
             })
-            .error(function (erro) {
-                $scope.mensagem = 'Erro ao editar itens!';
-                console.log(erro)
+            .error(function (error) {
+                $scope.msg = "<strong>"+ error +"</strong><br><p>Ocorreu um erro ao atualizar os itens. Por favor tente novamente mais tarde.</p>";
+            $scope.mensagem($scope.msg, "error", 10000);
             });
-
-
     };
     
     
@@ -148,10 +157,8 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
     }
     
     
-    /*============== Funcao para excluir os reajustes =================*/
+    /*============== Funcao para excluir os reajustes de acordo com id do lote e o ano de referencia passados =================*/
     $scope.removReajuste = function(reajuste){
-        
-        console.log('read/reajuste/' + $scope.loteId + '/' + reajuste.ano_ref)
         
         $http.delete('read/reajuste/' + $scope.loteId + '/' + reajuste.ano_ref)
         .success(function(){
@@ -170,5 +177,5 @@ angular.module('cidadesdigitais').controller('editLotesController', function ($s
         $scope.carregarLote();
         $scope.getReajustes();
         $scope.getPrevEmpenhos();
-        $scope.getItens();     
+        $scope.getItens();
 });

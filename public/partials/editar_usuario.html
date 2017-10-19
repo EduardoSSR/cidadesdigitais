@@ -1,21 +1,21 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/usuario">Usuario</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/usuario">Usuario</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Visualizar Usuário</li>
     </ol>
 </nav>
 
 <div class="container">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div id="divPanelHeadingForm" class="panel-heading">
+        <div class="panel panel-default">
+            <div id="panel-heading" class="panel-heading">
                 <h4>Vizualização Usuário</h4>
             </div>
-            <div id="divPanelBodyForm" class="panel-body">
+            <div id="panel-body" class="panel-body">
 
                 <p ng-show="mensagem.length" class="alert alert-info alert-dismissible">{{mensagem}}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
                 <form name="formularioAddUsuario" ng-submit="submeter()">

@@ -1,24 +1,24 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/fiscalicacao">Fiscalização</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/pagamento">Pagamento</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/fiscalicacao">Fiscalização</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/pagamento">Pagamento</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Editar Pagamento</li>
     </ol>
 </nav>
 
 <div class="container">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Editar Pagamento</h4>
             </div>
 
-            <div class="panel-body" id="divPanelBodyForm">
+            <div class="panel-body" id="panel-body">
                 <form>
                     <div class="row">
                         <div class="col-sm-6 col-md-5">
@@ -37,7 +37,7 @@
                         </center>
                     </div>
 
-                    <ul id="reparocorfonteCD" class="nav nav-pills nav-stacked">
+                    <ul class="nav nav-pills nav-stacked background-navpills">
                         <li><a href="#1a" data-toggle="tab">Fatura</a></li>
                         <li><a href="#2a" data-toggle="tab">Itens</a></li>
                     </ul><br>
@@ -60,7 +60,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-condensed">
                                     <thead>
-                                        <tr id="fundocoreditarcd">
+                                        <tr class="background-starttable">
                                             <th>Número da nota fiscal</th>
                                             <th>Código transferência bancária</th>
                                             <th class="acoes">Ações</th>
@@ -70,7 +70,7 @@
                                         <tr>
                                             <td>TESTE</td>
                                             <td>TESTE</td>
-                                            <td><a data-toggle="modal" data-target="#janela" class="botaoLupa"><span class="glyphicon glyphicon-pencil"></span></a> <a href="http://geradormemes.com/media/created/8kbx7r.jpg" class=""><span class="glyphicon glyphicon-trash"></span></a> </td>
+                                            <td><a data-toggle="modal" data-target="#janela" class="botaoLupa"><span class="glyphicon glyphicon-pencil"></span></a> <a href="http://geradormemes.com/media/created/8kbx7r.jpg" class=""><span class="glyphicon glyphicon-action-trash"></span></a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -83,7 +83,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-condensed">
                                     <thead>
-                                        <tr id="fundocoreditarcd">
+                                        <tr class="background-starttable">
                                             <th>Sequência</th>
                                             <th>Código empenho</th>
                                             <th>Número nota fiscal</th>
@@ -97,7 +97,7 @@
                                             <td>TESTE</td>
                                             <td>TESTE</td>
                                             <td>TESTE</td>
-                                            <td class="col-md-1"><center><input class="form-control campoAdditensEmpenho" type="number"></center></td>
+                                            <td class="col-md-1"><center><input class="form-control" type="number"></center></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -5,7 +5,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var naturezaDespesaDAO = new app.infra.NaturezaDespesaDAO(connection);
 
-        naturezaDespesaDAO.listar(function(erro, resultado){
+        naturezaDespesaDAO.listarNaturezaDespesa(function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -16,4 +16,5 @@ module.exports = function(app){
 
         connection.end();
     });
+    
 };

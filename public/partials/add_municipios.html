@@ -1,24 +1,24 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/administracao">Administração</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/municipios">Municípios</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/administracao">Administração</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/municipios">Municípios</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Adicionar Município</li>
     </ol>
 </nav>
 
 <div class="container" ng-controller="addMunicipiosController">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Adicionar Municipios</h4>
             </div>
 
-            <div class="panel-body contact-container" id="divPanelBodyForm">
+            <div class="panel-body contact-container" id="panel-body">
                 <form novalidate name="formAddmunicipios" ng-submit="submitMunicipios(municipio)">
                     <div class="row">
                         <div class="form-group col-sm-3" ng-class="{ 'has-error' : formAddmunicipios.cod_ibge.$invalid && !formAddmunicipios.cod_ibge.$pristine }">

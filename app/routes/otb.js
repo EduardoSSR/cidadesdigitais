@@ -1,12 +1,12 @@
 module.exports = function(app){
 
 
-    //Rota para listar todos os pagamentos.
+    //Rota para listar todos os otb (pagamentos).
 	app.get('/read/otb', function(req, res){
     	var connection = app.infra.connectionFactory();
         var otbDAO = new app.infra.OtbDAO(connection);
 
-        otbDAO.listar(function(erro, resultado){
+        otbDAO.listarPagamento(function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -20,14 +20,14 @@ module.exports = function(app){
 
 
 
-    //Rota para gravar um novo pagamento no Banco de Dados.
+    //Rota para gravar um novo otb (pagamento) no Banco de Dados.
     app.post('/read/otb', function(req, res){
         var otb = req.body;
         
         var connection = app.infra.connectionFactory();
         var otbDAO = new app.infra.OtbDAO(connection);
 
-        otbDAO.salvar(otb, function(erro, resultado){
+        otbDAO.salvarPagamento(otb, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -41,7 +41,7 @@ module.exports = function(app){
 
 
 
-    //Rota usada para atualizar um pagamento com base no ID.
+    //Rota usada para atualizar um otb (pagamento) com base no ID.
     /*app.put('/read/otb', function(req, res){
         var otb = req.body;
         var id = req.body.cod_lote;
@@ -49,7 +49,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var otbDAO = new app.infra.OtbDAO(connection);
         
-        otbDAO.editar(otb, id, function (erro, resultado){
+        otbDAO.editarPagamento(otb, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -63,12 +63,12 @@ module.exports = function(app){
 
 
 
-    //Rota para listar um único pagamento com base no ID.
+    //Rota para listar um único otb (pagamento) com base no ID.
     /*app.get('/read/otb/:id', function(req, res){
         var connection = app.infra.connectionFactory();
         var otbDAO = new app.infra.OtbDAO(connection);
 
-        otbDAO.listar(function (erro, resultado){
+        otbDAO.listarPagamento(function (erro, resultado){
             var otb = resultado.find(function(otb){
                 return otb.cod_otb == req.params.id;
             });
@@ -80,14 +80,14 @@ module.exports = function(app){
 
 
 
-    //Rota usada para apagar um pagamento com base no ID.
+    //Rota usada para apagar um otb (pagamento) com base no ID.
     app.delete('/read/otb/:id', function(req, res){
         var id = req.params.id;
 
         var connection = app.infra.connectionFactory();
         var otbDAO = new app.infra.OtbDAO(connection);
 
-        otbDAO.apagar(id,  function(erro, resultado){
+        otbDAO.apagarPagamento(id,  function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

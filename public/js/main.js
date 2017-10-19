@@ -230,6 +230,7 @@ angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', '
         $routeProvider.when('/cid/addPrevisaoEmpenho', {
             templateUrl: 'partials/add_previsao_empenho.html'
         });
+    
         $routeProvider.when('/cid/Erro404', {
             templateUrl: 'partials/404.ejs'
         });

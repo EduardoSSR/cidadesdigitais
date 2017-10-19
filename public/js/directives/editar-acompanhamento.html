@@ -4,41 +4,31 @@
 </div>
 
 <div class="modal-body">
+   <div class="form-group">
+        <label for="relato" id="titoloRelatosCD">Título do relato: </label>
+        <input type="text" ng-model="assuntosCd.titulo" class="form-control" placeholder="Digite a título do relato" />
+    </div>
     <div class="form-group">
         <label for="relato" id="titoloRelatosCD">Relato: </label>
-        <textarea id="RelatoEditarCd" class="form-control" placeholder="Digite a Relato"></textarea>
+        <textarea id="note-entity" ng-model="assuntosCd.relato" class="form-control" placeholder="Digite a Relato"></textarea>
     </div>
     <div class="form-group">
-        <label for="municipio">Selecione os assunto: </label>
+        <label >Selecione os assunto: </label>
+        <select class="form-control" ng-model="assuntosCd.descricao" ng-change="armTempAssunto(assuntosCd)" ng-options="assunto.descricao for assunto in assuntos">
+            <option value="">Selecione para adicionar um assunto</option>
+        </select>
     </div>
-    <div class="form-group" id="scroll">
-        <input type="checkbox" name="assunto1">assunto 1
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-        <input type="checkbox" name="assunto2">assunto 2
-        <br>
-    </div>
-    <br>
     <div class="form-group">
-        <a class="btn btn-primary"><span>&times;&nbsp;</span>Categoria 1</a>
-        <a class="btn btn-primary"><span>&times;&nbsp;</span>Categoria 9</a>
-        <a class="btn btn-primary"><span>&times;&nbsp;</span>Categoria 6</a>
-        <a class="btn btn-primary"><span>&times;&nbsp;</span>Categoria 7</a>
-    </div>
+       <div class="row">
+            <div class="form-group col-md-3" ng-repeat="assuntoSelecionados in assuntosSelecionados">
+                <label class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="bottom" title="{{assuntoSelecionados.descricao}}" style="font-size: 12px;"><strong class="glyphicon glyphicon-remove pull-left" ng-click="remover(assuntoSelecionados)"></strong> Assunto {{assuntoSelecionados.cod_assunto}}</label>
+            </div>
+        </div>
 </div>
 
 <div class="modal-footer">
     <center>
         <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary ">Salvar</button>
+        <button type="submit" class="btn btn-primary" ng-click="enviarAssunto()">Registrar</button>
     </center>
 </div>

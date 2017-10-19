@@ -5,7 +5,7 @@ module.exports = function (app){
     	var connection = app.infra.connectionFactory();
         var assuntosDAO = new app.infra.AssuntoDAO(connection);
 
-        assuntosDAO.listar(function (erro, resultado){
+        assuntosDAO.listarAssunto(function (erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -26,7 +26,7 @@ module.exports = function (app){
     	var connection = app.infra.connectionFactory();
         var assuntosDAO = new app.infra.AssuntoDAO(connection);
 
-        assuntosDAO.salvar(assunto, function(erro, resultado){
+        assuntosDAO.salvarAssunto(assunto, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -46,7 +46,7 @@ module.exports = function (app){
         var connection = app.infra.connectionFactory();
         var assuntosDAO = new app.infra.AssuntoDAO(connection);
         
-        assuntosDAO.editar(assunto, id, function (erro, resultado){
+        assuntosDAO.editarAssunto(assunto, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -65,7 +65,7 @@ module.exports = function (app){
         var connection = app.infra.connectionFactory();
         var assuntosDAO = new app.infra.AssuntoDAO(connection);
 
-        assuntosDAO.listar(function (erro, resultado){
+        assuntosDAO.listarAssunto(function (erro, resultado){
             var assunto = resultado.find(function(assunto){
                 return assunto.cod_assunto == req.params.id;
             });
@@ -84,7 +84,7 @@ module.exports = function (app){
         var connection = app.infra.connectionFactory();
         var assuntosDAO = new app.infra.AssuntoDAO(connection);
 
-        assuntosDAO.apagar(id,  function(erro, resultado){
+        assuntosDAO.apagarAssunto(id,  function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

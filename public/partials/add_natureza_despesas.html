@@ -1,24 +1,24 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default hidden-xs">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/administracao">Administração</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/naturezaDespesas">Natureza de Despesas</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/administracao">Administração</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/naturezaDespesas">Natureza de Despesas</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Adicionar Natureza de Despesas</li>
     </ol>
 </nav>
 
 <div class="container" ng-controller="addNaturezaDespController">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Adicionar Natureza de Despesas</h4>
             </div>
 
-            <div class="panel-body contact-container" id="divPanelBodyForm">
+            <div class="panel-body contact-container" id="panel-body">
                 <form novalidate name="formAddNaturezaDesp" ng-submit="submitNaturezaDesp(naturezadesp)">
                     <div class="row">
                         <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddNaturezaDesp.cod_natDesp.$invalid && !formAddNaturezaDesp.cod_natDesp.$pristine }">

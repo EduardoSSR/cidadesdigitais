@@ -2,9 +2,10 @@ function UsuarioDAO(connection){
 	this._connection = connection;
 }
 
-//-----------Querys de Usuario---------------//
 
-//Lista todos os atributos da tabela de Usuario e trás junto a descrição do perfil.
+//---------------Querys de Usuário---------------//
+
+//Lista todos os atributos da tabela de Usuario e trás junto a descrição do Perfil.
 UsuarioDAO.prototype.listarUsuario = function(callback){
 	this._connection.query('SELECT cod_usuario, nome, login, email, telefone, perfil_cod_perfil, descricao FROM usuario INNER JOIN perfil ON usuario.perfil_cod_perfil = perfil.cod_perfil', callback);
 }
@@ -28,12 +29,13 @@ UsuarioDAO.prototype.apagarUsuario = function(id, callback){
 
 
 
-//-----------Querys de Perfil---------------//
+//---------------Querys de Perfil---------------//
 
 //Lista tudo da tabela Perfil.
 UsuarioDAO.prototype.listarPerfil = function(callback){
 	this._connection.query('SELECT * FROM perfil', callback);
 }
+
 
 module.exports = function(){
 	return UsuarioDAO;

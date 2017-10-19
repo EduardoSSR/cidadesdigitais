@@ -1,19 +1,19 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/entidades">Entidades</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/entidades">Entidades</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Adicionar Entidades</li>
     </ol>
 </nav>
 <div class="container">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Adicionar Entidade</h4>
             </div>
 
-            <div class="panel-body" id="divPanelBodyForm">
+            <div class="panel-body" id="panel-body">
                 <!--<p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>-->
                 
                 <div growl></div>
@@ -78,7 +78,7 @@
 
                         <div class="form-group">
                             <label>Observação: </label>
-                            <textarea id="observacaoAddEntidades2" class="form-control" ng-model="entidade.observacao" ng-required="true" placeholder="Digite a observação"></textarea>
+                            <textarea id="note-entity" class="form-control" ng-model="entidade.observacao" ng-required="true" placeholder="Digite a observação"></textarea>
                         </div>
                     </div>
                     <center>

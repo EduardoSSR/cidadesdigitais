@@ -1,4 +1,4 @@
-angular.module('cidadesdigitais').controller('addEntidadeController', function($scope, $http, growl) {
+angular.module('cidadesdigitais').controller('addEntidadeController', function($scope, $http, growl,InjecaoInfo) {
 
 
   $scope.entidade = {};
@@ -10,75 +10,12 @@ angular.module('cidadesdigitais').controller('addEntidadeController', function($
       growl.general(msg, {ttl: time}, type);
   };
     
-       
- $scope.submeterAddTelefones = function (telefone) {
-     
-     
-      $scope.telefones = {
-        contato_cod_contato: $scope.entidade.cod_contato,
-        telefone: $scope.telefone.fone,
-        tipo: $scope.telefone.tipo
-      };
-      console.log($scope.telefones);
-    $http.post('read/telefone', $scope.telefones)
-      .success(function() {
-        console.log($scope.telefones);
-        delete $scope.telefones;
-        console.log($scope.telefones);
-        $scope.mensagem = 'Entidade cadastrado!';
-      })
-      .error(function(erro) {
-        console.log($scope.telefones);
-        $scope.mensagem = 'Erro ao cadastradar Entidade!';
-        console.log(erro)
-      });
-    };
-    
-    /*------------------contatos--------------------*/
-  
-       $http.get('read/contato/')
-        .success(function(contato){
-           $scope.contatos = contato;
-            
-     })
-        .error(function(erro){
-            console.log(erro);
-        });
+/*       
  
     
-      $scope.AddContatos = function (contato) {
-  
-      $scope.contatos = {
-        entidade_cnpj: $scopeentidades.cnpj,
-        nome: $scope.contato.nome,
-        email: $scope.contato.email,
-        funcao: $scope.contato.funcao
-      };
-      
-      console.log($scope.contatos)
-      
-    $http.post('read/contato', $scope.contatos)
-      .success(function() {
-        console.log($scope.contatos)
-        delete $scope.contato;
-        $scope.mensagem = 'Entidade cadastrado!';
-      })
-      .error(function(erro) {
-        console.log($scope.contato);
-        $scope.mensagem = 'Erro ao cadastradar Entidade!';
-        console.log(erro)
-      });
-    };
-    
-    $http.get('read/entidade/')
-        .success(function(entidade){
-           $scope.entidades = entidade;
-         
-        })
-        .error(function(erro){
-            console.log(erro);
-        });
-    
+    /*------------------contatos--------------------*/
+
+   
     
     /*Entidade*/
     
@@ -97,7 +34,7 @@ angular.module('cidadesdigitais').controller('addEntidadeController', function($
     }
     console.log($scope.entidades);
    
-    $http.post('read/entidades', $scope.entidades)
+    InjecaoInfo.postEntidade($scope.entidades)
       .success(function() {
         console.log($scope.entidades);
         $scope.msg = "<strong>Cadastrado!</strong><br>" + $scope.entidade.nome + " foi cadastrado(a) com sucesso.";

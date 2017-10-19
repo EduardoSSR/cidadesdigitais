@@ -5,7 +5,7 @@ module.exports = function(app){
     	var connection = app.infra.connectionFactory();
         var previsaoEmpenhoDAO = new app.infra.PrevisaoEmpenhoDAO(connection);
 
-        previsaoEmpenhoDAO.listar(function(erro, resultado){
+        previsaoEmpenhoDAO.listarPrevisaoEmpenho(function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -27,7 +27,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var previsaoEmpenhoDAO = new app.infra.PrevisaoEmpenhoDAO(connection);
 
-        previsaoEmpenhoDAO.salvar(previsaoEmpenho, function(erro, resultado){
+        previsaoEmpenhoDAO.salvarPrevisaoEmpenho(previsaoEmpenho, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -49,7 +49,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var previsaoEmpenhoDAO = new app.infra.PrevisaoEmpenhoDAO(connection);
         
-        previsaoEmpenhoDAO.editar(previsaoEmpenho, id, function (erro, resultado){
+        previsaoEmpenhoDAO.editarPrevisaoEmpenho(previsaoEmpenho, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -68,7 +68,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var previsaoEmpenhoDAO = new app.infra.PrevisaoEmpenhoDAO(connection);
 
-        previsaoEmpenhoDAO.listar(function (erro, resultado){
+        previsaoEmpenhoDAO.listarPrevisaoEmpenho(function (erro, resultado){
             var previsaoEmpenho = resultado.find(function(previsaoEmpenho){
                 return previsaoEmpenho.cod_previsao_empenho == req.params.id;
             });
@@ -87,7 +87,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var previsaoEmpenhoDAO = new app.infra.PrevisaoEmpenhoDAO(connection);
 
-        previsaoEmpenhoDAO.apagar(id,  function(erro, resultado){
+        previsaoEmpenhoDAO.apagarPrevisaoEmpenho(id,  function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

@@ -18,7 +18,6 @@ angular.module('cidadesdigitais').controller('addPrevEmpController', function($s
     $scope.submeter = function(){
         
         $scope.prevEmpenho = {
-            cod_previsao_empenho: $scope.prevEmp.cod_previsao_empenho,
             lote_cod_lote: $scope.prevEmp.cod_lote,
             data: $filter('date')($scope.prevEmp.data,"yyyy-MM-dd"),
             tipo: $scope.prevEmp.tipo,
@@ -26,8 +25,6 @@ angular.module('cidadesdigitais').controller('addPrevEmpController', function($s
             natureza_despesa_cod_natureza_despesa: $scope.prevEmp.natDesp
         };
         
-        console.log( $scope.prevEmpenho);
-        console.log($scope.prevEmpenho);
         $http.post('read/previsaoEmpenho', $scope.prevEmpenho)
                 .success(function () {
                 console.log($scope.prevEmpenho);
@@ -41,11 +38,7 @@ angular.module('cidadesdigitais').controller('addPrevEmpController', function($s
                     console.log(erro)
                 });
     
-        /*$scope.inserirPrevEmp = function (prevEmp) {
-        $scope.addDadosEmpenho.push(angular.copy(empenho));
-        delete $scope.prevEmp;
-       $scope.prevempForm.$setPristine();
-        console.log(prevEmp);    */
+
     };
 
 });            

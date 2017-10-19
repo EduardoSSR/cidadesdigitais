@@ -1,10 +1,12 @@
 module.exports = function (app){
 
-//------------------Rotas de Usuarios--------------------//    
+//---------------Rotas de Usuários---------------//
+    
     
     //Rota para listar todos os Usuários.
     app.get('/read/usuario', function (req, res){
     	var connection = app.infra.connectionFactory();
+        
         var usuarioDAO = new app.infra.UsuarioDAO(connection);
 
         usuarioDAO.listarUsuario(function (erro, resultado){
@@ -46,7 +48,7 @@ module.exports = function (app){
     app.put('/read/usuario', function(req, res){
         var usuario = req.body;
         var id = req.body.cod_usuario;
-        
+
         var connection = app.infra.connectionFactory();
         var usuarioDAO = new app.infra.UsuarioDAO(connection);
         
@@ -102,8 +104,9 @@ module.exports = function (app){
     
     
     
-
-//------------------Rotas de Perfil do Usuário--------------------//
+    
+    
+//---------------Rotas de Perfil do Usuário---------------//
     
     //Rota para listar todos os perfis.
     app.get('/read/perfil', function(req, res){

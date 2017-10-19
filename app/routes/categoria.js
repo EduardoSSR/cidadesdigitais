@@ -1,10 +1,11 @@
 module.exports = function (app){
     
+    //Rota para listar todas as Categorias.
     app.get('/read/categoria', function (req, res){
     	var connection = app.infra.connectionFactory();
         var categoriaDAO = new app.infra.CategoriaDAO(connection);
 
-        categoriaDAO.listar(function (erro, resultado){
+        categoriaDAO.listarCategoria(function (erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -15,6 +16,5 @@ module.exports = function (app){
 
         connection.end();
     });
-    
     
 }

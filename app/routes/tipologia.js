@@ -5,7 +5,7 @@ module.exports = function (app){
     	var connection = app.infra.connectionFactory();
         var tipologiaDAO = new app.infra.TipologiaDAO(connection);
 
-        tipologiaDAO.listar(function (erro, resultado){
+        tipologiaDAO.listarTipologia(function (erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

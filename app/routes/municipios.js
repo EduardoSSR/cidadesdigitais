@@ -5,7 +5,7 @@ module.exports = function(app){
     	var connection = app.infra.connectionFactory();
         var municipiosDAO = new app.infra.MunicipiosDAO(connection);
 
-        municipiosDAO.listar(function(erro, resultado){
+        municipiosDAO.listarMunicipio(function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -26,7 +26,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var municipiosDAO = new app.infra.MunicipiosDAO(connection);
 
-        municipiosDAO.salvar(municipio, function(erro, resultado){
+        municipiosDAO.salvarMunicipio(municipio, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -46,7 +46,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var municipiosDAO = new app.infra.MunicipiosDAO(connection);
         
-        municipiosDAO.editar(municipio, id, function (erro, resultado){
+        municipiosDAO.editarMunicipio(municipio, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -65,7 +65,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var municipiosDAO = new app.infra.MunicipiosDAO(connection);
 
-        municipiosDAO.listar(function (erro, resultado){
+        municipiosDAO.listarMunicipio(function (erro, resultado){
             var municipio = resultado.find(function(municipio){
                 return municipio.cod_ibge == req.params.id;
             });
@@ -84,7 +84,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var municipiosDAO = new app.infra.MunicipiosDAO(connection);
 
-        municipiosDAO.apagar(id,  function(erro, resultado){
+        municipiosDAO.apagarMunicipio(id,  function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

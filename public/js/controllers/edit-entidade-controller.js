@@ -1,4 +1,4 @@
-angular.module('cidadesdigitais').controller('editEntidadeController', function ($scope, $http, $routeParams, growl) {
+angular.module('cidadesdigitais').controller('editEntidadeController', function ($scope, $routeParams, growl,InjecaoInfo) {
 
     $scope.entidades = {};
     $scope.contatos = {};
@@ -15,18 +15,11 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
     }
 
     /* Carrega Dados */
-    function carregaTabela() {
-        $http.get('read/contato/')
-            .success(function (contato) {
-                $scope.contatos = contato;
+   InjecaoInfo.getContato()
+    
+        
 
-            })
-            .error(function (erro) {
-                console.log(erro);
-            });
-    };
-
-    $http.get('read/entidades/' + $routeParams.entidadeId)
+   InjecaoInfo.getEntidadeId($routeParams.entidadeId)
         .success(function (entidade) {
             $scope.entidades = entidade;
 
@@ -35,12 +28,10 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
         });
 
     function carregaTel() {
-        $http.get('read/telefone')
+         InjecaoInfo.getContato()
             .success(function (telefone) {
-
                 $scope.telefones = telefone;
-
-
+             
             }).error(function (erro) {
                 console.log(erro);
             });
@@ -57,13 +48,11 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
             funcao: $scope.contato.funcao
         };
 
-
-        $http.post('read/contato', $scope.contatos)
+        InjecaoInfo.postContato($scope.contatos)
             .success(function () {
-
                 console.log($scope.contatos);
 
-                carregaTabela();
+               InjecaoInfo.getContato();
                 delete $scope.contato;
                 $scope.mensagem = 'Contato da entidade cadastrado!';
             })
@@ -73,31 +62,6 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
                 console.log(erro)
             });
     };
-
-
-    $scope.AddContatos = function (contato) {
-
-        $scope.contatos = {
-            entidade_cnpj: $scope.entidades.cnpj,
-            nome: $scope.contato.nome,
-            email: $scope.contato.email,
-            funcao: $scope.contato.funcao
-        };
-
-
-        $http.post('read/contato', $scope.contatos)
-            .success(function () {
-                carregaTabela();
-                delete $scope.contato;
-                $scope.mensagem = 'Contato da entidade cadastrado!';
-            })
-            .error(function (erro) {
-
-                $scope.mensagem = 'Erro ao cadastradar Entidade!';
-                console.log(erro)
-            });
-    };
-
 
 
     $scope.addT = function (telefone, contato) {
@@ -184,7 +148,8 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
             uf: $scope.entidades.uf,
             observacao: $scope.entidades.observacao
         };
-        $http.put('read/entidades', $scope.entidades)
+        
+        InjecaoInfo.postEntidade()
             .success(function () {
                 console.log($scope.entidades);
                 $scope.msg = "<strong>Cadastrado!</strong><br>" + $scope.entidades.nome + " foi atualizado(a) com sucesso.";
@@ -206,6 +171,6 @@ angular.module('cidadesdigitais').controller('editEntidadeController', function 
 
 
 
-    carregaTabela();
+ InjecaoInfo.getContato();
     carregaTel();
 });

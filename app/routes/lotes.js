@@ -1,6 +1,6 @@
 module.exports = function(app){
     
-//------------------Rotas de Lote--------------------//
+//---------------Rotas de Lote---------------//
 
     //Rota para listar todos os lotes.
     app.get('/read/lotes', function(req, res){
@@ -10,7 +10,7 @@ module.exports = function(app){
         lotesDAO.listarLote(function(erro, resultado){
             if(erro){
                 console.log(erro);
-                res.sendStatus(418);
+                res.sendStatus(500);
             }else{
                 res.status(200).json(resultado);
             }
@@ -101,8 +101,9 @@ module.exports = function(app){
 
     
     
+
     
-//------------------Rotas de Reajuste--------------------//
+//---------------Rotas de Reajuste---------------//
     
     
     //Rota para listar todos os Reajustes.
@@ -113,7 +114,7 @@ module.exports = function(app){
         lotesDAO.listarReajuste(function(erro, resultado){
             if(erro){
                 console.log(erro);
-                res.sendStatus(418);
+                res.sendStatus(500);
             }else{
                 res.status(200).json(resultado);
             }
@@ -165,5 +166,65 @@ module.exports = function(app){
         connection.end();
     });
     
+    
+    
+    
+    
+//---------------Rotas de Itens---------------//
+    
+    //Rota para listar todos os Itens.
+	app.get('/read/loteItens/:id', function(req, res){
+        var lote_cod_lote = req.params.id;
+        
+    	var connection = app.infra.connectionFactory();
+        var lotesDAO = new app.infra.LotesDAO(connection);
+
+        lotesDAO.listarItens(lote_cod_lote, function(erro, resultado){
+            if(erro){
+                console.log(erro);
+                res.sendStatus(500);
+            }else{
+                res.status(200).json(resultado);
+            }
+        });
+        
+        connection.end();
+        
+    });
+    
+    
+    
+    //Rota usada para atualizar vários Itens com base no ID.
+    app.put('/read/loteItens', function(req, res){
+        
+        var itens = req.body;
+        
+        var connection = app.infra.connectionFactory();
+        var lotesDAO = new app.infra.LotesDAO(connection);
+        
+        for(var i=0; i<itens.length; i++){
+            
+            var lote_cod_lote = itens[i].lote_cod_lote;
+            var itens_cod_item = itens[i].itens_cod_item;
+            var itens_tipo_item_cod_tipo_item = itens[i].itens_tipo_item_cod_tipo_item;
+            
+            var loteItens = {
+                lote_cod_lote : itens[i].lote_cod_lote,
+                itens_cod_item : itens[i].itens_cod_item,
+                itens_tipo_item_cod_tipo_item : itens[i].itens_tipo_item_cod_tipo_item,
+                preco : itens[i].preco
+            }
+        
+            lotesDAO.editarItens(lote_cod_lote, itens_cod_item, itens_tipo_item_cod_tipo_item, loteItens, function (erro, resultado){
+                if (erro){
+                    console.log(erro);
+                    res.sendStatus(500);
+                }
+            });
+        };
+        res.sendStatus(204);
+        
+        connection.end();
+    });
     
 };

@@ -2,10 +2,12 @@ function NaturezaDespesaDAO(connection){
 	this._connection = connection;
 }
 
+
 //Lista tudo da tabela Natureza_Despesa.
-NaturezaDespesaDAO.prototype.listar = function(callback){
+NaturezaDespesaDAO.prototype.listarNaturezaDespesa = function(callback){
 	this._connection.query('SELECT * FROM natureza_despesa', callback);
 }
+
 
 module.exports = function(){
 	return NaturezaDespesaDAO;

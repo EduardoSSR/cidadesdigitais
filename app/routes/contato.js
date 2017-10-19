@@ -1,6 +1,6 @@
 module.exports = function(app){
     
-//------------------Rotas de Contatos--------------------//
+//---------------Rotas de Contatos---------------//
 
     //Rota para listar todos os Contatos.
 	app.get('/read/contato', function(req, res){
@@ -40,6 +40,28 @@ module.exports = function(app){
 
         connection.end();
     });
+    
+    
+    
+    //Rota usada para atualizar um Contato com base no ID.
+    app.put('/read/contato', function(req, res){
+        var contato = req.body;
+        var cod_contato = req.body.cod_contato;
+
+        var connection = app.infra.connectionFactory();
+        var contatoDAO = new app.infra.ContatoDAO(connection);
+        
+        contatoDAO.editarContato(contato, cod_contato, function (erro, resultado){
+            if (erro){
+                console.log(erro);
+                res.sendStatus(500);
+            }else{
+                res.sendStatus(204);
+            }
+        });
+
+        connection.end();
+    });
 
 
 
@@ -68,8 +90,7 @@ module.exports = function(app){
     
     
     
-//------------------Rotas de Telefones--------------------//
-    
+//---------------Rotas de Telefones---------------//
     
     //Rota para listar todos os Telefones.
     app.get('/read/telefone', function (req, res){

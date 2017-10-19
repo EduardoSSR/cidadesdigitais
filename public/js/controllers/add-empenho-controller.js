@@ -1,11 +1,11 @@
-angular.module('cidadesdigitais').controller('addEmpenhoController', function ($scope, $http, $filter, $routeParams) {
+angular.module('cidadesdigitais').controller('addEmpenhoController', function ($scope, $http, $filter, $routeParams, InjecaoInfo) {
 
     $scope.mensagem = '';
     $scope.previsaoEmpenho = [];
 
 
     if ($routeParams.empenhoId) {
-        $http.get('read/empenhoAll' + $routeParams.empenhoId)
+        InjecaoInfo.getEmpenho()
             .success(function (empenho) {
                 $scope.empenho = empenho;
             })
@@ -14,7 +14,7 @@ angular.module('cidadesdigitais').controller('addEmpenhoController', function ($
             });
     };
 
-    $http.get('read/naturesaDespesa')
+    InjecaoInfo.getNaturesaDespesa()
         .success(function (naturesaDespesa) {
             $scope.naturezaDespesas = naturesaDespesa
         })
@@ -23,7 +23,7 @@ angular.module('cidadesdigitais').controller('addEmpenhoController', function ($
         })
 
 
-    $http.get('read/previsaoEmpenho')
+    InjecaoInfo.getPrevisaoEmpenho()
         .success(function (empenho) {
             $scope.previsaoEmpenho = empenho
         })
@@ -33,7 +33,7 @@ angular.module('cidadesdigitais').controller('addEmpenhoController', function ($
     
       $scope.carregaPrevEmpenho = function(value){
             console.log(value);
-             $http.get('read/previsaoEmpenho/' + value)
+             InjecaoInfo.getCarregaPrevEmpenho(value)
         .success(function (dados) {
             $scope.prevEmpenho = dados
             console.log($scope.prevEmpenho);

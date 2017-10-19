@@ -1,4 +1,7 @@
-angular.module('cidadesdigitais').controller('addCdPontoController', function ($scope, $http) {
+angular.module('cidadesdigitais').controller('addCdPontoController', function ($scope, $http, $routeParams) {
+    
+    /*captura o codigo do ibge do municipio selecionado e relaciona com uma categoria*/
+    $scope.carregarCodibge = $routeParams.cdCodIbge;
 
     /*============== Funcao para chamar um Categoria do banco de dados =================*/
     $http.get('/read/categoria/')
@@ -44,12 +47,7 @@ angular.module('cidadesdigitais').controller('addCdPontoController', function ($
         var indicePonto = $scope.mostrarTipologia.indexOf(mTipologia);
         $scope.mostrarTipologia.splice(indicePonto, 1);
     };
-
-    /*============== Funcao para pegar o cod_ibge do controle do editar_cd e anexa nesse controller =================*/
-    $scope.MadaIBGE = function (cidadeDigital) {
-        $scope.cod_ibge = cidadeDigital;
-    }
-
+ 
     /*============== Funcao para enviar os dados do formulario para o banco =================*/
     $scope.enviarPonto = function (pontoCd, mTipologia, cidadeDigital) {
         var armTp = [];
@@ -59,7 +57,7 @@ angular.module('cidadesdigitais').controller('addCdPontoController', function ($
         $scope.pontoCds = {
             cod_ponto: pontoCd.cod_ponto,
             categoria_cod_categoria: pontoCd.categoria_cod_categoria,
-            cd_municipio_cod_ibge: $scope.cod_ibge,
+            cd_municipio_cod_ibge: $scope.carregarCodibge,
             cod_tipologia: armTp,
             nome: pontoCd.nome,
             endereco: pontoCd.endereco,
@@ -70,7 +68,7 @@ angular.module('cidadesdigitais').controller('addCdPontoController', function ($
             longitude: pontoCd.longitude
         };
         console.log($scope.pontoCds);
-        /*$http.post('read/ponto', $scope.pontoCds)
+        $http.post('read/ponto', $scope.pontoCds)
             .success(function () {
                 delete $scope.pontoCds;
                 $scope.mensagem = 'pontoCds cadastrado!';
@@ -78,7 +76,7 @@ angular.module('cidadesdigitais').controller('addCdPontoController', function ($
             .error(function (erro) {
                 $scope.mensagem = 'Erro ao cadastradar pontoCds!';
                 console.log(erro)
-            });*/
+            });
     };
 
 });

@@ -5,7 +5,7 @@ module.exports = function(app){
     	var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
 
-        faturaDAO.listar(function(erro, resultado){
+        faturaDAO.listarFatura(function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -25,7 +25,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
 
-        faturaDAO.listar2(idFatura, function(erro, resultado){
+        faturaDAO.listarItensFatura(idFatura, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -46,7 +46,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
 
-        faturaDAO.salvar(fatura, function(erro, resultado){
+        faturaDAO.salvarFatura(fatura, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -68,7 +68,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
         
-        faturaDAO.editar(fatura, id, function (erro, resultado){
+        faturaDAO.editarFatura(fatura, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -87,7 +87,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
 
-        faturaDAO.listar(function (erro, resultado){
+        faturaDAO.listarFatura(function (erro, resultado){
             var fatura = resultado.find(function(fatura){
                 return fatura.num_nf == req.params.id;
             });
@@ -106,7 +106,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var faturaDAO = new app.infra.FaturaDAO(connection);
 
-        faturaDAO.apagar(id,  function(erro, resultado){
+        faturaDAO.apagarFatura(id,  function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);

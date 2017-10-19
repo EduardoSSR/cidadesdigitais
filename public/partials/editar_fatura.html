@@ -1,21 +1,21 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/fiscalicacao">Fiscalização</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/fatura">Fatura</a></li> <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/fiscalicacao">Fiscalização</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/fatura">Fatura</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Editar Fatura</li>
     </ol>
 </nav>
 
 <div class="container">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Editar Fatura</h4>
             </div>
 
-            <div class="panel-body" id="divPanelBodyForm">
+            <div class="panel-body" id="panel-body">
                 <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
                 <form name="formularioEditFatura" ng-submit="submeter()">
                     <div class="row">
@@ -46,7 +46,7 @@
                         <div class="table-responsive col-xs-12" id="table">
                             <table class="table table-striped table-bordered table-hover table-condensed formatTable">
                                 <thead>
-                                    <tr id="fundocoreditarcd">
+                                    <tr class="background-starttable">
                                         <th>Codigo do item</th>
                                         <th>Tipo do item</th>
                                         <th>Natureza do item</th>

@@ -1,23 +1,23 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/inicio">Home</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/administracao">Administração</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
-        <li class="navbar-menu-item"><a id="corfontmenu" href="/cid/itens">Itens</a></li>
-        <span id="corfontmenu" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/administracao">Administração</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cid/itens">Itens</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Adicionar Itens</li>
     </ol>
 </nav>
 <div class="container" ng-controller="addItensController">
     <section>
-        <div class="painel-pid panel panel-default">
-            <div class="panel-heading" id="divPanelHeadingForm">
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
                 <h4>Adicionar Itens</h4>
             </div>
 
-            <div class="panel-body contact-container" id="divPanelBodyForm">
+            <div class="panel-body contact-container" id="panel-body">
                 <form novalidate name="formAddItens" ng-submit="submitItens(item)">
                     <div class="row">
                         <div class="form-group col-md-2 col-sm-3" ng-class="{ 'has-error' : formAddItens.cod_item.$invalid && !formAddItens.cod_item.$pristine }">

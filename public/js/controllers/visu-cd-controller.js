@@ -1,4 +1,4 @@
-angular.module('cidadesdigitais').controller('visuCidadedigitaisController', function ($scope, $http, growl) {
+angular.module('cidadesdigitais').controller('visuCidadedigitaisController', function ($scope, growl, InjecaoInfo) {
     
     /*============== Funcao para exibir as mensagens referentes ao banco =================*/
     $scope.mensagem = function(msg , type, time){
@@ -7,7 +7,7 @@ angular.module('cidadesdigitais').controller('visuCidadedigitaisController', fun
 
     /*============== Funcao para trazer todas as cidades digitais cadastrados no banco de dados =================*/
     $scope.carregarCDs = function (){
-    $http.get('/read/cd')
+    InjecaoInfo.getCds()
     .success(function(cidadeDigital){ 
         $scope.cidadesDigitais = cidadeDigital;
     })
@@ -20,15 +20,18 @@ angular.module('cidadesdigitais').controller('visuCidadedigitaisController', fun
     
     /*============== Funcao para deletar uma cidade digital que esta cadastrada no banco de dados =================*/
     $scope.deletarCd = function(codIbgeCd){
-        $http.delete('/read/cd/' + codIbgeCd.municipio_cod_ibge)
+        
+        
+        
+        InjecaoInfo.deleteCd(codIbgeCd.municipio_cod_ibge)
         .success(function(){
             $scope.carregarCDs();
-            $scope.msg = "<strong>Excluido!</strong><p>A Cidade Digital foi esxcluida com sucesso.</p>";
+            $scope.msg = "<strong>Excluido!</strong><p>A Cidade Digital foi excluída com sucesso.</p>";
             $scope.mensagem($scope.msg, "success", 5000);
         })
         .error(function(error){
-            $scope.msg = "<strong>" + error + "!</strong><p>Verifique se existe dados que precisam ser apagados.</p>";
-            $scope.mensagem($scope.msg, "error", 10000);
+            $scope.msg = "<strong>Atenção!</strong><p>A Cidade Digital não pode ser excluída. Verifique se existem informações associadas em processos, contatos ou pontos.<br><strong>Caso exista informações em acompanhamento ou fatura será impossível apagar a Cidade Digital.</strong></p>";
+            $scope.mensagem($scope.msg, "error", 20000);
         });
     };
     

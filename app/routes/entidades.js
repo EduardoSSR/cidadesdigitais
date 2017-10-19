@@ -5,7 +5,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var entidadesDAO = new app.infra.EntidadesDAO(connection);
 
-              entidadesDAO.listar(function (erro, resultado){
+        entidadesDAO.listarEntidade(function (erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -26,7 +26,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var entidadesDAO = new app.infra.EntidadesDAO(connection);
 
-        entidadesDAO.salvar(entidade, function(erro, resultado){
+        entidadesDAO.salvarEntidade(entidade, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -48,7 +48,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var entidadesDAO = new app.infra.EntidadesDAO(connection);
         
-        entidadesDAO.editar(entidade, id, function (erro, resultado){
+        entidadesDAO.editarEntidade(entidade, id, function (erro, resultado){
             if (erro){
                 console.log(erro);
                 res.sendStatus(500);
@@ -65,7 +65,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var entidadesDAO = new app.infra.EntidadesDAO(connection);
 
-        entidadesDAO.listar(function (erro, resultado){
+        entidadesDAO.listarEntidade(function (erro, resultado){
             var entidade = resultado.find(function(entidade){
                 return entidade.cnpj == req.params.id;
             });
@@ -84,7 +84,7 @@ module.exports = function(app){
         var connection = app.infra.connectionFactory();
         var entidadesDAO = new app.infra.EntidadesDAO(connection);
 
-        entidadesDAO.apagar(id, function(erro, resultado){
+        entidadesDAO.apagarEntidade(id, function(erro, resultado){
             if(erro){
                 console.log(erro);
                 res.sendStatus(500);
