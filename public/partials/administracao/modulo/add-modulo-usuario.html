@@ -1,0 +1,53 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Perfil Usuário</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Adicionar Perfil do Usuário</li>
+	</ol>
+</nav>
+
+<div class="container" ng-controller="addPerfilUsuarioController">
+	<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Adicionar Perfil do Usuário</h4>
+			</div>
+
+			<div class="panel-body contact-container">
+				<form novalidate name="formAddPerfilUsuario" ng-submit="submitPerfilUsuario(perfilUsuario)">
+					<div class="row">
+						<div class="row">
+							<div class="form-group col-sm-3">
+								<label for="codAssunto">Nome: </label>
+								<input type="text" class="form-control" placeholder="Digite o nome">
+							</div>
+							<div class="form-group col-sm-2">
+								<label for="descricao">Login: </label>
+								<input type="text" class="form-control" placeholder="Digite o login">
+							</div>
+							<div class="form-group col-sm-2">
+								<label for="codAssunto">Senha: </label>
+								<input type="text" class="form-control" placeholder="Digite a senha">
+							</div>
+							<div class="form-group col-sm-3">
+								<label for="descricao">Email: </label>
+								<input type="text" class="form-control" placeholder="Digite o email">
+							</div>
+							<div class="form-group col-sm-2">
+								<label for="codAssunto">Telefone: </label>
+								<input type="text" class="form-control" placeholder="Digite o telefone">
+							</div>
+							<center>
+								<button type="submit" class="btn btn-primary ">Editar</button>
+							</center>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

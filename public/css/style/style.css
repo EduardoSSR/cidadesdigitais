@@ -1,13 +1,6 @@
-@font-face {
-	font-family: 'Open Sans', sans-serif;
-	src: url("../css/fonts/Cabin-Regular.ttf");
-}
-
-
-/* ---------- ESTRUTURA ------------*/
 /*Início Estilo Padrão*/
 body {
-	font-size: 1.8em;
+	font-size: 1.6em;
 	font-family: 'Open Sans', sans-serif;
 	background: url(../img/bg3.jpg);
 	background-size: 100%;
@@ -20,55 +13,66 @@ body {
 	margin: 6% auto 0;
 	width: 300px;
 }
-.login-logo {
-	width: 100%;
-	margin-bottom: 45px;
+@media (min-width: 768px) {
+	.login-container {
+		width: 400px;
+		margin: 5% auto 0;
+	}
 }
-.login-forgotPassword {
-	font-size: 0.7em;
-	font-weight: 700;
-	text-transform: uppercase;
-	color: #000;
-	opacity: .5;
-}
-.login-button,
-.btn-default {
-	color: #fff;
-	border-radius: 5px;
-	background: rgba(0, 0, 0, 0.9);
-}
-.login-button,
-.btn-default:hover {
-	color: #fff;
-	background: rgba(0, 0, 0, 0.5);
-	transition: background 0.5s, color 0.5s;
-}
-/*Fim tela-login
+	.logo {
+		width: 100%;
+		margin-bottom: 45px;
+	}
+	.forgotpassword {
+		font-size: 0.7em;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #000;
+		opacity: .5;
+	}
+	.loginbutton, .btn-default {
+		color: #fff;
+		border-radius: 5px;
+		background: rgba(0, 0, 0, 0.9);
+	}
+	.loginbutton,.btn-default:hover {
+		color: #fff;
+		background: rgba(0, 0, 0, 0.5);
+		transition: background 0.5s, color 0.5s;
+	}
+/*Fim tela-login*/
 
 /*Início Header*/
 .dropdown-perfil {
 	padding-top: 30px;
-	padding-right: 20px;
+	padding-right: 30px;
 	float: right;
 }
-.dropdown-title {
-	float: right;
-	margin-left: 10px;
-	margin-top: -5px;
+	.title {
+		float: right;
+		margin-left: 10px;
+		margin-top: -6px;
+	}
+		#header {
+			color: #fff;
+			border: none;
+			box-shadow: none;
+			background: transparent;
+			padding: 0;
+		}
+	.user {
+		color: #fff;
+		float: right;
+		margin-top: -10px;
+	}
+.header-img {
+	height: 80px;
 }
-#dropdown-header {
-	color: #fff;
-	border: none;
-	box-shadow: none;
-	background: transparent;
-	padding: 0;
+@media (max-width: 414px) {
+	.header-img {
+		height: 70px;
+	}
 }
-.dropdown-user {
-	color: #fff;
-	float: right;
-	margin-top: -10px;
-}
-
 .header-otherscreens {
 	color: #fff;
 	font-size: 2em;
@@ -79,14 +83,6 @@ body {
 		font-size: 1em;
 		margin-top: 10px;
 		margin-left: 10px;
-	}
-}
-.header-img {
-	height: 80px;
-}
-@media (max-width: 414px) {
-	.header-img {
-		height: 70px;
 	}
 }
 /*Fim Header*/
@@ -101,12 +97,13 @@ body {
 	border-radius: 0px;
 	border-bottom: 1px solid #fff;
 }
-.navbar-menu {
-	background: rgba(0, 0, 0, 0.6);
-}
-#color-links {
-	color: #f3f0f0;
-}
+	.navbar-menu {
+		background: rgba(0, 0, 0, 0.6);
+	}
+		#color-links {
+			color: #f3f0f0;
+			font-weight: 500;
+		}
 /*Fim Breadcrumb*/
 
 /*Início botão menu*/
@@ -115,35 +112,38 @@ body {
 	top: 90%;
 	right: 30px;
 }
-.menu-button {
-	border-radius: 50%;
-	height: 50px;
-	font-size: 20px;
-	border: solid;
-}
-.menu-open {
-	background-color: transparent;
-	box-shadow: none;
-	border: none;
-	left: -104px;
-}
-.menu-hamburger {
-	color: #333;
-	margin: 5px;
-	width: 45px;
-	height: 45px;
-	font-size: 25px;
-	border-radius: 50%;
-	margin-left: 107px;
-}
-.menu-hamburger:hover {
-	color: white;
-	background-color: #68b1aa;
-	border-color: white;
-}
+	.menubutton {
+		border-radius: 50%;
+		height: 50px;
+		font-size: 20px;
+		border: solid;
+	}
+	.menuopen {
+		background-color: transparent;
+		box-shadow: none;
+		border: none;
+		left: -104px;
+	}
+		.menuhamburger {
+			color: #333;
+			margin: 5px;
+			width: 45px;
+			height: 45px;
+			font-size: 25px;
+			border-radius: 50%;
+			margin-left: 107px;
+		}
+		.menuhamburger:hover {
+			color: white;
+			background-color: #68b1aa;
+			border-color: white;
+		}
 /*Fim botão menu*/
 
 /*Inicío thumbnail */
+
+
+
 #dropdown-thumbnail .dropdown-menu {
 	width: 100%;
 	top: 0px;
@@ -159,30 +159,30 @@ body {
 	overflow: hidden;
 	opacity: 0;
 }
-.dropdown .dropdown-menu {
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-	max-height: 0;
-	display: block;
-	overflow: hidden;
-	opacity: 0;
-	min-width: 100px;
-}
-.nav {
-	/*visualizar e adicionar de cada thumbnail*/
-	padding: 0px;
-	text-transform: uppercase;
-	display: inline;
-}
-#liFisc {
-	width: 100%;
-}
-.links-thumbnail {
-	color: #000;
-}
+	.dropdown .dropdown-menu {
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-ms-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+		max-height: 0;
+		display: block;
+		overflow: hidden;
+		opacity: 0;
+		min-width: 100px;
+	}
+	.nav {
+		/*visualizar e adicionar de cada thumbnail*/
+		padding: 0px;
+		text-transform: uppercase;
+		display: inline;
+	}
+		#liFisc {
+			width: 100%;
+		}
+		.links-thumbnail {
+			color: #000;
+		}
 /*Fim thumbnail */
 
 /*Início Inputs*/
@@ -208,19 +208,6 @@ body {
 	resize: none;
 }
 /*Fim Entidade*/
-
-#input-add {
-	height: 25px;
-	font-weight: 700;
-}
-#panel-heading {
-	color: #fff;
-	background: rgba(0, 0, 0, 0.8);
-}
-#panel-body {
-	background: rgba(255, 255, 255, 0.9);
-}
-
 
 /* Início carregamento município*/
 @-webkit-keyframes spinning {
@@ -251,7 +238,6 @@ body {
 	-webkit-animation: spinning 0.75s infinite linear;
 	animation: spinning 0.75s infinite linear;
 }
-
 /*Fim carregamento município*/
 
 /*Início Tiras setas do type number*/
@@ -269,27 +255,33 @@ input[type=number] {
 	appearance: textfield;
 	margin: 0;
 }
-
 /* Fim Tiras setas do type number*/
 
 /*Início botões*/
 .action-button {
 	border: none;
 	box-shadow: none;
-	margin-left: 20px;
 }
-.action-trash {
-	/*modificador do action-button*/
-	
-	color: #c9302c;
-	background-color: transparent;
-}
+	.action-trash {
+		/*modificador do action-button*/
+		color: #c9302c;
+		background-color: transparent;
+	}
 .botao-menu {
 	padding: 12px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	-webkit-transition: 0.3s all ease;
 	-moz-transition: 0.3s all ease;
 	-o-transition: 0.3s all ease;
+}
+.botao-voltar{
+	padding: 12px;
+	margin-bottom: 10px;
+}
+.button-other{
+	margin-right: 15px;
+    margin-top: 14px;
+	padding: 5px;
 }
 .botao-menu:hover {
 	-moz-transform: scale(1.1);
@@ -300,8 +292,11 @@ input[type=number] {
 
 .background-navpills a {
 	color: #FFF;
-	background: rgba(99, 97, 97, 0.7);
+    background: rgba(99, 97, 97, 0.7);
+	font-size: smaller;
+	font-weight: 600;
 }
+
 .background-starttable {
 	background: #919090;
 }
@@ -321,4 +316,19 @@ input[type=number] {
 .dropdown.open .dropdown-menu {
 	max-height: 350px;
 	opacity: 1;
+}
+
+
+#panel-heading {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.help-block{
+    position: absolute;
+}
+
+.form-group{
+    margin-top: 6px;
+    margin-bottom: 23px;
 }

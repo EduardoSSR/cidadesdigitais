@@ -1,20 +1,42 @@
-angular.module('cidadesdigitais').controller('telaLoginController', function($scope, recursoLogin){
-
-
-$scope.logins = [];
+angular.module('cidadesdigitais').controller('telaLoginController', function($scope, $http, $location, $cookieStore, growl){
     
-    recursoLogin.query(function(logins) {
-    $scope.logins = logins;
-  }, function(erro) {
-    console.log(erro);
-  });
+    /*============== Funcao para exibir as mensagens referentes ao banco =================*/
+    function mensagem(msg , type, time){
+        growl.general(msg, {ttl: time}, type);
+    }
+    
+    var remember = false;
+    $scope.user = {};
+    if($cookieStore.get('cookie')) $scope.cookieVal = $cookieStore.get('cookie');
+    
+    if($scope.cookieVal) remember = true; 
+    $scope.user = {
+        login: $scope.cookieVal,
+        senha: '',
+        remember: remember
+    };
 
-/*$http.get('p1/logins')
-    .success(function(logins){ $scope.logins = logins; })
-    .error(function(error){ console.log(error)});
+    $scope.autenticar = function() {
+        
+        var usuario = $scope.user;
+        if(usuario.remember == true){
+            $cookieStore.put('cookie', usuario.login);
+        }else{
+            $cookieStore.remove('cookie');
+        }
+        
+        $http.post('/usuario', {login: usuario.login, senha: usuario.senha})
+        .success(function() {
+            $location.path('/inicio');
+        })
+        .error(function(erro) {
+            $scope.user = {};
+            var msg = "<strong>Erro!</strong><br><p>Senha ou login incorretos.</p>";
+            mensagem(msg, 'error', 10000);
+        });
+    };
 
-$scope.senhas = [];
+    
 
-$http.get('s1/senhas').success(function(senhas){ $scope.senhas = senhas; }).error(function(error){console.log(error)});*/
-
+    
 });

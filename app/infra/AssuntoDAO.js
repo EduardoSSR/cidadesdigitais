@@ -15,12 +15,12 @@ AssuntoDAO.prototype.salvarAssunto = function(assunto, callback){
 
 //Atualiza uma tupla da tabela de Assunto com base no ID.
 AssuntoDAO.prototype.editarAssunto = function(assunto, id, callback){
-    this._connection.query('UPDATE assunto SET ? WHERE cod_lote = ?', [assunto, id], callback);
+    this._connection.query('UPDATE assunto SET ? WHERE cod_assunto = ?', [assunto, id], callback);
 }
 
 //Apaga uma tupla da tabela de Assunto com base no ID.
 AssuntoDAO.prototype.apagarAssunto = function(id, callback){
-    this._connection.query('DELETE FROM assunto WHERE cod_lote = ?', [id], callback);
+    this._connection.query('DELETE FROM assunto WHERE cod_assunto = ?', [id], callback);
 }
 
 

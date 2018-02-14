@@ -1,21 +1,19 @@
-<div>
-	<div class="dropdown-perfil">
-		<div class="dropdown dropdown-title">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdown-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<div>Nome<br>Tipo de usuário <span class="caret"></span></div>			
+<div class="dropdown-perfil">
+	<div class="dropdown title" ng-controller="inicioController">
+		<button class="btn btn-default dropdown-toggle" type="button" id="header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<div>{{usuario.nome}}<br>Opções do usuário <span class="caret"></span></div>			
       		</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdown-header">
-				<li><a href="">> Perfil</a></li>
-				<li><a href="">> Opções</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="/cid">> Logout</a></li>
-			</ul>
-		</div>
-		<div class="dropdown-user">
-			<i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
-		</div>
+		<ul class="dropdown-menu" aria-labelledby="header">
+			<li><a ng-click="editPerfil()" class="btn">Editar Perfil</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a ng-click="logout()" class="btn">Logout</a></li>
+		</ul>
 	</div>
-	<a href="/cid/inicio">
-		<img src="css/img/CDImagemWhite.png" class="header-img">
-	</a>
+	<div class="user">
+		<i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+	</div>
 </div>
+<a href="/inicio">
+	<img src="css/img/CDImagemWhite.png" class="header-img">
+</a>
+

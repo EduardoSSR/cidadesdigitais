@@ -66,7 +66,7 @@ input[type=number] {
 
 
 /*tela-login*/
-.login-forgotPassword {
+.forgotpassword {
     font-size: 0.7em;
     font-weight: 700;
     text-transform: uppercase;
@@ -77,7 +77,7 @@ input[type=number] {
     transition: opacity .2s ease-out;
 }
 
-#login-logo {
+#logo {
     height: 10em;
 	margin: 2em 0 5em 1em;
 }
@@ -129,7 +129,7 @@ input[type=number] {
 }
 
 
-#menu-hamburger {
+#menuhamburger {
     color: #173b40;
     
 }
@@ -163,7 +163,7 @@ input[type=number] {
     margin-left: -27px;
 }
 
-#dropdown-user {
+#user {
     width: 45px;
     background-color: white;
     border: solid 3px;
@@ -483,7 +483,7 @@ margin-left: 1%;
     right: 30px;
     font-size: 30px;
 }
-#menu-open {
+#menuopen {
     background-color: transparent;
     box-shadow: none;
     border: none;
@@ -558,6 +558,8 @@ margin-left: 1%;
     font-weight: 700;
     color: black;
 }
+
+
 #botaoEditEmpenho {
     float: right;
     background: #4e4f4a;
@@ -580,7 +582,7 @@ margin-left: 1%;
     background-color: #68b1aa;
     border-color: white;
 }
-.menu-button {
+.menubutton {
     border-radius: 50%;
     font-size: 20px;
     border: solid;
@@ -632,7 +634,7 @@ margin-left: 1%;
 
 /*Início media queries*/
 @media (max-width: 320px) {
-    .form-controlComboBox {
+    . {
         padding: 0px;
     }
 }

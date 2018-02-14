@@ -51,7 +51,7 @@ LoteDAO.prototype.apagarReajuste = function(lote_cod_lote, ano_ref, callback){
 
 //Lista tudo da tabela Lote_Itens.
 LoteDAO.prototype.listarItens = function(lote_cod_lote, callback){
-	this._connection.query('SELECT * FROM lote_itens INNER JOIN itens ON (lote_itens.itens_cod_item = itens.cod_item AND lote_itens.itens_tipo_item_cod_tipo_item = itens.tipo_item_cod_tipo_item) WHERE lote_itens.lote_cod_lote = ?', [lote_cod_lote], callback);
+	this._connection.query('SELECT lote_itens.lote_cod_lote, lote_itens.itens_cod_item, lote_itens.itens_tipo_item_cod_tipo_item, concat(lote_itens.itens_tipo_item_cod_tipo_item, ".", lote_itens.itens_cod_item, " - ", itens.descricao) as descricao_item, lote_itens.preco FROM lote_itens INNER JOIN itens ON (lote_itens.itens_cod_item = itens.cod_item AND lote_itens.itens_tipo_item_cod_tipo_item = itens.tipo_item_cod_tipo_item) WHERE lote_itens.lote_cod_lote = ? order by lote_itens.itens_tipo_item_cod_tipo_item, lote_itens.itens_cod_item', [lote_cod_lote], callback);
 }
 
 //Atualiza uma tupla da tabela de .
@@ -59,6 +59,20 @@ LoteDAO.prototype.editarItens = function(lote_cod_lote, itens_cod_item, itens_ti
 	this._connection.query('UPDATE lote_itens SET ? WHERE lote_cod_lote = ? AND itens_cod_item = ? AND itens_tipo_item_cod_tipo_item = ?',[loteItens, lote_cod_lote, itens_cod_item, itens_tipo_item_cod_tipo_item], callback);
 }
 
+
+
+
+//---------------Querys de Itens---------------//
+
+//Lista tudo de previsao empenho. 
+LoteDAO.prototype.listarPrevisao = function(callback){
+	this._connection.query('SELECT * FROM previsao_empenho', callback);
+}
+
+//Salva uma nova tupla na tabela de Reajuste.
+LoteDAO.prototype.salvarPrevisao = function(previsao, callback){
+    this._connection.query('INSERT INTO previsao_empenho SET ?', previsao, callback);
+}
 
 module.exports = function(){
 	return LoteDAO;

@@ -1,84 +1,87 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
 <nav class="navbar navbar-default">
-	<ol class="navbar-menu">
-		<li class="navbar-menu-item"><a id="color-links" href="/cid/inicio">Home</a></li>
-		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
-		<li class="navbar-menu-item active">Fiscalização</li>
-	</ol>
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Fiscalização</li>
+    </ol>
 </nav>
 
 <div class="container">
-	<div class="panel-group" id="pai-paineis">
-		<div class="panel-group">
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail dropup" id="dropdown-thumbnail">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="css/img/empenho.png">
-					</a>
-					<div class="caption" id="dropdown-thumbnail">
-						<a href="" class="dropdown-toggle links-thumbnail" id="dropEmpenho" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empenho</a>
-						<div class="dropdown-menu dropupAdmin" aria-labelledby="dropEmpenho">
-							<ul class="nav nav-default">
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/addEmpenho">Adicionar</a></li><br>
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/empenho">Visualizar</a></li><br>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+    <div class="panel-group" id="pai-paineis">
+        <div class="panel-group">
 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail dropup" id="dropdown-thumbnail">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="css/img/pagamento.png">
-					</a>
-					<div class="caption" id="dropdown-thumbnail">
-						<a href="" class=" dropdown-toggle links-thumbnail" id="dropPagamento" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
-						<div class="dropdown-menu dropupAdmin" aria-labelledby="dropPagamento">
-							<ul class="nav nav-default">
-								<li id="liFisc"><a id="links-thumbnail" href="cid/addPagamento">Adicionar</a></li><br>
-								<li id="liFisc"><a id="links-thumbnail" href="cid/pagamento">Visualizar</a></li><br>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail dropup" id="dropdown-thumbnail">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="../css/img/previEmpenho.png">
+                    </a>
+                    <div class="caption" id="dropdown-thumbnail">
+                        <a href="" id="dropFatura" class=" dropdown-toggle links-thumbnail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Previsão de Empenho</a>
+                        <div class="dropdown-menu dropupAdmin" aria-labelledby="dropFatura">
+                            <ul class="nav nav-default">
+                                <li id="liFisc"><a class="links-thumbnail" href="/addPrevisaoEmpenho">Adicionar</a></li><br>
+                                <li id="liFisc"><a class="links-thumbnail" href="/previsaoEmpenho">Visualizar</a></li><br>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail dropup" id="dropdown-thumbnail">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="css/img/faturap.png">
-					</a>
-					<div class="caption" id="dropdown-thumbnail">
-						<a href="" id="dropFatura" class=" dropdown-toggle links-thumbnail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fatura</a>
-						<div class="dropdown-menu dropupAdmin" aria-labelledby="dropFatura">
-							<ul class="nav nav-default">
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/addFatura">Adicionar</a></li><br>
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/fatura">Visualizar</a></li><br>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail dropup" id="dropdown-thumbnail">
-					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="../css/img/previEmpenho.png">
-					</a>
-					<div class="caption" id="dropdown-thumbnail">
-						<a href="" id="dropFatura" class=" dropdown-toggle links-thumbnail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Previsão de Empenho</a>
-						<div class="dropdown-menu dropupAdmin" aria-labelledby="dropFatura">
-							<ul class="nav nav-default">
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/addPrevisaoEmpenho">Adicionar</a></li><br>
-								<li id="liFisc"><a id="links-thumbnail" href="/cid/previsaoEmpenho">Visualizar</a></li><br>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail dropup" id="dropdown-thumbnail">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="css/img/empenho.png">
+                    </a>
+                    <div class="caption" id="dropdown-thumbnail">
+                        <a href="" class="dropdown-toggle links-thumbnail" id="dropEmpenho" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empenho</a>
+                        <div class="dropdown-menu dropupAdmin" aria-labelledby="dropEmpenho">
+                            <ul class="nav nav-default">
+                                <li id="liFisc"><a class="links-thumbnail" href="/addEmpenho">Adicionar</a></li><br>
+                                <li id="liFisc"><a class="links-thumbnail" href="/empenho">Visualizar</a></li><br>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-		</div>
-	</div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail dropup" id="dropdown-thumbnail">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="css/img/faturap.png">
+                    </a>
+                    <div class="caption" id="dropdown-thumbnail">
+                        <a href="" id="dropFatura" class=" dropdown-toggle links-thumbnail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fatura</a>
+                        <div class="dropdown-menu dropupAdmin" aria-labelledby="dropFatura">
+                            <ul class="nav nav-default">
+                                <li id="liFisc"><a class="links-thumbnail" href="/addFatura">Adicionar</a></li><br>
+                                <li id="liFisc"><a class="links-thumbnail" href="/fatura">Visualizar</a></li><br>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail dropup" id="dropdown-thumbnail">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="css/img/pagamento.png">
+                    </a>
+                    <div class="caption" id="dropdown-thumbnail">
+                        <a href="" class=" dropdown-toggle links-thumbnail" id="dropPagamento" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pagamento</a>
+                        <div class="dropdown-menu dropupAdmin" aria-labelledby="dropPagamento">
+                            <ul class="nav nav-default">
+                                <li id="liFisc"><a class="links-thumbnail" href="/addPagamento">Adicionar</a></li><br>
+                                <li id="liFisc"><a class="links-thumbnail" href="/pagamento">Visualizar</a></li><br>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 <novo-menu></novo-menu>

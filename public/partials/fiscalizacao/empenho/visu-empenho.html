@@ -1,0 +1,69 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Fiscalização</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Empenho</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <section>
+        <a href="/addEmpenho" class="botao-menu btn btn-default btn-lg"><span class="glyphicon glyphicon-plus"></span> ADICIONAR</a>
+        <a href="" class="botao-voltar btn btn-default btn-lg pull-right" onclick="window.history.back()">VOLTAR</a>
+    </section>
+</div>
+
+<div class="container" ng-controller="visuEmpenhoController">
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h3 class="patern-header">Empenho</h3>
+                    </div>
+                    <div class="col-md-offset-8 col-md-4 input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" class="form-control" ng-model="busca" placeholder="Procure por" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" >
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+
+                        <thead>
+                            <tr class="background-starttable">
+                                <th class="col-md-1">Empenho</th>
+                                <th class="col-md-1">Lote</th>
+                                <th class="col-md-5">Código - Natureza de despesas</th>
+                                <th class="col-md-2">Data</th>
+                                <th class="col-md-1">Tipo</th>
+                                <th class="col-md-1">Ano Ref.</th>
+                                <th class="col-md-1">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="empenho in empenhos | filter:busca">
+                                <td>{{empenho.cod_empenho}}</td>
+                                <td>{{empenho.lote_cod_lote}}</td>
+                                <td>{{empenho.descricao}}</td>
+                                <td>{{empenho.data | date:'dd / MM / yyyy'}}</td>
+                                <td>{{empenho.tipo}}</td>
+                                <td>{{empenho.ano_referencia}}</td>
+                                <td><a href="/editEmpenho/{{empenho.cod_empenho}}"><span class="glyphicon glyphicon-pencil col-md-offset-2 "></span></a>
+                                    <a ng-click="deletarEmpenho(empenho)" class="action-button action-trash"><span class="glyphicon glyphicon-action-trash col-md-offset-2"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<novo-menu></novo-menu>
