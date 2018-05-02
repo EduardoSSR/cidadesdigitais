@@ -1,0 +1,66 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="/administracao">Administração</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Natureza de Despesas</li>
+	</ol>
+</nav>
+
+
+<div class="container">
+	<section>
+		<a href="/addNaturezaDespesas" class="botao-menu btn btn-default btn-lg"><span class="glyphicon glyphicon-plus"></span>ADICIONAR</a>
+		<a href="" class="botao-voltar btn btn-default btn-lg pull-right" onclick="window.history.back()">VOLTAR</a>
+	</section>
+</div>
+
+<div class="container" ng-controller="visuNaturezaDespController">
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<div class="row">
+					<div class="col-md-4">
+						<h3 class="patern-header">Natureza de Despesas</h3>
+					</div>
+					<div class="col-md-offset-7 col-md-5 input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+						<input type="text" class="form-control" ng-model="busca" placeholder="Procure por" />
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover table-condensed">
+
+						<thead>
+							<tr class="background-starttable">
+								<th>Codigo de Classificação</th>
+								<th>Descrição</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr ng-repeat="naturezaDesp in naturezaDesps | filter:busca">
+								<td>{{naturezaDesp.cod_natureza_despesa}}</td>
+								<td>{{naturezaDesp.descricao}}</td>
+								<td><a href="/editNaturezaDespesas/{{naturezaDesp.cod_natureza_despesa}}" data-toggle="modal" data-target="#janela66"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a ng-click="deleteNaturezaDes(naturezaDesp)" class="action-button action-trash"><span class="glyphicon glyphicon-action-trash"></span></a>
+								</td>
+							</tr>
+
+						</tbody>
+
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</div>
+<novo-menu></novo-menu>

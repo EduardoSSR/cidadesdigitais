@@ -1,0 +1,42 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/administracao">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/tipologia">Tipologia</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Editar Tipologia</li>
+    </ol>
+</nav>
+
+<div class="container">
+   <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+            <h4>Editar Tipologia</h4>
+            </div>
+            <div class="panel-body" >
+                <form class="" action="" method="">
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label>Código da tipologia:</label>
+                            <input ng-model="tipologiaId.cod_tipologia" type="text" class="form-control" placeholder="Digite o código da tipologia">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label>Descrição: </label>
+                            <input ng-model="tipologiaId.descricao" type="text" class="form-control" placeholder="Digite a Descrição">
+                        </div>
+                        <center>
+                            <label>&nbsp;</label>
+                            <br>
+                            <div class="form-group col-sm-1">
+                                <button type="submit" class="btn btn-primary ">Editar</button>
+                            </div>
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

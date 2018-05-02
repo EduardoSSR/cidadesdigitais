@@ -1,0 +1,45 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<form class="" action="" method="" style="width: 400px; margin: 0 auto;">
+
+  <div class="form-group">
+    <label for="descricao">Descrição: </label>
+    <input id="descricao" type="text" class="form-control" placeholder="Digite a descrição" required>
+      <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="unidades">Unidades: </label>
+    <input id="unidades" type="text" class="form-control" placeholder="Digite a unidade" required>
+    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="preco">Preço: </label>
+    <input id="preco" type="text" class="form-control" placeholder="Digite o preço" required>
+    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="precobdi">Preço BDI: </label>
+    <input id="precobdi" type="text" class="form-control" placeholder="Digite o preço BDI">
+  </div>
+
+  <div class="form-group">
+    <label for="total">Total: </label>
+    <input id="total" type="text" class="form-control" placeholder="Digite o total">
+  </div>
+
+  <div class="form-group">
+  <label for="classificacao">Classificação: </label>
+    <input id="classificacao" type="text" class="form-control" placeholder="Digite a Classificação" required>
+    <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required"></span>
+  </div>
+
+
+  <center>
+    <button type="reset" class="btn btn-default">Voltar</button>
+    <button  onclick="adicionarItensController.inserir(event)" class="btn btn-primary">Cadastrar</button>
+  </center>
+
+</form>
+<novo-menu></novo-menu>

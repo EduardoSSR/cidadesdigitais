@@ -1,0 +1,19 @@
+<div class="dropdown-perfil">
+	<div class="dropdown title" ng-controller="inicioController">
+		<button class="btn btn-default dropdown-toggle" type="button" id="header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<div>{{usuario.nome}}<br>Opções do usuário <span class="caret"></span></div>			
+      		</button>
+		<ul class="dropdown-menu" aria-labelledby="header">
+			<li><a ng-click="editPerfil()" class="btn">Editar Perfil</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a ng-click="logout()" class="btn">Logout</a></li>
+		</ul>
+	</div>
+	<div class="user">
+		<i class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i>
+	</div>
+</div>
+<a href="/inicio">
+	<img src="css/img/CDImagemWhite.png" class="header-img">
+</a>
+

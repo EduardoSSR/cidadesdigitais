@@ -1,0 +1,140 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/entidades">Entidades</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Visualizar Entidades</li>
+    </ol>
+</nav>
+<div class="container">
+    <section>
+        <div class="panel panel-default"> <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+            <div class="panel-heading" id="panel-heading">
+                <h4>Editar Entidade</h4> </div>
+            <div class="panel-body">
+                <form novalidate name="editEntidadeController" ng-submit="submeter(entidades)">
+                    <div class="row"> {{}}
+                        <div class="form-group col-sm-4" ng-class="{'has-error' : editEntidadeController.nome.$error.maxlength && editEntidadeController.nome.$dirty }">
+                            <label>Nome: </label>
+                            <input ng-maxlength="50" type="text" class="form-control" ng-model="entidades.nome" name="nome" placeholder="Digite o nome da empresa"> <span class="help-block" ng-show="editEntidadeController.nome.$error.maxlength ">Maximo de 50 caracters!</span> </div>
+                        <div class="form-group col-sm-2" ng-class="{'has-error' : editEntidadeController.cnpj.$invalid }">
+                            <label>CNPJ: </label>
+                            <input mask="99.999.999/9999-99" clean="true" type="text" ng-cnpjcpf class="form-control" ng-model="entidades.cnpj" name="cnpj" placeholder="Digite o CNPJ"> <span class="form-control alert-danger" ng-show="entidadeForm.$submitted && entidadeForm.cnpj.$error.required"> CNPJ incálido!
+                            </span> </div>
+                        <div class="form-group col-xs-6 col-sm-3">
+                            <label>Estado: </label>
+                            <select type="text" class="form-control" id="estado" name="uf" ng-change="enviarEstado(entidade.uf)" ng-model="entidades.uf" ng-options="estado.uf as estado.nome for estado in estados" placeholder="Estado">
+                                <option value="">{{entidade.uf}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3">
+                            <label>Município: </label>
+                            <select type="text" class="form-control" id="estado" name="uf" ng-change="enviarEstado(entidade.uf)" ng-model="entidades.nome_municipio" ng-options="estado.uf as estado.nome for estado in estados" placeholder="Estado">
+                                <option value="">{{entidades.nome_municipio}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-sm-3" ng-class="{'has-error' : editEntidadeController.cep.$error.minlength && editEntidadeController.cep.$dirty}">
+                            <label>CEP: </label>
+                            <input  type="text" ng-minlength="10" class="form-control" name="cep" ng-model="entidades.cep" mask="99.999-999" clean="true" placeholder="Digite o CEP"> <span class="help-block" ng-show="editEntidadeController.cep.$error.minlength && editEntidadeController.cep.$dirty"> Endereço icorreto.
+                            </span> </div>
+                        <div class="form-group col-xs-10 col-sm-5" ng-class="{'has-error' : editEntidadeController.endereco.$error.maxlength && editEntidadeController.endereco.$dirty}">
+                            <label>Endereço: </label>
+                            <input ng-maxlength="100" type="text" class="form-control" name="endereco" ng-model="entidades.endereco" placeholder="Digite o endereço"> <span class="help-block" ng-show="editEntidadeController.endereco.$error.maxlength && editEntidadeController.endereco.$dirty">Máximo de 100 caracters.
+                            </span> </div>
+                        <div class="form-group col-xs-2 col-sm-1"  ng-class="{'has-error' : editEntidadeController.numero.$error.maxlength && editEntidadeController.numero.$dirty}">
+                            <label>Nº: </label>
+                            <input ng-maxlength="5" type="text" class="form-control" name="numero" ng-model="entidades.numero" placeholder="Digite o número"> <span class="help-block" ng-show=" editEntidadeController.numero.$error.maxlength && editEntidadeController.numero.$dirty">Número inválido
+                            </span> </div>
+                        <div class="form-group col-sm-3"  ng-class="{'has-error' : editEntidadeController.bairro.$error.maxlength && editEntidadeController.bairro.$dirty}">
+                            <label>Bairro: </label>
+                            <input ng-maxlength="50" type="text" class="form-control" name="bairro" ng-model="entidades.bairro" placeholder="Digite o bairro"> <span class="help-block" ng-show="editEntidadeController.bairro.$error.maxlength && editEntidadeController.bairro.$dirty"> Bairro obrigatório
+                            </span> </div>
+                        <div class="form-group col-sm-12" ng-class="{'has-error' : editEntidadeController.observacao.$error.maxlength && editEntidadeController.observacao.$dirty}">
+                            <label>Observação: </label>
+                            <textarea ng-maxlength="1000" id="note-entity" class="form-control" name="observacao" ng-model="entidades.observacao" placeholder="Digite a observação"></textarea>
+                            <span class="help-block" ng-show="editEntidadeController.observacao.$error.maxlength && editEntidadeController.observacao.$dirty">Máximo de 1000 caracters!</span>
+                        </div>
+                    </div>
+                    <center>
+                        <div>
+                            <button type="button" class="botao-menu btn btn-default btn-xs" data-toggle="modal" data-target="#janela">ADICIONAR CONTATOS</button>
+                            <button type="submit" class="btn btn-primary pull-right ">Aplicar</button>
+                        </div>
+                        <div class="modal fade" tabindex="-1" role="dialog" id="janela">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <form name="formContatosAdd" ng-submit="submeterAddContatos()">
+                                        <editar-entidade></editar-entidade>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                    <div class="row" ng-repeat="contato in contatos">
+                        <div id="demo1" class="table-responsive col-md-6">
+                            <table class="table table-striped table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr class="background-starttable">
+                                        <th>Nome</th>
+                                        <th>Função</th>
+                                        <th>E-mail</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{contato.nome}}</td>
+                                        <td>{{contato.funcao}}</td>
+                                        <td>{{contato.email}}</td>
+                                        <td> <a data-toggle="modal" data-target="#janela66"><span class="glyphicon glyphicon-pencil"></span></a> <a ng-click="removerC(contato)"><span class="glyphicon glyphicon-action-trash"></span></a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="demo1" class="table-responsive col-md-6">
+                            <form name="form.msgForm">
+                                <table class="table table-striped table-bordered table-hover table-condensed formatTable">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>Tipo deTelefone</th>
+                                            <th>Telefone</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <select class="form-control" id="telelfoneTipo" type="text" ng-model="telefone.tipo" required>
+                                                    <option value="">Selecione um tipo</option>
+                                                    <option value="Fixo">Fixo</option>
+                                                    <option value="Móvel">Móvel</option>
+                                                </select>
+                                                <td>
+                                                    <input type="tel" name="telefone" minlength="13" mask="(99)9?9999-9999" clean="true" class="form-control" min ng-model="telefone.telefone"> </td>
+                                                <td>
+                                                    <a ng-click="addTelefone(telefone,contato.cod_contato)"> <span class="glyphicon glyphicon-plus"></span></a>
+                                                </td>
+                                        </tr>
+                                        <tr ng-repeat="telefone in telefones">
+                                            <td>{{telefone.tipo}}</td>
+                                            <td>{{telefone.telefone | tel}}</td>
+                                            <td><a data-toggle="modal" data-target="#janela66"><span class="glyphicon glyphicon-pencil"></span></a>
+                                                <a ng-click="removerTel(telefone)"> <span class="glyphicon glyphicon-action-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <add-responsavel></add-responsavel>
+                    <add-telefone></add-telefone>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

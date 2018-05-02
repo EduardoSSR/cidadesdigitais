@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+    <h4 class="modal-title">Adicionar Processo</h4>
+
+    <div class="modal-body">
+        <form novalidate name="formProcess">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="num_processos" ng-model="processo.num_processos" ng-minlength="2" name="num_processos" mask="99999.99999/9999-99" placeholder="Digite o número do processo">
+                    <span class="help-block" ng-show="formProcess.num_processos.$error.minlength">Número mínimo de 2 caracteres.</span>
+                </div>
+                {{formProcess.$invalid}}
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="endereco" ng-model="processo.descricao" placeholder="Digite a descrição">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+                    <button type="submit" ng-click="processoEnv(processo)" ng-disabled="formProcess.$invalid" class="btn btn-primary">Registrar processo</button>
+                </center>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="/administracao">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="/categoria">Categoria</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Editar Categoria</li>
+	</ol>
+</nav>
+<div class="container">
+	<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Editar Categoria</h4>
+			</div>
+
+			<div class="panel-body">
+				<form ng-submit="submitEditCategoria()">
+
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<label>Código categoria: </label>
+							<p>{{categorias.cod_categoria}}</p>
+						</div>
+
+						<div class="col-sm-4">
+							<label>Descrição: </label>
+							<input ng-model="categorias.descricao" type="text" class="form-control">
+						</div>
+						<center>
+							<label> &nbsp;</label><br>
+							<div class="col-sm-1">
+								<button type="submit" class="btn btn-primary ">Editar</button>
+							</div>
+						</center>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

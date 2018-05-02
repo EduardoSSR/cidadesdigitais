@@ -1,0 +1,334 @@
+/*Início Estilo Padrão*/
+body {
+	font-size: 1.6em;
+	font-family: 'Open Sans', sans-serif;
+	background: url(../img/bg3.jpg);
+	background-size: 100%;
+}
+/*Fim Estilo Padrão*/
+
+/*Início tela-login*/
+.login-container {
+	display: block;
+	margin: 6% auto 0;
+	width: 300px;
+}
+@media (min-width: 768px) {
+	.login-container {
+		width: 400px;
+		margin: 5% auto 0;
+	}
+}
+	.logo {
+		width: 100%;
+		margin-bottom: 45px;
+	}
+	.forgotpassword {
+		font-size: 0.7em;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #000;
+		opacity: .5;
+	}
+	.loginbutton, .btn-default {
+		color: #fff;
+		border-radius: 5px;
+		background: rgba(0, 0, 0, 0.9);
+	}
+	.loginbutton,.btn-default:hover {
+		color: #fff;
+		background: rgba(0, 0, 0, 0.5);
+		transition: background 0.5s, color 0.5s;
+	}
+/*Fim tela-login*/
+
+/*Início Header*/
+.dropdown-perfil {
+	padding-top: 30px;
+	padding-right: 30px;
+	float: right;
+}
+	.title {
+		float: right;
+		margin-left: 10px;
+		margin-top: -6px;
+	}
+		#header {
+			color: #fff;
+			border: none;
+			box-shadow: none;
+			background: transparent;
+			padding: 0;
+		}
+	.user {
+		color: #fff;
+		float: right;
+		margin-top: -10px;
+	}
+.header-img {
+	height: 80px;
+}
+@media (max-width: 414px) {
+	.header-img {
+		height: 70px;
+	}
+}
+.header-otherscreens {
+	color: #fff;
+	font-size: 2em;
+	margin-left: 20px;
+}
+@media (max-width: 414px) {
+	.header-otherscreens {
+		font-size: 1em;
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+}
+/*Fim Header*/
+
+/*Início Breadcrumb*/
+.navbar {
+	/*navbar-menu*/
+	min-height: 0;
+	background: rgba(0, 0, 0, 0.6);
+	height: 40px;
+	border: 0px;
+	border-radius: 0px;
+	border-bottom: 1px solid #fff;
+}
+	.navbar-menu {
+		background: rgba(0, 0, 0, 0.6);
+	}
+		#color-links {
+			color: #f3f0f0;
+			font-weight: 500;
+		}
+/*Fim Breadcrumb*/
+
+/*Início botão menu*/
+.menu-main {
+	position: fixed;
+	top: 90%;
+	right: 30px;
+}
+	.menubutton {
+		border-radius: 50%;
+		height: 50px;
+		font-size: 20px;
+		border: solid;
+	}
+	.menuopen {
+		background-color: transparent;
+		box-shadow: none;
+		border: none;
+		left: -104px;
+	}
+		.menuhamburger {
+			color: #333;
+			margin: 5px;
+			width: 45px;
+			height: 45px;
+			font-size: 25px;
+			border-radius: 50%;
+			margin-left: 107px;
+		}
+		.menuhamburger:hover {
+			color: white;
+			background-color: #68b1aa;
+			border-color: white;
+		}
+/*Fim botão menu*/
+
+/*Inicío thumbnail */
+
+
+
+#dropdown-thumbnail .dropdown-menu {
+	width: 100%;
+	top: 0px;
+	box-shadow: none;
+	border: none;
+	background-color: rgba(255, 255, 255, 0.87);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	display: block;
+	overflow: hidden;
+	opacity: 0;
+}
+	.dropdown .dropdown-menu {
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-ms-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+		max-height: 0;
+		display: block;
+		overflow: hidden;
+		opacity: 0;
+		min-width: 100px;
+	}
+	.nav {
+		/*visualizar e adicionar de cada thumbnail*/
+		padding: 0px;
+		text-transform: uppercase;
+		display: inline;
+	}
+		#liFisc {
+			width: 100%;
+		}
+		.links-thumbnail {
+			color: #000;
+		}
+/*Fim thumbnail */
+
+/*Início Inputs*/
+.contact-container input:focus:invalid,
+.contact-container textarea:focus:invalid {
+	background: #fff url("../css/img/exclamation-mark.svg") no-repeat 99% center;
+	background-size: 1.5em;
+	box-shadow: 0 0 5px #C41212;
+	border-color: #C41212;
+}
+.contact-container input:required:valid,
+.contact-container textarea:required:valid {
+	background: #fff url("../css/img/checked.svg") no-repeat 98% center;
+	background-size: 1.5em;
+	box-shadow: 0 0 5px #3db356;
+	border-color: #3db356;
+}
+/*fim Inputs*/
+
+/*Inicio Entidade*/
+#note-entity {
+	height: 100px;
+	resize: none;
+}
+/*Fim Entidade*/
+
+/* Início carregamento município*/
+@-webkit-keyframes spinning {
+	from {
+		transform: rotate(0deg);
+	}
+	
+	to {
+		transform: rotate(180deg);
+	}
+}
+@keyframes spinning {
+	from {
+		transform: rotate(0deg);
+	}
+	
+	to {
+		transform: rotate(180deg);
+	}
+}
+.square {
+	width: 50px;
+	height: 50px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #999 #ccc;
+	border-radius: 50px;
+	-webkit-animation: spinning 0.75s infinite linear;
+	animation: spinning 0.75s infinite linear;
+}
+/*Fim carregamento município*/
+
+/*Início Tiras setas do type number*/
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	cursor: pointer;
+	display: block;
+	width: 8px;
+	color: #333;
+	text-align: center;
+	position: relative;
+}
+input[type=number] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+	margin: 0;
+}
+/* Fim Tiras setas do type number*/
+
+/*Início botões*/
+.action-button {
+	border: none;
+	box-shadow: none;
+}
+	.action-trash {
+		/*modificador do action-button*/
+		color: #c9302c;
+		background-color: transparent;
+	}
+.botao-menu {
+	padding: 12px;
+	margin-bottom: 10px;
+	-webkit-transition: 0.3s all ease;
+	-moz-transition: 0.3s all ease;
+	-o-transition: 0.3s all ease;
+}
+.botao-voltar{
+	padding: 12px;
+	margin-bottom: 10px;
+}
+.button-other{
+	margin-right: 15px;
+    margin-top: 14px;
+	padding: 5px;
+}
+.botao-menu:hover {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+}
+/*Fim botões*/
+
+.background-navpills a {
+	color: #FFF;
+    background: rgba(99, 97, 97, 0.7);
+	font-size: smaller;
+	font-weight: 600;
+}
+
+.background-starttable {
+	background: #919090;
+}
+.form-control {
+	display: inline-block;
+}
+.patern-header {
+	margin: 2px 0 5px;
+}
+.nav li {
+	display: inline-block;
+}
+#dropdown-thumbnail.open .dropdown-menu {
+	height: 80%;
+	opacity: 1;
+}
+.dropdown.open .dropdown-menu {
+	max-height: 350px;
+	opacity: 1;
+}
+
+
+#panel-heading {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.help-block{
+    position: absolute;
+}
+
+.form-group{
+    margin-top: 6px;
+    margin-bottom: 23px;
+}

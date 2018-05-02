@@ -1,0 +1,32 @@
+{
+  "name": "angular-correios",
+  "version": "1.0.1",
+  "authors": [
+    "Victor Queiroz <victorcqueirozg@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.3.15"
+  },
+  "homepage": "https://github.com/VictorQueiroz/angular-correios",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "7bbc00d978c3b0a19332995fc07eb7ddb6687d39"
+  },
+  "_source": "https://github.com/VictorQueiroz/angular-correios.git",
+  "_target": "^1.0.1",
+  "_originalSource": "angular-correios",
+  "_direct": true
+}

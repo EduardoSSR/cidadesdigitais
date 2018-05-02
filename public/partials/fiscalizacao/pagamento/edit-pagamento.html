@@ -1,0 +1,149 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/fiscalizacao">Fiscalização</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/pagamento">Pagamento</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Editar Pagamento</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <div class="container">
+        <section>
+            <div class="panel">
+                <div class="panel-heading" id="panel-heading">
+                    <h4>Editar Pagamento</h4>
+                </div>
+
+                <div class="panel-body">
+                    <form >
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-md-5">
+                                <label>Código Ordem de Tranferência Bancária:</label>
+                                <p>{{pagamento.cod_otb}}</p>
+                            </div>
+                            <div class="form-group col-sm-3 col-md-2">
+                                <label>Data Pagamento</label>
+                                <input type="date" ng-model="pagamento.dt_pgto" class="form-control">
+                            </div>
+                            <center>
+                                <label> &nbsp;</label><br>
+                                <div class="form-group col-sm-1">
+                                    <button type="submit" ng-click="editDtPag(dtPag)" class="btn btn-primary">Aplicar</button>
+                                </div>
+                            </center>
+                        </div>
+
+                        <ul class="nav nav-pills nav-stacked background-navpills">
+                            <li><a href="#1a" data-toggle="tab">Fatura</a></li>
+                            <li><a href="#2a" data-toggle="tab">Itens</a></li>
+                        </ul><br>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="1a">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <thead>
+                                            <tr class="background-starttable">
+                                                <th>Município</th>
+                                                <th>Número da nota fiscal</th>
+                                                <th>Data</th>
+                                                <th>Ação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <form name="formAddPag">
+                                                    <td>
+                                                        <select class="form-control" id="codIbge" name="codIbge" ng-model="pagamento.municipio_cod_ibge" ng-change="selectFaturas(pagamento.municipio_cod_ibge)" ng-options="codIbge.municipio_cod_ibge as codIbge.nome_municipio for codIbge in codsIbge">
+                                                        <option value="">Selecione o município</option>
+                                                    </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" ng-model="pagamento.faturas" ng-change="selecionarFaturas(pagamento.faturas)" ng-options="fatura.num_nf for fatura in faturasSelecao">
+                                                        <option value="">Selecione as faturas</option>
+                                                    </select>
+                                                    </td>
+                                                    <td>{{pagamento.faturas.dt_nf | date:'dd/MM/y'}}</td>
+                                                    <td>
+                                                        <a ng-click="addFaturaPag(pagamento)"> <span class="glyphicon glyphicon-plus"></span></a>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                            <tr ng-repeat="fatura in faturas">
+                                                <td>{{fatura.nome_municipio}}</td>
+                                                <td>{{fatura.num_nf}}</td>
+                                                <td>{{fatura.dt_nf | date:'dd/MM/y'}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="2a">
+                                <div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-condensed">
+                                            <thead>
+                                                <tr class="background-starttable">
+                                                    <th class="col-md-1">Número da fatura</th>
+                                                    <th class="col-md-4">Tipo - Código - Descrição do Item</th>
+                                                    <th class="col-md-1">Código do empenho</th>
+                                                    <th class="col-md-1">Quantidade Disponivel</th>
+                                                    <th class="col-md-1">Quantidade</th>
+                                                    <th class="col-md-2">Valor</th>
+                                                    <th class="col-md-2">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!--qt + qtD < qt-->
+
+                                                <tr ng-repeat="itemPag in itensPag" ng-class="{'alert alert-danger':  itemPag.somaQuant <  itemPag.quantidade}">
+
+                                                    <!--												<td>{{itensPag.itens_fatura_fatura_num_nf}}  {{itensPag.cod_empenho + itensPag.quantidade }}</td>    -->
+                                                    <td>{{itemPag.itens_fatura_fatura_num_nf}}</td>
+                                                    <td>{{itemPag.descricao_item}}</td>
+                                                    <td>{{itemPag.cod_empenho}}</td>
+                                                    <td>{{itemPag.somaQuant}}</td>
+                                                    <td class="col-md-1">
+                                                        <input class="form-control quantidade" maxlength="5" type="number" ng-model="itemPag.quantidade">
+                                                    </td>
+                                                    <td class="col-md-1">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">R$</span>
+                                                            <input id="valor" type="text" class="form-control" mask-money maxlength="14" nome="valor" ng-model="itemPag.valor" placeholder="00,00">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p class="money">{{itemPag.total | filter: quantiValor(itemPag.quantidade, itemPag.valor,$index) | currency }}</p>
+                                                    </td>
+                                                    <script type="text/javascript" src="../js/services/formato-inputs.js"></script>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-gruop col-xs-6">
+                                        <button class="btn btn-primary" ng-click="editItensPag(itensPag)">Salvar Alterações em Itens</button>
+                                    </div>
+                                    <div class="input-group col-md-3 pull-right">
+                                        <td> <label>Total:&nbsp;</label>
+                                            <span class="money">{{itensPag.totalT | currency }}</span>
+                                        </td>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <novo-menu></novo-menu>

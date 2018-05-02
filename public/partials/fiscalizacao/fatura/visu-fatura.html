@@ -1,0 +1,70 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/fiscalizacao">Fiscalização</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Fatura</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <section>
+        <a href="/addFatura" class="botao-menu btn btn-default btn-lg"><span class="glyphicon glyphicon-plus"></span> ADICIONAR</a>
+        <a href="" class="botao-voltar btn btn-default btn-lg pull-right" onclick="window.history.back()">VOLTAR</a>
+    </section>
+</div>
+<div class="container" ng-controller="visuFaturaController">
+    <section>
+        <div class="panel panel-default">
+          <div class="panel-heading" id="panel-heading">
+                <div class="row">
+                    <div class="col-md-1">
+                        <h3 class="patern-header">Fatura</h3>
+                    </div>
+                    <div class="col-md-offset-8 col-md-4 input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" class="form-control" ng-model="busca" placeholder="Procure por" />
+                    </div>
+                </div>
+            </div>            
+            <div class="panel-body" >
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+
+                        <thead>
+                            <tr class="background-starttable">
+                                <th>Número da nota fiscal</th>
+                                <th class="col-md-4">Município</th>
+                                <th class="col-md-2">Data da nota fiscal</th>
+                                <th class="col-md-1">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="fatura in faturas | filter:busca">
+                                <td>{{fatura.num_nf}}</td>
+                                <td>{{fatura.nome_municipio}}</td>
+                                <td>{{fatura.dt_nf | date:'dd / MM / yyyy'}}</td>
+                                <td>
+                                   &nbsp;&nbsp;
+                                    <a href="/editFatura/{{fatura.num_nf}}/{{fatura.cd_municipio_cod_ibge}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a ng-click="deletar(fatura)" class="action-button action-trash"><span class="glyphicon glyphicon-action-trash"></span></a>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+<novo-menu></novo-menu>

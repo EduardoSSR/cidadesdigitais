@@ -1,0 +1,61 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="/administracao">Administração</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="itens">Itens</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Adicionar Itens</li>
+	</ol>
+</nav>
+<div class="container" ng-controller="addItensController">
+	<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Adicionar Itens</h4>
+			</div>
+
+			<div class="panel-body contact-container">
+				<form novalidate name="formAddItens" ng-submit="submitItens(item)">
+					<div class="row">
+						<div class="form-group col-md-2 col-sm-3" ng-class="{ 'has-error' : formAddItens.cod_item.$invalid && !formAddItens.cod_item.$pristine }">
+							<label>Código do Item: </label>
+							<input type="text" class="form-control" name="cod_item" ng-model="item.cod_item" placeholder="Digite o código do item" required>
+							<p ng-show="formAddItens.cod_item.$invalid && !formAddItens.cod_item.$pristine" class="help-block">
+								Código Item obrigatório!
+							</p>
+						</div>
+
+						<div class="form-group col-sm-4 col-md-5" ng-class="{ 'has-error' : formAddItens.descricao.$invalid && !formAddItens.descricao.$pristine }">
+							<label>Descrição: </label>
+							<input type="text" class="form-control" name="descricao" ng-model="item.descricao" placeholder="Digite a descrição" required>
+							<p ng-show="formAddItens.descricao.$invalid && !formAddItens.descricao.$pristine" class="help-block">
+								Descrição obrigatória!
+							</p>
+						</div>
+
+						<div class="form-group col-sm-3" ng-class="{ 'has-error' : formAddItens.unidade.$invalid && !formAddItens.unidade.$pristine }">
+							<label>Unidade: </label>
+							<input type="text" class="form-control" name="unidade" ng-model="item.unidade" placeholder="Digite a unidade" required>
+							<p ng-show="formAddItens.unidade.$invalid && !formAddItens.unidade.$pristine" class="help-block">
+								Descrição obrigatória!
+							</p>
+						</div>
+
+						<center>
+							<div class="form-group col-md-1">
+								<label> &nbsp;</label><br>
+								<button type="submit" class="btn btn-primary" ng-click="addItem(item)" ng-disabled="formAddItens.$invalid">Cadastrar</button>
+							</div>
+						</center>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>
