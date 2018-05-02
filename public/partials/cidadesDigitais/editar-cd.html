@@ -1,0 +1,477 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links" href="/cd">Cidades Digitais</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Visualizar Cidades Digitais</li>
+    </ol>
+</nav>
+<div class="container">
+    <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+                <h4>Editar Cidade Digital</h4>
+            </div>
+            <div class="panel-body">
+                <form name="formEditCd" ng-submit="editarCd()">
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Estado: </label>
+                            <p>{{cidadeDigital.nome_estado}}</p>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Município: </label>
+                            <p>{{cidadeDigital.nome_municipio}}</p>
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <label>Lote: </label>
+                            <p>{{cidadeDigital.lote_cod_lote}}</p>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label>O.S. Proj. Executivo: </label>
+                            <input type="text" class="form-control" name="os_pe" ng-blur="pegando(cidadeDigital)" ng-model="cidadeDigital.os_pe" requerid placeholder="Nº">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label>O.S. Implementação: </label>
+                            <input type="text" class="form-control" name="os_imp" ng-model="cidadeDigital.os_imp" requerid placeholder="Nº">
+                        </div>
+                    </div>
+                    <center>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary" ng-disabled="formEditCd.$pristine">Salvar alterações</button>
+                        </div>
+                    </center>
+                </form>
+                <br>
+                <br>
+
+                <div>
+                    <ul class="nav nav-pills nav-stacked background-navpills">
+                        <li><a href="#ponto" data-toggle="tab">Ponto</a></li>
+                        <li><a href="#itens" data-toggle="tab">Itens</a></li>
+                        <li><a href="#previsaoEmpenhos" data-toggle="tab">Previsão de Empenho</a></li>
+                        <li><a href="#empenho" data-toggle="tab">Empenho</a></li>
+                        <li><a href="#pagamento" data-toggle="tab">Pagamento</a></li>
+                        <li><a href="#faturado" data-toggle="tab">Faturado</a></li>
+                        <li><a href="#glosa" data-toggle="tab">Glosa</a></li>
+                        <li><a href="#contatos" data-toggle="tab">Contatos</a></li>
+                        <li><a href="#processos" data-toggle="tab">Processos</a></li>
+                        <li><a href="#acompanhamento" data-toggle="tab">Acompanhamento</a></li>
+                    </ul>
+                </div><br>
+
+                <div class="tab-content">
+
+                    <!--Aqui é a area do Ponto-->
+                    <div class="tab-pane active" id="ponto" ng-controller="CdPontoController">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <button type="button" class="botao-menu btn btn-default" data-toggle="modal" data-target="#janelaAdd">ADICIONAR</button>
+                            </div>
+
+                            <form class="modal fade" id="janelaAdd">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <add-Ponto></add-Ponto>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <form class="modal fade" id="janelaEdit">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <editar-ponto></editar-ponto>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr class="background-starttable">
+                                        <th>Numero do Ponto</th>
+                                        <th>Nome do Ponto</th>
+                                        <th>Categoria</th>
+                                        <th class="acoes">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="conte == 0">
+                                        <td colspan="4" align="center">Nenhum registro encontrado.</td>
+                                    </tr>
+                                    <tr ng-repeat="ponto in visuPontos  | filter: {'cd_municipio_cod_ibge' : carregarCodibge}:false">
+                                        <td>{{ponto.cod_ponto}}</td>
+                                        <td>{{ponto.nome}}</td>
+                                        <td>{{ponto.descricao_categoria}}</td>
+                                        <td>
+                                            <a ng-click="pegarParamentros(ponto)">
+                                                <span class="glyphicon glyphicon-pencil"></span></a>
+                                            <a ng-click="removerPonto(ponto);"><span class="glyphicon glyphicon-action-trash"></span></a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--Aqui é a area do Ponto-->
+
+                    <div class="tab-pane" id="itens">
+
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th class="col-md-4">Tipo - Código - Descrição do Item</th>
+                                            <th class="col-md-2">Quant. Previsto</th>
+                                            <th class="col-md-2">Quant. Proj. Exec.</th>
+                                            <th class="col-md-2">Quant. termo instal.</th>
+                                            <th class="col-md-2">Preço</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                        <tr ng-repeat="itens in itens ">
+                                            <td>{{itens.descricao_item}}</td>
+                                            <td><input type="text" class="form-control" ng-model="itens.quantidade_previsto" /></td>
+                                            <td><input type="text" class="form-control" ng-model="itens.quantidade_projeto_executivo" /></td>
+                                            <td><input type="text" class="form-control" ng-model="itens.quantidade_termo_instalacao" /></td>
+                                            <td class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                <p class="form-control">{{itens.preco | currency: ''}}</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary" ng-click="enviarItensCd(itens)">Salvar Alterações de Itens</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane" id="previsaoEmpenhos">
+
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>Código Previsão de Empenho</th>
+                                            <th>Código - Natureza de despesas</th>
+                                            <th>Data</th>
+                                            <th>Tipo</th>
+                                            <th>Ano Referência</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="previsaoEmpenho in previsaoEmpenhos | filter : {'lote_cod_lote' : cidadeDigital.lote_cod_lote}:false">
+                                            <td><a href="/editPrevisaoEmpenho/{{previsaoEmpenho.cod_previsao_empenho}}">{{previsaoEmpenho.cod_previsao_empenho}}</a></td>
+                                            <td>{{previsaoEmpenho.descricao}}</td>
+                                            <td>{{previsaoEmpenho.data | date : "dd/MM/y"}}</td>
+                                            <td>{{previsaoEmpenho.tipo}}</td>
+                                            <td>{{previsaoEmpenho.ano_referencia}}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="empenho">
+
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>Código do Empenho</th>
+                                            <th>Código - Natureza de despesas:</th>
+                                            <th>Data</th>
+                                            <th>Tipo</th>
+                                            <th>Ano Referência</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="empenho in empenhos | filter : {'lote_cod_lote' : cidadeDigital.lote_cod_lote}:false">
+                                            <td><a href="/editEmpenho/{{empenho.cod_empenho}}">{{empenho.cod_empenho}}</a></td>
+                                            <td>{{empenho.descricao}}</td>
+                                            <td>{{empenho.data | date : "dd/MM/y"}}</td>
+                                            <td>{{empenho.tipo}}</td>
+                                            <td>{{empenho.ano_referencia}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="pagamento">
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>N° da ordem de transferência bancária:</th>
+                                            <th>Data do pagamento: </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="pagamento in pagamentos">
+
+                                            <td><a href="/editarPagamento/{{pagamento.cod_otb}}">{{pagamento.cod_otb}}</a></td>
+                                            <td>{{pagamento.dt_pgto | date:'dd/MM/y'}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="faturado"><br>
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>Número da Nota Fiscal</th>
+                                            <th>Data da Nota Fiscal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="fatura in faturas | filter: {'cd_municipio_cod_ibge' : codIbge}:false">
+
+                                            <td><a href="/editFatura/{{fatura.num_nf}}">{{fatura.num_nf}}</a></td>
+                                            <td>{{fatura.dt_nf | date:'dd/MM/y'}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="glosa">
+
+                        <table class="table table-striped table-bordered table-hover table-condensed formatTable">
+                            <thead>
+                                <tr class="background-starttable">
+                                    <th class="form-group col-sm-5">Tipo - Código - Nome</th>
+                                    <th class="form-group col-sm-2">Nº da Fatura</th>
+                                    <th class="form-group col-sm-2">Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="glosa in glosas">
+                                    <td>{{glosa.descricao}}</td>
+                                    <td>{{glosa.num_nf}}</td>
+                                    <td>{{glosa.qnt}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="tab-pane row" id="contatos" ng-controller="CdContatoController">
+                        <div class="form-group col-md-12">
+                            <button type="button" class="botao-menu btn btn-default" data-toggle="modal" data-target="#janela">ADICIONAR CONTATOS</button>
+                            <div class="modal fade" tabindex="-1" role="dialog" id="janela">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form name="formContatosAdd" ng-submit="submeterContatosCd(contato)">
+                                            <editar-entidade></editar-entidade>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="row" ng-repeat="contato in contatos | filter : {'cd_municipio_cod_ibge' : cidadeDigital.municipio_cod_ibge}:true">
+                                <div id="demo1" class="table-responsive col-md-6">
+                                    <table id="" class="table table-striped table-bordered table-hover table-condensed formatTable">
+                                        <thead>
+                                            <tr class="background-starttable">
+                                                <th>Nome</th>
+                                                <th>Função</th>
+                                                <th>E-mail</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="height: 100%">
+                                                <td><input id="camposContatos" class="form-control" type="text" ng-model="contato.nome" ng-blur="editContato(contato)" ng-model-options="{ debounce : { blur: 5555} }"></td>
+                                                <td><input id="camposContatos2" class="form-control" type="text" ng-model="contato.funcao" ng-blur="editContato(contato)"></td>
+                                                <td><input id="camposContatos3" class="form-control" type="text" ng-model="contato.email" ng-blur="editContato(contato)"></td>
+
+
+                                                <td>
+                                                    <a ng-click="removerC(contato)"><span class="glyphicon glyphicon-action-trash"></span></a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                                <div id="demo1" class="table-responsive col-md-6">
+                                    <table class="table table-striped table-bordered table-hover table-condensed formatTable">
+                                        <thead>
+                                            <tr class="background-starttable">
+                                                <th>Tipo deTelefone</th>
+                                                <th>Telefone</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <form novalidate name="formAddTel">
+                                                    <td><select class="form-control" id="telefoneTipo" type="text" ng-model="telefoneCd.tipo" required>
+                                                    <option value="">Selecione um tipo</option>
+                                                    <option value="Fixo">Fixo</option>
+                                                    <option value="Móvel">Móvel</option>
+                                                </select>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" minlength="13" mask="(99)9?9999-9999" id="telefoneTel" type="text" ng-model="telefoneCd.tel" required>
+                                                    </td>
+                                                    <td>
+                                                        <a ng-disabled="formAddTel.$invalid" ng-click="addT(telefoneCd,contato)"> <span class="glyphicon glyphicon-plus"></span></a>
+                                                    </td>
+                                                </form>
+                                            </tr>
+
+                                            <tr ng-repeat="telefone in telefones | filter : {'contato_cod_contato' : contato.cod_contato}:true">
+                                                <td>{{telefone.tipo}}</td>
+                                                <td>{{telefone.telefone | tel}}</td>
+                                                <td>
+                                                    <a ng-click="removerT(telefone)"> <span class="glyphicon glyphicon-action-trash"></span></a>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <add-responsavel></add-responsavel>
+                        <add-telefone></add-telefone>
+                    </div>
+
+                    <div class="tab-pane" id="processos" ng-controller="CdProcessoController">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <button type="button" class="botao-menu btn btn-default" data-toggle="modal" data-target="#janela9">ADICIONAR</button>
+                            </div>
+
+                            <form class="modal fade" id="janela9">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <add-processo></add-processo>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <form class="modal fade" id="janelaEdProc">
+                                <div class="modal-dialog modal-md">
+                                    <editar-processo></editar-processo>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr class="background-starttable">
+                                        <th>Número do processo</th>
+                                        <th>Descrição</th>
+                                        <th class="acoes">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="processo in processos | filter: {'cd_municipio_cod_ibge' : carregarCodibge}:false">
+                                        <td>{{processo.cod_processo | processoFilter}}</td>
+                                        <td>{{processo.descricao}}</td>
+                                        <td><a data-toggle="modal" data-target="#janelaEdProc" ng-click="getProcessoById(processo)" class="botaoLupa"><span class="glyphicon glyphicon-pencil"></span></a> <a ng-click="removerProcesso(processo)"><span class="glyphicon glyphicon-action-trash"></span></a> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="acompanhamento" ng-controller="CdUacomController">
+                        <div class="row">
+                            <div class="form-group col-md-2">
+                                <button type="button" class="botao-menu btn btn-default" data-toggle="modal" data-target="#janela10">ADICIONAR</button>
+                            </div>
+                            <div class="col-md-offset-7 col-md-5 input-group" style="margin-top: 5px;">
+                                <a class="input-group-addon btn" ng-click="busca=undefined">Mostrar todos</a>
+                                <select class="form-control" ng-model="busca" ng-options="assunto.cod_assunto as assunto.descricao for assunto in assuntos">
+                                        <option value="">Selecione um assunto para ser filtrado</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr class="background-starttable">
+                                        <th>Título do relato</th>
+                                        <th>Data/Hora</th>
+                                        <th class="acoes">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="acompanhamento in acompanhamentos | filter:{'cd_municipio_cod_ibge' : codIbge}:false | filter:filterAssunto:true">
+                                        <td>{{acompanhamento.titulo}}</td>
+                                        <td>{{acompanhamento.data | date: 'dd/MM/y H:mm:ss'}}</td>
+                                        <td><a class="botaoLupa" ng-click="getAcompanhamentosById(acompanhamento)"><span class="glyphicon glyphicon-search"></span></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <form class="modal fade" id="janela10">
+                            <add-acompanhamento></add-acompanhamento>
+                        </form>
+                        <form class="modal fade" id="janela99">
+                            <editar-acompanhamento></editar-acompanhamento>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="">OS Proj. Executivo</label>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="" disabled>OS Proj. Aprovado</label>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="" disabled>OS Implantação</label>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="" disabled>OS Implantação Aprovado</label>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="" disabled>Pagamento 10%</label>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <label class="checkbox-inline"><input type="checkbox" value="" disabled>Pagamento e Grupamentos</label>
+                    </div>
+                </div><br>
+
+                <p>Andamento</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 42%;">42%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

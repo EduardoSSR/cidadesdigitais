@@ -1,0 +1,52 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Classe de Empenho</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Adicionar Classe de Empenho</li>
+	</ol>
+</nav>
+
+<div class="container">
+<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Adicionar Classe de Empenho</h4>
+			</div>
+
+			<div class="panel-body contact-container">
+				<form novalidate name="formAddClassEmp" ng-submit="submitClasseEmp(classeEmp)">
+					<div class="row">
+					
+						<div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddClassEmp.cod_classe_empenho.$invalid && !formAddClassEmp.cod_classe_empenho.$pristine }">
+							<label>Código Classe Empenho: </label>
+							<input type="text" class="form-control" name="cod_classe_empenho" ng-model="classeEmp.cod_classe_empenho" placeholder="Digite o código da classe do empenho" required>
+							<p ng-show="formAddClassEmp.cod_classe_empenho.$invalid && !formAddClassEmp.cod_classe_empenho.$pristine" class="help-block">
+								Código Classe Empenho obrigatório!
+							</p>
+						</div>
+
+						<div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddClassEmp.descricao.$invalid && !formAddClassEmp.descricao.$pristine }">
+							<label>Descrição:</label>
+							<input type="text" class="form-control" name="descricao" ng-model="classeEmp.descricao" placeholder="Digite a Descrição" required>
+							<p ng-show="formAddClassEmp.descricao.$invalid && !formAddClassEmp.descricao.$pristine" class="help-block">
+								Descrição obrigatória!
+							</p>
+						</div>
+
+						<center>
+							<div class="col-sm-1">
+								<label> &nbsp;</label><br>
+								<button type="submit" class="btn btn-primary" ng-disabled="formAddClassEmp.$invalid">Cadastrar</button>
+							</div>
+						</center>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

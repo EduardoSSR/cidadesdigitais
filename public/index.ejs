@@ -13,7 +13,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Cidades Digitais</title>
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/angular-growl.min.css" />
     
@@ -32,88 +34,155 @@
 <body>
      <div growl limit-messages="3"></div>
     <ng-view></ng-view>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!--<script src="css/js/jquery-3.2.1.js"></script>-->
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
-    <!--funções de estado e cidade com filtro-->
-    <script type="text/javascript" src="js/services/carga-dados-cidade-municipo-serviso.js"></script>
 
     <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-locale_pt-br.js"></script>
     <script type="text/javascript" src="js/lib/ngMask.min.js"></script>
     <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-cookies.min.js"></script>
     <script type="text/javascript" src="js/lib/angular-growl.min.js"></script>
     <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
     <script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
 
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/directives/minhas-diretivas.js"></script>
+    
+    <script src="js/lib/jquery-3.3.1.min.js"></script>
+    
+    <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+   
+    <script type="text/javascript" src="js/lib/jquery.maskMoney.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.mask.js"></script>
     <script type="text/javascript" src="js/lib/confirmacaoSenha.js"></script>
-    <script type="text/javascript" src="js/lib/jquery.mask.min.js"></script>
-
-
-    <!--Início Controllers-->
-    <script type="text/javascript" src="js/controllers/tela-login-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-cidadedigitais-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-cd-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-usuario-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-usuario-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-entidade-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-entidade-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-assunto-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-municipios-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-assunto-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-categoria-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-empenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-categoria-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-classeEmp-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-classeEmp-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-etapa.controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-etapa-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-itens-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-itens-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-municipios-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-naturezaDesp-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-naturezaDesp-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-perfil-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-perfilUsuario-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-prefeito-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-prefeito-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-tipologia-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-tipologia-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-tipoDoItem-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-tipoDoItem-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-cd-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-lotes-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-lotes-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-lotes-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-empenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-pagamento-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-pagamento-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-fatura-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/visu-previsaoEmpenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-fatura-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-prevEmp-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-usuario-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-perfilUsuario-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-entidade-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-pagamento-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-fatura-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-empenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-itens-empenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-contatos-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/edit-previsao-empenho-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-cd-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-cd-ponto-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/add-cd-processo-controller.js"></script>
-    <!--Fim Controllers-->
-
+    
+    
     <!--Início Services-->
-    <script type="text/javascript" src="js/services/filter-itens-lotes.js"></script>
-</body>
+    
+    <script type="text/javascript" src="js/services/service.js"></script>
+    <script type="text/javascript" src="js/services/carga-dados-cidade-municipo-serviso.js"></script>
+    <script type="text/javascript" src="js/services/filter.js"></script>
+    <script type="text/javascript" src="js/services/token-interceptor.js"></script>
+   
+    
+    
+    <!--FIM Services-->
+
+   
+    <!--Início Controllers-->
+
+        <!--INICIO-->
+    <script type="text/javascript" src="js/controllers/inicio-controller.js"></script>
+    
+        <!--TELA LOGIN-->
+    <script type="text/javascript" src="js/controllers/tela-login-controller.js"></script>
+    
+        <!--ASSUNTO-->
+    <script type="text/javascript" src="partials/administracao/assunto/add-assunto-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/assunto/visu-assunto-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/assunto/edit-assunto-controller.js"></script>
+    
+        <!--CD-->
+    <script type="text/javascript" src="partials/cidadesDigitais/add-cd-controller.js"></script>
+    <script type="text/javascript" src="partials/cidadesDigitais/visu-cd-controller.js"></script>
+    <script type="text/javascript" src="partials/cidadesDigitais/edit-cd-controller.js"></script>
+    
+    <script type="text/javascript" src="partials/cidadesDigitais/cd-ponto-controller.js"></script>
+    <script type="text/javascript" src="partials/cidadesDigitais/cd-uacom-controller.js"></script>
+    <script type="text/javascript" src="partials/cidadesDigitais/cd-processo-controller.js"></script>
+    <script type="text/javascript" src="partials/cidadesDigitais/cd-contato-controller.js"></script>
+
+    
+        <!--CLASSE EMPENHO-->
+    <script type="text/javascript" src="partials/administracao/classeEmpenho/add-classe-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/classeEmpenho/visu-classe-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/classeEmpenho/edit-classe-empenho-controller.js"></script>
+    
+        <!--EMPENHO-->
+    <script type="text/javascript" src="partials/fiscalizacao/empenho/add-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/empenho/visu-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/empenho/edit-empenho-controller.js"></script>
+       
+        <!--ENTIDADE-->
+    <script type="text/javascript" src="partials/entidade/add-entidade-controller.js"></script>
+    <script type="text/javascript" src="partials/entidade/visu-entidade-controller.js"></script>
+    <script type="text/javascript" src="partials/entidade/edit-entidade-controller.js"></script>
+    
+        <!--ETAPA-->
+    <script type="text/javascript" src="partials/administracao/etapa/add-etapa-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/etapa/visu-etapa.controller.js"></script>
+    
+        <!--FATURA-->
+    <script type="text/javascript" src="partials/fiscalizacao/fatura/add-fatura-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/fatura/visu-fatura-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/fatura/edit-fatura-controller.js"></script>
+    
+        <!--ITENS-->
+    <script type="text/javascript" src="partials/administracao/item/add-item-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/item/visu-item-controller.js"></script>
+    
+        <!--ITENS EMPENHO-->
+    <script type="text/javascript" src="js/controllers/add-itens-empenho-controller.js"></script>
+       
+        <!--LOTES-->
+    <script type="text/javascript" src="partials/lote/add-lote-controller.js"></script>
+    <script type="text/javascript" src="partials/lote/visu-lote-controller.js"></script>
+    <script type="text/javascript" src="partials/lote/edit-lote-controller.js"></script>
+    
+        <!--MUNICIPIO-->
+    <script type="text/javascript" src="partials/administracao/municipio/add-municipio-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/municipio/visu-municipio-controller.js"></script>
+    
+        <!--NATUREZA DESPESA-->
+    <script type="text/javascript" src="partials/administracao/naturezaDespesa/add-natureza-despesa-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/naturezaDespesa/visu-natureza-despesa-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/naturezaDespesa/edit-natureza-despesa-controller.js"></script>
+    
+        <!--PAGAMENTO-->
+    <script type="text/javascript" src="partials/fiscalizacao/pagamento/add-pagamento-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/pagamento/visu-pagamento-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/pagamento/edit-pagamento-controller.js"></script>
+    
+        <!--MODULO USUARIO-->
+    <script type="text/javascript" src="partials/administracao/modulo/add-modulo-usuario-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/modulo/visu-modulo-usuario-controller.js"></script>
+    
+        <!--PREFEITO-->
+    <script type="text/javascript" src="partials/administracao/prefeito/add-prefeito-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/prefeito/visu-prefeito-controller.js"></script>
+    
+        <!--PREVISAO EMPENHO-->
+    <script type="text/javascript" src="partials/fiscalizacao/previsaoEmpenho/add-previsao-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/previsaoEmpenho/visu-previsao-empenho-controller.js"></script>
+    <script type="text/javascript" src="partials/fiscalizacao/previsaoEmpenho/edit-previsao-empenho-controller.js"></script>
+    
+    
+        <!--TIPO DO ITEM-->
+    <script type="text/javascript" src="partials/administracao/tipoItem/add-tipo-item-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/tipoItem/visu-tipo-item-controller.js"></script>
+    
+        <!--TIPOLOGIA-->
+    <script type="text/javascript" src="partials/administracao/tipologia/add-tipologia-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/tipologia/visu-tipologia-controller.js"></script>
+    <script type="text/javascript" src="partials/administracao/tipologia/edit-tipologia-controller.js"></script>
+    
+        <!--USUARIO-->
+    <script type="text/javascript" src="partials/usuario/add-usuario-controller.js"></script>
+    <script type="text/javascript" src="partials/usuario/visu-usuario-controller.js"></script>
+    <script type="text/javascript" src="partials/usuario/edit-usuario-controller.js"></script>
+    
+        <!--CATEGORIA-->
+    <script type="text/javascript" src="partials/administracao/categoria/visu-categoria-controller.js"></script>
+    
+        <!--CONTATOS-->
+    <script type="text/javascript" src="js/controllers/add-contatos-controller.js"></script>
+    
+    <!--Fim Controllers-->
+    
+    
+ 
+    </body>
 
 <!--
 <footer>
@@ -125,4 +194,7 @@
 </footer>
 -->
 
+
+			
 </html>
+

@@ -1,0 +1,38 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Classe de Empenho</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Editar Classe de Empenho</li>
+	</ol>
+</nav>
+<div class="container">
+<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Editar Classe de Empenho</h4>
+			</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group col-sm-4">
+						<label>Código da Classe de Empenho: </label>
+						<input ng-model="classesId.cod_classe_empenho" type="number" class="form-control" placeholder="Digite o codigo do assunto">
+					</div>
+					<div class="form-group col-sm-4">
+						<label>Descrição: </label>
+						<input ng-model="classesId.descricao" type="text" class="form-control" placeholder="Digite a Descrição">
+					</div>
+					<center>
+						<div class="col-sm-1">
+							<label>&nbsp;</label><br>
+							<button type="submit" ng-click="putClasseEmpenho(classesId)" class="btn btn-primary ">Editar</button>
+						</div>
+					</center>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

@@ -1,0 +1,65 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links">Home</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links">Usuario</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Visualizar Usuário</li>
+	</ol>
+</nav>
+
+<div class="container">
+	<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div id="panel-heading" class="panel-heading">
+				<h4>Vizualização Usuário</h4>
+			</div>
+			<div class="panel-body">
+
+				<form name="formularioAddUsuario" ng-submit="submeter()">
+
+					<div class="row">
+				
+						<div class="form-group col-md-4 col-sm-6 col-xs-12" ng-class="{'has-error': formularioAddUsuario.nome.$invalid && !formularioAddUsuario.nome.$pristine}">
+							<label for="nome">Nome : </label>
+							<input type="text" id="nome" name="nome" class="form-control" ng-model="usuario.nome" ng-maxlength="50" placeholder="Digite seu usuário" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.nome.$error.maxlength">Número máximo de 50 caracteres.</span>
+						</div>
+
+						<div class="form-group col-md-4 col-sm-6 col-xs-12" ng-class="{'has-error': formularioAddUsuario.login.$invalid && !formularioAddUsuario.login.$pristine}">
+							<label for="login">Login : </label>
+							<input type="text" id="login" name="login" class="form-control" ng-model="usuario.login" ng-maxlength="45" placeholder="Digite seu login" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.login.$error.maxlength">Número máximo de 45 caracteres.</span>
+						</div>
+
+						<div class="form-group col-md-4 col-sm-6 col-xs-12" ng-class="{'has-error': formularioAddUsuario.email.$invalid && !formularioAddUsuario.email.$pristine}">
+							<label for="email">Email : </label>
+							<input type="email" id="email" name="email" class="form-control" ng-model="usuario.email" ng-maxlength="45" placeholder="Digite seu email" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.email.$error.maxlength">Número máximo de 45 caracteres.</span>
+						</div>
+
+
+						<div class="form-group col-sm-3" ng-class="{'has-error': formularioAddUsuario.telefone.$invalid && !formularioAddUsuario.telefone.$pristine}">
+							<label for="telefone">Telefone : </label>
+							<input type="tel" id="telefone" name="telefone" class="form-control" ng-model="usuario.telefone" mask="(99) 9? 9999-9999" placeholder="Digite seu telefone" required/>
+							<span class="form-control alert-danger" ng-show="formularioAddUsuario.$submitted && formularioAddUsuario.telefone.$error.required"> Telefone obrigatório
+                            </span>
+						</div>
+
+						<center>
+							<div class="form-group col-sm-1">
+								<label for=""> &nbsp;</label>
+								<br>
+								<button type="submit" ng-disabled="formularioAddUsuario.$invalid" class="btn btn-primary">Aplicar</button>
+							</div>
+						</center>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

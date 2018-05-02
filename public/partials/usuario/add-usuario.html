@@ -1,0 +1,329 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Usuário</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Usuários</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <section>
+        <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    </section>
+    <section>
+        <div class="panel panel-default">
+            <div id="panel-heading" class="panel-heading">
+                <h4>Adicionar Usuário</h4>
+            </div>
+            <div class="panel-body">
+                <form novalidate class="addUsuarioForm" name="formularioAddUsuario" ng-submit="submeter()">
+                    <div class="row">
+                        <div class="form-group col-sm-4 col-md-3" ng-class="{'has-error': formularioAddUsuario.nome.$invalid && !formularioAddUsuario.nome.$pristine}">
+                            <label>Nome :</label>
+                            <input type="text" id="nome" name="nome" class="form-control" ng-model="usuario.nome" ng-maxlength="50" placeholder="Digite seu nome" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.nome.$error.maxlength">Número máximo de 50 caracteres.</span>
+                        </div>
+
+                        <div class="form-group col-sm-3" ng-class="{'has-error': formularioAddUsuario.login.$invalid && !formularioAddUsuario.login.$pristine}">
+                            <label>Login :</label>
+                            <input type="text" id="login" name="login" class="form-control" ng-model="usuario.login" ng-maxlength="45" placeholder="Digite seu login" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.login.$error.maxlength">Número máximo de 45 caracteres.</span>
+                        </div>
+
+                        <div class="form-group col-sm-3" ng-class="{'has-error': formularioAddUsuario.email.$invalid && !formularioAddUsuario.email.$pristine}">
+                            <label>Email :</label>
+                            <input type="email" id="email" name="email" class="form-control" ng-model="usuario.email" ng-maxlength="45" placeholder="Digite seu email" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.email.$error.maxlength">Número máximo de 45 caracteres.</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-3" ng-class="{'has-error': formularioAddUsuario.senha.$invalid && !formularioAddUsuario.senha.$pristine}">
+                            <label>Senha :</label>
+                            <input type="password" id="senha" name="senha" class="form-control" ng-model="usuario.senha" ng-maxlength="45" placeholder="Digite sua senha" required/>
+                            <span class="help-block" ng-show="formularioAddUsuario.senha.$error.maxlength">Número máximo de 50 caracteres.</span>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <label>Confirme a senha :</label>
+                            <input type="password" id="senhac" name="senhac" ng-model="usuario.confSenha" class="form-control" ng-maxlength="45" placeholder="Confirme sua senha" onblur="validarSenha()" />
+                        </div>
+
+                        <div class="form-group col-sm-3" ng-class="{'has-error': formularioAddUsuario.telefone.$invalid && !formularioAddUsuario.telefone.$pristine}">
+                            <label>Telefone :</label>
+                            <input type="text" id="Telefone" mask="(99) 9? 9999-9999" name="telefone" class="form-control" ng-model="usuario.telefone" placeholder="Digite seu telefone" required/>
+                        </div>
+
+                        <center>
+                            <div class="col-sm-3">
+                                <label for=""> &nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary" ng-disabled="formularioAddUsuario.$invalid">Cadastrar</button>
+                            </div>
+                        </center>
+
+                    </div>
+                    <div class="row">
+                        <h1 for="" class="text-center"><strong>Módulos</strong></h1>
+                    </div>
+                    <div class="col-md-12"> 
+                         <div class="row">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#usuarioCollapse" aria-expanded="false" aria-controls="usuarioCollapse">Usuário</a>
+                                    <div class="collapse" id="usuarioCollapse">
+                                        <input type="checkbox" ng-model="modulo[11001]" ng-change='checkModulo(11001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulo[11002]" ng-change='checkModulo(11002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulo[11003]" ng-change='checkModulo(11003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#entidadeCollapse" aria-expanded="false" aria-controls="entidadeCollapse">Entidade</a>
+                                    <div class="collapse" id="entidadeCollapse">
+                                        <input type="checkbox" ng-model="modulos[12001]" ng-change='checkModulo(12001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[12002]" ng-change='checkModulo(12002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[12003]"ng-change='checkModulo(12003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#loteCollapse" aria-expanded="false" aria-controls="loteCollapse">Lotes</a>
+                                    <div class="collapse" id="loteCollapse">
+                                        <input type="checkbox" ng-model="modulos[14001]" ng-change='checkModulo(14001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[14002]" ng-change='checkModulo(14002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[14003]"ng-change='checkModulo(14003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#cdCollapse" aria-expanded="false" aria-controls="cdCollapse">Cidades Digitais</a>
+                                    <div class="collapse" id="cdCollapse">
+                                        <input type="checkbox" ng-model="modulos[13001]" ng-change='checkModulo(13001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[13002]" ng-change='checkModulo(13002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[13003]" ng-change='checkModulo(13003)'> Editar<br>
+                                        <div class="row" style="padding-left: 30px">
+                                        <!-- INICIO CDPonto -->
+                                            <a data-toggle="collapse" href="" data-target="#ponto" aria-expanded="false" aria-controls="ponto"><strong>Ponto</strong></a><br>
+                                            <div class="collapse" id="ponto">
+                                                <input type="checkbox" ng-model="modulos[13011]" ng-change='checkModulo(13011)'> Adicionar <br>
+                                                <input type="checkbox" ng-model="modulos[13012]" ng-change='checkModulo(13012)'> Visualizar <br>
+                                                <input type="checkbox" ng-model="modulos[13013]"ng-change='checkModulo(13013)'> Editar
+                                            </div>
+                                        <!-- INICIO CDItens -->
+                                            <a data-toggle="collapse" href="" data-target="#cdItens" aria-expanded="false" aria-controls="itens"><strong>Itens</strong></a><br>
+                                            <div class="collapse" id="cdItens">
+                                                <input type="checkbox" ng-model="modulos[13022]" ng-change='checkModulo(13022)'> Visualizar <br>
+                                                <input type="checkbox" ng-model="modulos[13023]"ng-change='checkModulo(13023)'> Editar
+                                            </div>
+                                        <!-- INICIO CDPrevEmpenho -->
+                                            <a data-toggle="collapse" href="" data-target="#previsaoEmpCD" aria-expanded="false" aria-controls="previsaoEmpCD"><strong>Previsão de Empenho</strong></a><br>
+                                            <div class="collapse" id="previsaoEmpCD">
+                                                <input type="checkbox" ng-model="modulos[13032]" ng-change='checkModulo(13032)'> Visualizar
+                                            </div>
+                                        <!-- INICIO CDEmpenho -->
+                                            <a data-toggle="collapse" href="" data-target="#empenhoCD" aria-expanded="false" aria-controls="empenhoCD"><strong>Empenho</strong></a><br>
+                                            <div class="collapse" id="empenhoCD">
+                                                <input type="checkbox" ng-model="modulos[13042]" ng-change='checkModulo(13042)'> Visualizar <br>
+                                            </div>
+                                        <!-- INICIO CDPagamento -->
+                                            <a data-toggle="collapse" href="" data-target="#pagamentoCD" aria-expanded="false" aria-controls="pagamentoCD"><strong>Pagamento</strong></a><br>
+                                            <div class="collapse" id="pagamentoCD">
+                                                <input type="checkbox" ng-model="modulos[13052]" ng-change='checkModulo(13052)'> Visualizar
+                                            </div>
+                                        <!-- INICIO CDFatura -->
+                                            <a data-toggle="collapse" href="" data-target="#faturaCD" aria-expanded="false" aria-controls="faturaCD"><strong>Fatura</strong></a><br>
+                                            <div class="collapse" id="faturaCD">
+                                                <input type="checkbox" ng-model="modulos[13062]" ng-change='checkModulo(13062)'> Visualizar <br>
+                                            </div>
+                                        <!-- INICIO CDponto  INICIO CDGlosa -->
+                                            <a data-toggle="collapse" href="" data-target="#glosa" aria-expanded="false" aria-controls="glosa"><strong>Glosa</strong></a><br>
+                                            <div class="collapse" id="glosa">
+                                                <input type="checkbox" ng-model="modulos[13072]" ng-change='checkModulo(13072)'> Visualizar
+                                            </div>
+                                        <!-- INICIO CDContato -->
+                                            <a data-toggle="collapse" href="" data-target="#contatoCD" aria-expanded="false" aria-controls="contatoCD"><strong>Contato</strong></a><br>
+                                            <div class="collapse" id="contatoCD">
+                                                <input type="checkbox" ng-model="modulos[13081]" ng-change='checkModulo(13081)'> Adicionar <br>
+                                                <input type="checkbox" ng-model="modulos[13082]" ng-change='checkModulo(13082)'> Visualizar <br>
+                                                <input type="checkbox" ng-model="modulos[13083]"ng-change='checkModulo(13083)'> Editar
+                                            </div>
+                                        <!-- INICIO CDProcesso -->
+                                            <a data-toggle="collapse" href="" data-target="#processo" aria-expanded="false" aria-controls="processo"><strong>Processo</strong></a><br>
+                                            <div class="collapse" id="processo">
+                                                <input type="checkbox" ng-model="modulos[13091]" ng-change='checkModulo(13091)'> Adicionar <br>
+                                                <input type="checkbox" ng-model="modulos[13092]" ng-change='checkModulo(13092)'> Visualizar <br>
+                                                <input type="checkbox" ng-model="modulos[13093]"ng-change='checkModulo(13093)'> Editar
+                                            </div>
+                                        <!-- INICIO CDAcompanhamento -->
+                                            <a data-toggle="collapse" href="" data-target="#acompanhamento" aria-expanded="false" aria-controls="acompanhamento"><strong>Acompanhamento</strong></a><br>
+                                            <div class="collapse" id="acompanhamento">
+                                                <input type="checkbox" ng-model="modulos[13101]" ng-change='checkModulo(13101)'> Adicionar <br>
+                                                <input type="checkbox" ng-model="modulos[13102]" ng-change='checkModulo(13102)'> Visualizar <br>
+                                                <input type="checkbox" ng-model="modulos[13103]"ng-change='checkModulo(13103)'> Editar
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <h3><strong>Fiscalização</strong></h3>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#empenhoCollapse" aria-expanded="false" aria-controls="empenhoCollapse">Empenho</a>
+                                    <div class="collapse" id="empenhoCollapse">
+                                        <input type="checkbox" ng-model="modulos[15001]" ng-change='checkModulo(15001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[15002]" ng-change='checkModulo(15002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[15003]"ng-change='checkModulo(15003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#prevEmpenhoCollapse" aria-expanded="false" aria-controls="prevEmpenhoCollapse">Previsão Empenho</a>
+                                    <div class="collapse" id="prevEmpenhoCollapse">
+                                        <input type="checkbox" ng-model="modulos[18001]" ng-change='checkModulo(18001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[18002]" ng-change='checkModulo(18002)'> Visualizar <br> 
+                                        <input type="checkbox" ng-model="modulos[18003]"ng-change='checkModulo(18003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#faturaCollapse" aria-expanded="false" aria-controls="faturaCollapse">Fatura</a>
+                                    <div class="collapse" id="faturaCollapse">
+                                        <input type="checkbox" ng-model="modulos[17001]" ng-change='checkModulo(17001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[17002]" ng-change='checkModulo(17002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[17003]" ng-change='checkModulo(17003)'> Editar<br>
+                                        <div class="row" style="padding-left: 30px">
+                                            <!-- INICIO FATURAPagamento -->
+                                            <a data-toggle="collapse" href="" data-target="#pagFatura" aria-expanded="false" aria-controls="ponto"><strong>Pagamento</strong></a><br>
+                                                <div class="collapse" id="pagFatura">
+                                                    <input type="checkbox" ng-model="modulos[17012]" ng-change='checkModulo(17012)'> Visualizar <br>
+                                                </div>
+                                            <!-- INICIO FATURAItens -->
+                                            <a data-toggle="collapse" href="" data-target="#itemFatura" aria-expanded="false" aria-controls="ponto"><strong>Itens</strong></a><br>
+                                                <div class="collapse" id="itemFatura">
+                                                    <input type="checkbox" ng-model="modulos[17022]" ng-change='checkModulo(17022)'> Visualizar <br>
+                                                    <input type="checkbox" ng-model="modulos[17023]" ng-change='checkModulo(17023)'> Editar
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#pagamentoCollapse" aria-expanded="false" aria-controls="pagamentoCollapse">Pagamento</a>
+                                    <div class="collapse" id="pagamentoCollapse">
+                                        <input type="checkbox" ng-model="modulos[16001]" ng-change='checkModulo(16001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[16002]" ng-change='checkModulo(16002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[16003]" ng-change='checkModulo(16003)'> Editar<br>
+                                        <div class="row" style="padding-left: 30px">
+                                            <!-- INICIO PAGAMENTOFatura -->
+                                            <a data-toggle="collapse" href="" data-target="#faturaPag" aria-expanded="false" aria-controls="ponto"><strong>Fatura</strong></a><br>
+                                                <div class="collapse" id="faturaPag">
+                                                    <input type="checkbox" ng-model="modulos[16011]" ng-change='checkModulo(16011)'> Adicionar <br>
+                                                    <input type="checkbox" ng-model="modulos[16012]" ng-change='checkModulo(16012)'> Visualizar 
+                                                </div>
+                                            <!-- INICIO PAGAMENTOItens -->
+                                            <a data-toggle="collapse" href="" data-target="#itemPag" aria-expanded="false" aria-controls="ponto"><strong>Itens</strong></a><br>
+                                                <div class="collapse" id="itemPag">
+                                                    <input type="checkbox" ng-model="modulos[16022]" ng-change='checkModulo(16022)'> Visualizar <br>
+                                                    <input type="checkbox" ng-model="modulos[16023]"ng-change='checkModulo(16023)'> Editar
+                                                </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                              <hr> 
+                            <h3><strong>Administração</strong></h3> 
+                            <div class="row"> 
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#assunto" aria-expanded="false" aria-controls="assunto">Assunto</a>
+                                    <div class="collapse" id="assunto">
+                                        <input type="checkbox" ng-model="modulos[19001]" ng-change='checkModulo(19001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[19002]" ng-change='checkModulo(19002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[19003]"ng-change='checkModulo(19003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#categoria" aria-expanded="false" aria-controls="categoria">Categoria</a>
+                                    <div class="collapse" id="categoria">
+                                        <input type="checkbox" ng-model="modulos[20001]" ng-change='checkModulo(20001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[20002]" ng-change='checkModulo(20002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[20003]"ng-change='checkModulo(20003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#classeEmpenho" aria-expanded="false" aria-controls="classeEmpenho">Classe Empenho</a>
+                                    <div class="collapse" id="classeEmpenho">
+                                        <input type="checkbox" ng-model="modulos[21001]" ng-change='checkModulo(21001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[21002]" ng-change='checkModulo(21002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[21003]"ng-change='checkModulo(21003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#etapa" aria-expanded="false" aria-controls="etapa">Etapa</a>
+                                    <div class="collapse" id="etapa">
+                                        <input type="checkbox" ng-model="modulos[22001]" ng-change='checkModulo(22001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[22002]" ng-change='checkModulo(22002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[22003]"ng-change='checkModulo(22003)'> Editar
+                                    </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#itens" aria-expanded="false" aria-controls="etapa">Itens</a>
+                                    <div class="collapse" id="itens">
+                                        <input type="checkbox" ng-model="modulos[23001]" ng-change='checkModulo(23001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[23002]" ng-change='checkModulo(23002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[23003]"ng-change='checkModulo(23003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#municipios" aria-expanded="false" aria-controls="etapa">Municípios</a>
+                                    <div class="collapse" id="municipios">
+                                        <input type="checkbox" ng-model="modulos[24001]" ng-change='checkModulo(24001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[24002]" ng-change='checkModulo(24002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[24003]"ng-change='checkModulo(24003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#natDespesa" aria-expanded="false" aria-controls="etapa">Natureza de despesa</a>
+                                    <div class="collapse" id="natDespesa">
+                                        <input type="checkbox" ng-model="modulos[25001]" ng-change='checkModulo(25001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[25002]" ng-change='checkModulo(25002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[25003]"ng-change='checkModulo(25003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#prefeitos" aria-expanded="false" aria-controls="etapa">Prefeitos</a>
+                                    <div class="collapse" id="prefeitos">
+                                        <input type="checkbox" ng-model="modulos[26001]" ng-change='checkModulo(26001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[26002]" ng-change='checkModulo(26002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[26003]"ng-change='checkModulo(26003)'> Editar
+                                    </div>
+                                </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#tipologia" aria-expanded="false" aria-controls="etapa">Tipologias</a>
+                                    <div class="collapse" id="tipologia">
+                                        <input type="checkbox" ng-model="modulos[27001]" ng-change='checkModulo(27001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[27002]" ng-change='checkModulo(27002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[27003]"ng-change='checkModulo(27003)'> Editar
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a data-toggle="collapse" href="" data-target="#tipoItem" aria-expanded="false" aria-controls="etapa">Tipo do Item</a>
+                                    <div class="collapse" id="tipoItem">
+                                        <input type="checkbox" ng-model="modulos[28001]" ng-change='checkModulo(28001)'> Adicionar <br>
+                                        <input type="checkbox" ng-model="modulos[28002]" ng-change='checkModulo(28002)'> Visualizar <br>
+                                        <input type="checkbox" ng-model="modulos[28003]"ng-change='checkModulo(28003)'> Editar
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

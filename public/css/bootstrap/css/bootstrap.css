@@ -354,7 +354,7 @@ th {
 .glyphicon-cog:before {
   content: "\e019";
 }
-.glyphicon-trash:before {
+.glyphicon-action-trash:before {
   content: "\e020";
 }
 .glyphicon-home:before {

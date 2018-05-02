@@ -1,0 +1,64 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+	<ol class="navbar-menu">
+		<li class="navbar-menu-item"><a id="color-links" href="/inicio">Home</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item"><a id="color-links" href="/cd">Cidades Digitais</a></li>
+		<span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+		<li class="navbar-menu-item active">Adicionar Cidade Digital</li>
+	</ol>
+</nav>
+<div class="container">
+	<a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+	<section>
+		<div class="panel panel-default">
+			<div class="panel-heading" id="panel-heading">
+				<h4>Adicionar Cidade Digital</h4>
+			</div>
+			<div class="panel-body contact-container">
+				<form novalidate name="formAddCD" ng-submit="submitCd(digitalCidade)">
+					<div class="row">
+						<div class="form-group col-sm-2">
+							<label>Estado: </label>
+							<select class="form-control" id="estado" name="uf" ng-change="enviarEstado(ufCd)" ng-model="ufCd.uf" ng-options="estado.uf as estado.nome for estado in estados" requerid>
+                                <option value="">Selecione Estado</option>
+                            </select>
+						</div>
+						<div class="form-group col-sm-3">
+							<label>Município: </label>
+							<select id="cidade" class="form-control" name="nome_municipio" ng-model="digitalCidade.municipio_cod_ibge" ng-options="municipio.cod_ibge as municipio.nome_municipio for municipio in municipios" requerid>
+                                <option value="">Selecione um Municipio</option>
+                            </select>
+						</div>
+						<div class="form-group col-sm-1">
+							<label>Lote: </label>
+							<select class="form-control" ng-model="digitalCidade.lote_cod_lote" requerid ng-options="lote.cod_lote as lote.cod_lote for lote in loteCds">
+                                <option value="">Selecione o lote</option>
+                            </select>
+						</div>
+						<div class="form-group col-sm-3" ng-class="{ 'has-error' : formAddCD.os_pe.$invalid && !formAddCD.os_pe.$pristine }">
+							<label>O.S. Proj. Executivo: </label>
+							<input type="text" class="form-control" name="os_pe" ng-model="digitalCidade.os_pe" requerid placeholder="Nº">
+							<p ng-show="formAddCD.os_pe.$invalid && !formAddCD.os_pe.$pristine" class="help-block">
+								O.S. Proj. Executivo obrigatório!
+							</p>
+						</div>
+						<div class="form-group col-sm-3" ng-class="{ 'has-error' : formAddCD.os_imp.$invalid && !formAddCD.os_imp.$pristine }">
+							<label>O.S. Implementação: </label>
+							<input type="text" class="form-control" name="os_imp" ng-model="digitalCidade.os_imp" requerid placeholder="Nº">
+							<p ng-show="formAddCD.os_pe.$invalid && !formAddCD.os_pe.$pristine" class="help-block">
+								O.S. Proj. Executivo obrigatório!
+							</p>
+						</div>
+						<center>
+							<div>
+								<button type="submit" class="btn btn-primary" ng-disabled="formAddCD.$invalid">Cadastrar</button>
+							</div>
+						</center>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>
+<novo-menu></novo-menu>

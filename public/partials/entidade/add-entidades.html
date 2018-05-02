@@ -1,0 +1,66 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Entidades</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Entidades</li>
+    </ol>
+</nav>
+<div class="container">
+    <section>
+        <div class="panel panel-default"> <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+            <div class="panel-heading" id="panel-heading">
+                <h4>Adicionar Entidade</h4> </div>
+            <div class="panel-body">
+                <form novalidate name="formEntidadeAdd" ng-submit="submeter(entidade)">
+                    <div class="row">
+                        <div class="form-group col-sm-4" ng-class="{'has-error' : formEntidadeAdd.nome.$invalid && !formEntidadeAdd.nome.$pristine}">
+                            <label>Nome: </label>
+                            <input ng-maxlength="50" type="text" class="form-control" name="nome" ng-model="entidade.nome" required="false" placeholder="Digite o nome da empresa"> <span ng-show="formEntidadeAdd.nome.$error.maxlength" class="help-block">Número maximo de 50 caracteres.</span> </div>
+                        <div class="form-group col-sm-2">
+                            <label>CNPJ: </label>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj" ng-model="entidade.cnpj" required="false" placeholder="Digite o CNPJ"> </div>
+                        <div class="form-group col-xs-6 col-sm-3">
+                            <label>Estado: </label>
+                            <select type="text" class="form-control" id="estado" name="uf" ng-change="enviarEstado(entidade.uf)" ng-model="entidade.uf" ng-options="estado.uf as estado.nome for estado in estados" placeholder="Estado">
+                                <option value="">Selecione o estado</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3">
+                            <label>Município: </label>
+                            <select type="text" class="form-control" id="cidade" name="nome_municipio" ng-model="entidade.nome_municipio" ng-options="municipio.cod_ibge as municipio.nome_municipio for municipio in municipios" placeholder="Municipio">
+                                <option value="">Selecione o município</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>CEP: </label>
+                            <input type="text" class="form-control" id="cep" name="cep" ng-model="entidade.cep" ng-blur="buscacep(entidade.cep)" via-cep="cep" placeholder="Digite o CEP" /> </div>
+                        <div class="form-group col-xs-10 col-sm-5" ng-class="{'has-error' : formEntidadeAdd.endereco.$invalid && !formEntidadeAdd.endereco.$pristine}">
+                            <label>Endereço: </label>
+                            <input ng-maxlength="100" type="text" class="form-control" name="endereco" ng-model="entidade.endereco" placeholder="Digite o endereço"><span ng-show="formEntidadeAdd.endereco.$error.maxlength" class="help-block">Número maximo de 100 caracteres.</span> </div>
+                        <div class="form-group col-xs-2 col-sm-1" ng-class="{'has-error' : formEntidadeAdd.numero.$invalid && !formEntidadeAdd.numero.$pristine}">
+                            <label>Nº: </label>
+                            <input ng-maxlength="10" type="text" class="form-control" name="numero" ng-model="entidade.numero" ng-required="false" placeholder="Nº"><span ng-show="formEntidadeAdd.numero.$error.maxlength" class="help-block">Quantidade inválida.</span> </div>
+                        <div class="form-group col-sm-2" ng-class="{'has-error' : formEntidadeAdd.bairro.$invalid && !formEntidadeAdd.bairro.$pristine}">
+                            <label>Bairro: </label>
+                            <input ng-maxlength="100" type="text" class="form-control" name="bairro" ng-model="entidade.bairro" via-cep="bairro" placeholder="Digite o bairro"><span ng-show="formEntidadeAdd.bairro.$error.maxlength" class="help-block">Número maximo de 100 caracteres.</span> </div>
+                        <div class="form-group col-sm-2" ng-class="{'has-error' : formEntidadeAdd.complemento.$invalid && !formEntidadeAdd.complemento.$pristine}">
+                            <label>Complemento: </label>
+                            <input ng-maxlength="100" type="text" class="form-control" name="complemento" ng-model="entidade.complemento" ng-required="false" placeholder="Digite o complemento"><span ng-show="formEntidadeAdd.complemento.$error.maxlength" class="help-block">Número maximo de 100 caracteres.</span> </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : formEntidadeAdd.observacao.$invalid && !formEntidadeAdd.observacao.$pristine}">
+                        <label>Observação: </label>
+                        <textarea ng-maxlength="1000" id="note-entity" class="form-control" name="observacao" ng-model="entidade.observacao" ng-required="false" placeholder="Digite a observação"></textarea><span ng-show="formEntidadeAdd.observacao.$error.maxlength" class="help-block">Número maximo de 1000 caracteres.</span> </div>
+                    <center>
+                        <button type="submit" ng-disabled="formEntidadeAdd.$invalid" class="btn btn-primary">Cadastrar</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>
+<script type="text/javascript" charset="utf-8" src="../js/services/estado-municipio-server.js"></script>
+<script type="text/javascript" src="../js/services/formato-inputs.js"></script>

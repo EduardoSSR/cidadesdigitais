@@ -44,7 +44,7 @@ input[type=number] {
     box-shadow: none;
     margin-left: 20px;
 	
-	&.-trash{
+	&.-action-trash{
 		color: #c9302c;
 		background-color: transparent;
 	}
@@ -56,17 +56,17 @@ input[type=number] {
 }
 
 
-#corfontmenu {
+#color-links {
   color: #f3f0f0;
 }
 
-#padraoCabecalho {
+#patern-header {
 	margin: 2px 0 5px;
 }
 
 
 /*tela-login*/
-.forgot-password {
+.forgotpassword {
     font-size: 0.7em;
     font-weight: 700;
     text-transform: uppercase;
@@ -77,12 +77,12 @@ input[type=number] {
     transition: opacity .2s ease-out;
 }
 
-#img-cdTelaLogin {
+#logo {
     height: 10em;
 	margin: 2em 0 5em 1em;
 }
 
-#container-telaLogin {
+#login-container {
     width: 25%;
     margin-top: 5em;
 }
@@ -129,7 +129,7 @@ input[type=number] {
 }
 
 
-#menu-hamburger {
+#menuhamburger {
     color: #173b40;
     
 }
@@ -139,7 +139,7 @@ input[type=number] {
 	 margin-left: 30px;
 }
 
-.imagemDropTelaInicial {
+.header-imgDropdown{
     float: right;
     margin-top: -10px;
 }
@@ -151,7 +151,7 @@ input[type=number] {
     margin: 0;
 }
 
-#dropdownCabecalhoTelaInicial {
+#header-menu {
     border-radius: 0;
     border: none;
     height: 39px;
@@ -163,7 +163,7 @@ input[type=number] {
     margin-left: -27px;
 }
 
-#imagemDropUser {
+#user {
     width: 45px;
     background-color: white;
     border: solid 3px;
@@ -356,7 +356,7 @@ body {
 
 /*Adicionar Entidade Inicio*/
 
-#observacaoAddEntidades {
+#note-entity {
     width: 100%;
     height: 185px;
     resize: none;
@@ -364,7 +364,7 @@ body {
     margin-left: 0%;
 }
 
-#observacaoAddEntidades2 {
+#note-entity {
     width: 100%;
     height: 100px;
     resize: none;
@@ -440,11 +440,11 @@ margin-left: 1%;
 /*Editar Fatura Fim*/
 
 /*inicio Editar CD*/
-#reparocorfonteCD a {
+#background-navpills a {
     color: #FFF;
     background: rgba(99, 97, 97, 0.7);
 }
-#fundocoreditarcd {
+#background-starttable {
     background: #919090;
 }
 
@@ -477,13 +477,13 @@ margin-left: 1%;
     padding-left: 123px;
     width: 20%;
 }
-.MnDemaisTelas {
+.menu-main {
     position: fixed;
     top: 90%;
     right: 30px;
     font-size: 30px;
 }
-#ulDropItens {
+#menuopen {
     background-color: transparent;
     box-shadow: none;
     border: none;
@@ -550,7 +550,7 @@ margin-left: 1%;
     width: 97%;
     margin-left: 1.5%;
 }
-#campoAdditensEmpenho {
+#input-add {
     width: 100%;
     height: 25px;
     padding: 5px 16px;
@@ -558,6 +558,8 @@ margin-left: 1%;
     font-weight: 700;
     color: black;
 }
+
+
 #botaoEditEmpenho {
     float: right;
     background: #4e4f4a;
@@ -580,13 +582,13 @@ margin-left: 1%;
     background-color: #68b1aa;
     border-color: white;
 }
-.botaoMenuInicio {
+.menubutton {
     border-radius: 50%;
     font-size: 20px;
     border: solid;
     border-color: grey;
 }
-#dropMenusAdmin .dropdown-menu {
+#dropdown-thumbnail .dropdown-menu {
     width: 100%;
     top: -3px;
     height: 0;
@@ -615,33 +617,28 @@ margin-left: 1%;
 .thumbnail {
     box-shadow: 5px 5px 15px #888888;
 }
-#dropMenusAdmin.open .dropdown-menu {
+#dropdown-thumbnail.open .dropdown-menu {
     height: 80%;
     opacity: 1;
 }
-#divPanelHeadingForm {
+#panel-heading {
     color: white;
     background: rgba(0, 0, 0, 0.8);
     border: 1px 1px 0 1px solid white;
     /*    font-family: 'Cabin-Regular';*/
 }
-#divPanelBodyForm {
+#panel-body {
     background: rgba(255, 255, 255, 0.9);
     /*    font-family: 'Cabin-Regular';*/
 }
 
 /*Início media queries*/
 @media (max-width: 320px) {
-    .form-controlComboBox {
+    . {
         padding: 0px;
     }
 }
 
-}
-@media (min-width: 768px) {
-    #botaoInfeliz {
-        margin-top: 1.8em;
-    }
 }
 
 /*Fim media queries*/
