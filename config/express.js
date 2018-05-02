@@ -3,6 +3,7 @@ var express = require('express')
 	,consign = require('consign')
 	,bodyParser = require('body-parser');
 
+app.set('secret', 'homemavestruz');
 
 app.use(express.static('./public'));
 
@@ -12,8 +13,10 @@ app.set('views', './public');
 app.use(bodyParser.json());
 
 consign({cwd : 'app'})
-	.include('routes')
-	.then('infra')
+    .include('api')
+	.then('routes/autenticar.js')
+	.then('routes')
+    .then('infra')
 	.into(app);
 
 module.exports = app;

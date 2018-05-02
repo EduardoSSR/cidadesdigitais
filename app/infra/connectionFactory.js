@@ -7,7 +7,7 @@ var connectMYSQL = function(){
 			host: 'localhost',
 			user: 'root',
 			password: 'root',
-			database: 'cidades_digitais_v8'
+			database: 'cidades_digitais_v9'
 	});
 }; 
 

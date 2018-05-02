@@ -1,0 +1,88 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Fiscalização</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Pagamento</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Pagamento</li>
+    </ol>
+</nav>
+
+<div class="container" ng-controller="addPagamentoController">
+   <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+                <h4>Adicionar Pagamento</h4>
+            </div>
+            
+            <div class="panel-body" >
+                <form novalidate name="pagamentoForm" ng-submit="submeter()">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>N° da ordem de transferência bancária: </label>
+                            <input type="text" class="form-control" ng-model="pagamento.cod_otb" required placeholder="Digite o N° da nota fiscal">
+                            <span class="form-control alert-danger" ng-show="pagamentoForm.$submitted && pagamentoForm.cod_otb.$error.required"> N° da ordem de transferência bancária obrigatório
+                        	</span>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <label>Data do pagamento: </label>
+                            <input type="date" class="form-control" ng-model="pagamento.dt_pgto" required placeholder="Digite a data da nota fiscal">
+                            <span class="form-control alert-danger" ng-show="pagamentoForm.$submitted && pagamentoForm.dt_pgto.$error.required"> Data do pagamento obrigatório
+                        </span>
+                        </div>
+                        
+                        <div class="form-group col-sm-3">
+                            <label>Município: </label>
+                            <select class="form-control" id="codIbge" name="codIbge" ng-model="pagamento.municipio_cod_ibge" ng-change="selectFaturas(pagamento.municipio_cod_ibge)" ng-options="codIbge.municipio_cod_ibge as codIbge.nome_municipio for codIbge in codsIbge">
+                                <option value="">Selecione o município</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-sm-3">
+                            <label>Faturas: </label>
+                            <select class="form-control" ng-model="pagamento.faturas" ng-change="selecionarFaturas(pagamento.faturas)" ng-options="fatura.num_nf for fatura in faturas" required>
+                                <option value="">Selecione as faturas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tab-content">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <thead>
+                                        <tr class="background-starttable">
+                                            <th>Número da nota fiscal</th>
+                                            <th>Data</th>
+                                            <th>Município</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="faturaSelecionada in faturasSelecionadas">
+                                            <td>{{faturaSelecionada.num_nf}}</td>
+                                            <td>{{faturaSelecionada.dt_nf | date:'dd/MM/y'}}</td>
+                                            <td>{{faturaSelecionada.nome_municipio}}</td>
+                                            <td><a ng-click="excluirFaturasSelecionadas(faturaSelecionada)" class="action-button action-trash"><span class="glyphicon glyphicon-action-trash"></span></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="form-group col-sm-1">
+                                <label> &nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary" ng-disabled="pagamentoForm.$invalid">Cadastrar</button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

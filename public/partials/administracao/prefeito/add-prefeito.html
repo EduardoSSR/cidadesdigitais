@@ -1,0 +1,75 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Administração</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Prefeito</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Prefeito</li>
+    </ol>
+</nav>
+
+<div class="container">
+   <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+                <h4>Adicionar Prefeito</h4>
+            </div>
+
+            <div class="panel-body contact-container" >
+                <form novalidate name="formAddPrefeito" ng-submit="submitPerfeito(prefeito)">
+                    <div class="row">
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddPrefeito.nome.$invalid && !formAddPrefeito.nome.$pristine }">
+                            <label>Nome: </label>
+                            <input type="text" class="form-control" name="nome" ng-model="prefeito.nome" placeholder="Digite o nome" required>
+                            <p ng-show="formAddPrefeito.nome.$invalid && !formAddPrefeito.nome.$pristine" class="help-block">
+                                Nome obrigatório!
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddPrefeito.cpf.$invalid && !formAddPrefeito.cpf.$pristine }">
+                            <label>CPF: </label>
+                            <input type="number" class="form-control" name="cpf" ng-model="prefeito.cpf" placeholder="Digite o CPF" required>
+                            <p ng-show="formAddPrefeito.cpf.$invalid && !formAddPrefeito.cpf.$pristine" class="help-block">
+                                CPF obrigatório!
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddPrefeito.partido.$invalid && !formAddPrefeito.partido.$pristine }">
+                            <label>Partido: </label>
+                            <input type="text" class="form-control" name="partido" ng-model="prefeito.partido" placeholder="Digite o partido" required>
+                            <p ng-show="formAddPrefeito.partido.$invalid && !formAddPrefeito.partido.$pristine" class="help-block">
+                                Partido obrigatório!
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddPrefeito.exercicio.$invalid && !formAddPrefeito.exercicio.$pristine }">
+                            <label>Exercício: </label>
+                            <input type="text" class="form-control" name="exercicio" ng-model="prefeito.exercicio" placeholder="Digite o exercício" required>
+                            <p ng-show="formAddPrefeito.exercicio.$invalid && !formAddPrefeito.exercicio.$pristine" class="help-block">
+                                Exercicio obrigatório!
+                            </p>
+                        </div>
+
+                        <div class="form-group col-sm-4" ng-class="{ 'has-error' : formAddPrefeito.municipio_cod_ibge.$invalid && !formAddPrefeito.municipio_cod_ibge.$pristine }">
+                            <label>Município: </label>
+                            <input type="text" class="form-control" name="municipio_cod_ibge" ng-model="prefeito.municipio_cod_ibge" placeholder="Digite o município" required>
+                            <p ng-show="formAddPrefeito.municipio_cod_ibge.$invalid && !formAddPrefeito.municipio_cod_ibge.$pristine" class="help-block">
+                                Município obrigatório!
+                            </p>
+                        </div>
+
+                        <center>
+                            <div class="col-sm-4">
+                                <label> &nbsp;</label><br>
+                                <button type="submit" class="btn btn-primary" ng-disabled="formAddPrefeito.$invalid">Cadastrar</button>
+                            </div>
+                        </center>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

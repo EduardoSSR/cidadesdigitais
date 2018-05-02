@@ -1,29 +1,28 @@
-<section class="dropup dropdown MnDemaisTelas">
-	<button class="btn btn-default botaoMenuInicio dropdown-toggle" type="button" id="botaodemaistelas" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-align-justify"></span></button>
-	<ul id="ulDropItens" class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropUp1">
-
-		<a id="menu-hamburger" href="/cid/usuario">
-			<button class="legal glyphicon glyphicon-user botaolegal" data-toggle="tooltip" data-placement="left" title="Usuário"></button>
-		</a><br>
-		<a id="menu-hamburger" href="/cid/entidades">
-			<button class="legal glyphicon glyphicon-inbox botaolegal" data-toggle="tooltip" data-placement="left" title="Entidades"></button>
-		</a><br>
-		<a id="menu-hamburger" href="/cid/cd">
-			<button class="legal glyphicon glyphicon-globe botaolegal" data-toggle="tooltip" data-placement="left" title="Cidades Digitais"></button>
-		</a><br>
-		<a id="menu-hamburger" href="/cid/lotes">
-			<button class="legal glyphicon glyphicon-file botaolegal" data-toggle="tooltip" data-placement="left" title="Lotes"></button>
-		</a><br>
-		<a id="menu-hamburger" href="/cid/fiscalicacao">
-			<button class="legal glyphicon glyphicon-warning-sign botaolegal" data-toggle="tooltip" data-placement="left" title="Fiscalização"></button>
-		</a><br>
-		<a id="menu-hamburger" href="/cid/administracao">
-			<button class="legal glyphicon glyphicon-wrench botaolegal" data-toggle="tooltip" data-placement="left" title="Administração"></button>
-		</a><br>
-
+<section class="dropup dropdown menu-main">
+	<button class="btn btn-default menubutton dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+		<span class="glyphicon glyphicon-align-justify"></span>
+	</button>
+	<ul class="dropdown-menu dropdown-menu-right menuopen" role="menu" aria-labelledby="dropUp1">
+		<a href="/usuario">
+			<button class="menuhamburger glyphicon glyphicon-user" data-toggle="tooltip" data-placement="left" title="Usuário"></button>
+		</a>
+		<a href="/entidades">
+			<button class="menuhamburger glyphicon glyphicon-inbox" data-toggle="tooltip" data-placement="left" title="Entidades"></button>
+		</a>
+		<a href="/cd">
+			<button class="menuhamburger glyphicon glyphicon-globe" data-toggle="tooltip" data-placement="left" title="Cidades Digitais"></button>
+		</a>
+		<a href="/lotes">
+			<button class="menuhamburger glyphicon glyphicon-file" data-toggle="tooltip" data-placement="left" title="Lotes"></button>
+		</a>
+		<a href="/fiscalicacao">
+			<button class="menuhamburger glyphicon glyphicon-warning-sign" data-toggle="tooltip" data-placement="left" title="Fiscalização"></button>
+		</a>
+		<a href="/administracao">
+			<button class="menuhamburger glyphicon glyphicon-wrench" data-toggle="tooltip" data-placement="left" title="Administração"></button>
+		</a>
 	</ul>
 </section>
-<!-- /.dropup -->
 <script>
 	$(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip();

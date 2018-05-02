@@ -1,239 +1,288 @@
-angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', 'ngAnimate', 'ngMask', 'angular-growl'])
-    .config(function ($routeProvider, $locationProvider, growlProvider) {
-
-        growlProvider.onlyUniqueMessages(false);
+angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', 'ngAnimate', 'ngMask', 'ngCookies', 'angular-growl'])
+    .config(function ($routeProvider, $locationProvider, growlProvider, $httpProvider) {
     
+//	 CorreiosProvider.default.endpoint  =  '/my.new.correios.api/{POSTAL_CODE}/json';
+//    'angular-correios'
+//    CorreiosProvider
+
+        $httpProvider.interceptors.push('tokenInterceptor');
+    
+        growlProvider.onlyUniqueMessages(false);
+
         $locationProvider.html5Mode(true);
 
-        $routeProvider.when('/', {
-            templateUrl: 'partials/tela-login.html'
+        $routeProvider.when('/telalogin', {
+            templateUrl: 'partials/tela-login.html',
+            controller: 'telaLoginController'
         });
-        $routeProvider.when('/cid', {
-            templateUrl: 'partials/tela-login.html'
+
+        $routeProvider.when('/manutencao', {
+            templateUrl: 'js/views/manutencao.html'
         });
-        $routeProvider.when('/cid/inicio', {
+        $routeProvider.when('/inicio', {
             templateUrl: 'partials/inicio.html'
         });
-        $routeProvider.when('/cid/usuario', {
-            templateUrl: 'partials/usuario.html',
+    
+        /* USUARIO */
+        $routeProvider.when('/usuario', {
+            templateUrl: 'partials/usuario/visu-usuario.html',
             controller: 'VisuUsuarioController'
         });
-        $routeProvider.when('/cid/addUsuario', {
-            templateUrl: 'partials/add_usuario.html',
+        $routeProvider.when('/addUsuario', {
+            templateUrl: 'partials/usuario/add-usuario.html',
             controller: 'addUsuarioController'
         });
-        $routeProvider.when('/cid/editUsuario/:usuarioId', {
-            templateUrl: 'partials/editar_usuario.html',
+        $routeProvider.when('/editUsuario/:usuarioId', {
+            templateUrl: 'partials/usuario/edit-usuario.html',
             controller: 'editUsuarioController'
         });
-        $routeProvider.when('/cid/entidades', {
-            templateUrl: 'partials/entidades.html',
+    
+        /* ENTIDADES */
+        $routeProvider.when('/entidades', {
+            templateUrl: 'partials/entidade/entidades.html',
             controller: 'visuEntidadeController'
         });
-        $routeProvider.when('/cid/addEntidades', {
-            templateUrl: 'partials/add_entidades.html',
+        $routeProvider.when('/addEntidades', {
+            templateUrl: 'partials/entidade/add-entidades.html',
             controller: 'addEntidadeController'
         });
-        $routeProvider.when('/cid/editEntidades/:entidadeId', {
-            templateUrl: 'partials/editar_entidades.html',
+        $routeProvider.when('/editEntidades/:entidadeId', {
+            templateUrl: 'partials/entidade/editar-entidades.html',
             controller: 'editEntidadeController'
         });
-        $routeProvider.when('/cid/lotes', {
-            templateUrl: 'partials/lotes.html',
+    
+        /* LOTE */
+        $routeProvider.when('/lotes', {
+            templateUrl: 'partials/lote/visu-lote.html',
             controller: 'visuLotesController'
         });
-        $routeProvider.when('/cid/addLotes', {
-            templateUrl: 'partials/add_lote.html',
+        $routeProvider.when('/addLotes', {
+            templateUrl: 'partials/lote/add-lote.html',
             controller: 'addLotesController'
         });
-        $routeProvider.when('/cid/editLote/:loteId', {
-            templateUrl: 'partials/editar_lote.html',
+        $routeProvider.when('/editLote/:loteId', {
+            templateUrl: 'partials/lote/edit-lote.html',
             controller: 'editLotesController'
         });
-        $routeProvider.when('/cid/cd', {
-            templateUrl: 'partials/cd.html'
+    
+        /*CD*/
+    
+        $routeProvider.when('/cd', {
+            templateUrl: 'partials/cidadesDigitais/cd.html'
         });
-        $routeProvider.when('/cid/addCd', {
-            templateUrl: 'partials/add_cd.html',
+        $routeProvider.when('/addCd', {
+            templateUrl: 'partials/cidadesDigitais/add-cd.html',
             controller: 'addCDController'
         });
-        $routeProvider.when('/cid/editCD/:cdCodIbge', {
-            templateUrl: 'partials/editar_cd.html',
+        $routeProvider.when('/editCD/:cdCodIbge', {
+            templateUrl: 'partials/cidadesDigitais/editar-cd.html',
             controller: 'editCdController'
         });
-        $routeProvider.when('/cid/empenho', {
-            templateUrl: 'partials/empenho.html'
+    
+        /* EMPENHO */
+        $routeProvider.when('/empenho', {
+            templateUrl: 'partials/fiscalizacao/empenho/visu-empenho.html'
         });
-        $routeProvider.when('/cid/addEmpenho', {
-            templateUrl: 'partials/add_empenho.html'
+        $routeProvider.when('/addEmpenho', {
+            templateUrl: 'partials/fiscalizacao/empenho/add-empenho.html'
         });
-        $routeProvider.when('/cid/editEmpenho/:empenhoId', {
-            templateUrl: 'partials/editar_empenho.html',
+        $routeProvider.when('/editEmpenho/:empenhoId', {
+            templateUrl: 'partials/fiscalizacao/empenho/edit-empenho.html',
             controller: 'editarEmpenhoController'
         });
-        $routeProvider.when('/cid/itens', {
-            templateUrl: 'partials/itens.html'
+    
+        /* ITEM */
+        $routeProvider.when('/itens', {
+            templateUrl: 'partials/administracao/item/visu-item.html'
         });
-        $routeProvider.when('/cid/addItens', {
-            templateUrl: 'partials/add_itens.html',
+        $routeProvider.when('/addItens', {
+            templateUrl: 'partials/administracao/item/add-item.html',
             controller: 'addItensController'
         });
-        $routeProvider.when('/cid/editItens', {
-            templateUrl: 'partials/editar_itens.html'
+        $routeProvider.when('/editItens', {
+            templateUrl: 'partials/administracao/item/edit-item.html'
         });
-        $routeProvider.when('/cid/municipios', {
-            templateUrl: 'partials/municipios.html',
+    
+        /* MUNICIPIO */
+        $routeProvider.when('/municipios', {
+            templateUrl: 'partials/administracao/municipio/visu-municipio.html',
             controller: 'visuMunicipiosController'
         });
-        $routeProvider.when('/cid/addMunicipios', {
-            templateUrl: 'partials/add_municipios.html',
+        $routeProvider.when('/addMunicipios', {
+            templateUrl: 'partials/administracao/municipio/add-municipio.html',
             controller: 'addMunicipiosController'
         });
-        $routeProvider.when('/cid/editMunicipios', {
-            templateUrl: 'partials/editar_municipios.html'
+        $routeProvider.when('/editMunicipios', {
+            templateUrl: 'partials/administracao/municipio/edit-municipio.html'
         });
-        $routeProvider.when('/cid/fatura', {
-            templateUrl: 'partials/fatura.html'
+    
+        /* FATURA */
+        $routeProvider.when('/fatura', {
+            templateUrl: 'partials/fiscalizacao/fatura/visu-fatura.html'
         });
-        $routeProvider.when('/cid/addFatura', {
-            templateUrl: 'partials/add_fatura.html'
+        $routeProvider.when('/addFatura', {
+            templateUrl: 'partials/fiscalizacao/fatura/add-fatura.html'
         });
-        $routeProvider.when('/cid/editFatura/:faturaId', {
-            templateUrl: 'partials/editar_fatura.html',
+        $routeProvider.when('/editFatura/:faturaId', {
+            templateUrl: 'partials/fiscalizacao/fatura/edit-fatura.html',
             controller: 'editFaturaController'
         });
-        $routeProvider.when('/cid/visualizarFatura', {
-            templateUrl: 'partials/visualizar_fatura.html',
-            controller: 'visuFaturaController'
-        });
-        $routeProvider.when('/cid/pagamento', {
-            templateUrl: 'partials/pagamento.html',
+    
+        /* PAGAMENTO */    
+        $routeProvider.when('/pagamento', {
+            templateUrl: 'partials/fiscalizacao/pagamento/visu-pagamento.html',
             controller: 'visuPagamentoController'
         });
-        $routeProvider.when('/cid/addPagamento', {
-            templateUrl: 'partials/add_pagamento.html',
+        $routeProvider.when('/addPagamento', {
+            templateUrl: 'partials/fiscalizacao/pagamento/add-pagamento.html',
             controller: 'addPagamentoController'
         });
-        $routeProvider.when('/cid/editarPagamento/:pagamentoId', {
-            templateUrl: 'partials/editar_pagamento.html',
+        $routeProvider.when('/editarPagamento/:pagamentoId', {
+            templateUrl: 'partials/fiscalizacao/pagamento/edit-pagamento.html',
             controller: 'editPagamentoController'
         });
-        $routeProvider.when('/cid/vizualizarPagamento', {
-            templateUrl: 'partials/vizualizar_pagamento.html',
-            controller: 'editPagamentoController'
-        });
-        $routeProvider.when('/cid/fiscalicacao', {
+    
+        $routeProvider.when('/fiscalicacao', {
             templateUrl: 'partials/fiscalicacao.html'
         });
-        $routeProvider.when('/cid/administracao', {
+        $routeProvider.when('/administracao', {
             templateUrl: 'partials/administracao.html'
         });
-        $routeProvider.when('/cid/assunto', {
-            templateUrl: 'partials/assunto.html',
+    
+        /* ASSUNTO */
+        $routeProvider.when('/assunto', {
+            templateUrl: 'partials/administracao/assunto/visu-assunto.html',
             controller: 'visuAssuntoController'
         });
-        $routeProvider.when('/cid/addAssunto', {
-            templateUrl: 'partials/add_assunto.html',
+        $routeProvider.when('/addAssunto', {
+            templateUrl: 'partials/administracao/assunto/add-assunto.html',
             controller: 'addAssuntoController'
         });
-        $routeProvider.when('/cid/editAssunto', {
-            templateUrl: 'partials/editar_assunto.html'
+        $routeProvider.when('/editAssunto/:idAssunto', {
+            templateUrl: 'partials/administracao/assunto/edit-assunto.html',
+            controller: 'editAssuntoController'
         });
-        $routeProvider.when('/cid/categoria', {
-            templateUrl: 'partials/categoria.html'
+    
+        /* NATUREZA DESPESA */
+        $routeProvider.when('/naturezaDespesas', {
+            templateUrl: 'partials/administracao/naturezaDespesa/visu-natureza-despesa.html'
         });
-        $routeProvider.when('/cid/naturezaDespesas', {
-            templateUrl: 'partials/natureza_despesas.html'
-        });
-        $routeProvider.when('/cid/addNaturezaDespesas', {
-            templateUrl: 'partials/add_natureza_despesas.html',
+        $routeProvider.when('/addNaturezaDespesas', {
+            templateUrl: 'partials/administracao/naturezaDespesa/add-natureza-despesa.html',
             controller: 'addNaturezaDespController'
         });
-        $routeProvider.when('/cid/editNaturezaDespesas', {
-            templateUrl: 'partials/edit_natureza_despesas.html'
+        $routeProvider.when('/editNaturezaDespesas/:naturezaDepId', {
+            templateUrl: 'partials/administracao/naturezaDespesa/edit-natureza-despesa.html',
+             controller: 'editNaturezaDespController'
         });
-        $routeProvider.when('/cid/addCategoria', {
-            templateUrl: 'partials/add_categoria.html',
-            controller: 'addCategoriaController'
+    
+        /* CATEGORIA */
+        $routeProvider.when('/categoria', {
+            templateUrl: 'partials/administracao/categoria/visu-categoria.html',
+            controller: 'admCategoriaController'
         });
-        $routeProvider.when('/cid/editCategoria', {
-            templateUrl: 'partials/editar_categoria.html'
+        $routeProvider.when('/addCategoria', {
+            templateUrl: 'partials/administracao/categoria/add-categoria.html',
+            controller: 'admCategoriaController'
         });
-        $routeProvider.when('/cid/classeEmpenho', {
-            templateUrl: 'partials/classe_empenho.html',
+        $routeProvider.when('/editCategoria/:idCategoria', {
+            templateUrl: 'partials/administracao/categoria/edit-categoria.html',
+            controller: 'admCategoriaController'
+        });
+    
+        /* CLASSE EMPENHO */
+        $routeProvider.when('/classeEmpenho', {
+            templateUrl: 'partials/administracao/classeEmpenho/visu-classe-empenho.html',
             controller: 'visuEmpenhoController'
         });
-        $routeProvider.when('/cid/addClasseEmpenho', {
-            templateUrl: 'partials/add_classe_empenho.html',
+        $routeProvider.when('/addClasseEmpenho', {
+            templateUrl: 'partials/administracao/classeEmpenho/add-classe-empenho.html',
             controller: 'addClasseEmpController'
         });
-        $routeProvider.when('/cid/editClasseEmpenho/:empenhoId', {
-            templateUrl: 'partials/editar_classe_empenho.html'
+        $routeProvider.when('/editClasseEmpenho/:empenhoId', {
+            templateUrl: 'partials/administracao/classeEmpenho/edit-classe-empenho.html',
+            controller: 'editClasseEmpController'
         });
-        $routeProvider.when('/cid/etapa', {
-            templateUrl: 'partials/etapa.html'
+    
+        /* ETAPA */
+        $routeProvider.when('/etapa', {
+            templateUrl: 'partials/administracao/etapa/visu-etapa.html'
         });
-        $routeProvider.when('/cid/addEtapa', {
-            templateUrl: 'partials/add_etapa.html',
+        $routeProvider.when('/addEtapa', {
+            templateUrl: 'partials/administracao/etapa/add-etapa.html',
             controller: 'addEtapaController'
         });
-        $routeProvider.when('/cid/editEtapa', {
-            templateUrl: 'partials/editar_etapa.html'
+        $routeProvider.when('/editEtapa', {
+            templateUrl: 'partials/administracao/etapa/edit-etapa.html'
         });
-        $routeProvider.when('/cid/prefeito', {
-            templateUrl: 'partials/prefeito.html'
+    
+        /* PREFEITO */
+        $routeProvider.when('/prefeito', {
+            templateUrl: 'partials/administracao/prefeito/visu-prefeito.html'
         });
-        $routeProvider.when('/cid/addPrefeito', {
-            templateUrl: 'partials/add_prefeito.html',
+        $routeProvider.when('/addPrefeito', {
+            templateUrl: 'partials/administracao/prefeito/add-prefeito.html',
             controller: 'addPrefeitoController'
         });
-        $routeProvider.when('/cid/editPrefeito', {
-            templateUrl: 'partials/editar_Prefeito.html'
+        $routeProvider.when('/editPrefeito', {
+            templateUrl: 'partials/administracao/prefeito/edit-prefeito.html'
         });
-        $routeProvider.when('/cid/tipoDoItem', {
-            templateUrl: 'partials/tipo_do_item.html'
+    
+        /* TIPO ITEM */
+        $routeProvider.when('/tipoDoItem', {
+            templateUrl: 'partials/administracao/tipoItem/visu-tipo-item.html'
         });
-        $routeProvider.when('/cid/addTipoDoItem', {
-            templateUrl: 'partials/add_tipoitem.html',
+        $routeProvider.when('/addTipoDoItem', {
+            templateUrl: 'partials/administracao/tipoItem/add-tipo-item.html',
             controller: 'addtipoDoItemController'
         });
-        $routeProvider.when('/cid/editTipoDoItem', {
-            templateUrl: 'partials/editar_tipoitem.html'
+        $routeProvider.when('/editTipoDoItem', {
+            templateUrl: 'partials/administracao/tipoItem/edit-tipo-item.html'
         });
-        $routeProvider.when('/cid/tipologia', {
-            templateUrl: 'partials/tipologia.html'
+    
+        /* TIPOLOGIA */
+        $routeProvider.when('/tipologia', {
+            templateUrl: 'partials/administracao/tipologia/visu-tipologia.html'
         });
-        $routeProvider.when('/cid/addTipologia', {
-            templateUrl: 'partials/add_tipologia.html',
+        $routeProvider.when('/addTipologia', {
+            templateUrl: 'partials/administracao/tipologia/add-tipologia.html',
             controller: 'addTipologiaController',
         });
-        $routeProvider.when('/cid/editTipologia', {
-            templateUrl: 'partials/editar_tipologia.html'
+        $routeProvider.when('/editTipologia/:tipologiaID', {
+            templateUrl: 'partials/administracao/tipologia/edit-tipologia.html',
+            controller: 'editTipologiaController'
         });
-        $routeProvider.when('/cid/perfilUsuario', {
-            templateUrl: 'partials/perfil_usuario.html'
+    
+        /* MODULO USUARIO */
+        $routeProvider.when('/perfilUsuario', {
+            templateUrl: 'partials/administracao/modulo/visu-modulo-usuario.html'
         });
-        $routeProvider.when('/cid/addPerfilUsuario', {
-            templateUrl: 'partials/add_perfil_usuario.html',
+        $routeProvider.when('/addPerfilUsuario', {
+            templateUrl: 'partials/administracao/modulo/add-modulo-usuario.html',
             controller: 'addUsuarioController',
         });
-        $routeProvider.when('/cid/editPerfilUsuario', {
-            templateUrl: 'partials/editar_perfil_usuario.html'
+        $routeProvider.when('/editPerfilUsuario', {
+            templateUrl: 'partials/administracao/modulo/edit-modulo-usuario.html'
         });
-        $routeProvider.when('/cid/previsaoEmpenho', {
-            templateUrl: 'partials/previsao_empenho.html'
+    
+        /* PREVISAO EMPENHO */
+        $routeProvider.when('/previsaoEmpenho', {
+            templateUrl: 'partials/fiscalizacao/previsaoEmpenho/visu-previsao-empenho.html',
+            controller: 'visuPrevEmpController'
         });
-        $routeProvider.when('/cid/editPrevisaoEmpenho/:previsaoEmpenhoID', {
-            templateUrl: 'partials/editar_previsao_empenho.html',
+        $routeProvider.when('/editPrevisaoEmpenho/:previsaoEmpenhoID', {
+            templateUrl: 'partials/fiscalizacao/previsaoEmpenho/edit-previsao-empenho.html',
             controller: 'editPrevisaoEmpenhoController'
         });
-        $routeProvider.when('/cid/addPrevisaoEmpenho', {
-            templateUrl: 'partials/add_previsao_empenho.html'
+        $routeProvider.when('/addPrevisaoEmpenho', {
+            templateUrl: 'partials/fiscalizacao/previsaoEmpenho/add-previsao-empenho.html'
         });
-        $routeProvider.when('/cid/Erro404', {
+
+        $routeProvider.when('/Erro404', {
             templateUrl: 'partials/404.ejs'
         });
+
         $routeProvider.otherwise({
-            redirectTo: '/cid/Erro404'
+            redirectTo: '/Erro404'
         });
     });

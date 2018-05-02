@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-md">
+    <div class="modal-content">
+       <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title">Adicionar Acompanhamento</h4>
+    <div class="modal-body">
+       <div class="form-group">
+            <label for="relato" id="titoloRelatosCD">Título do relato: </label>
+            <input type="text" ng-model="assuntosCd.titulo" class="form-control" placeholder="Digite a título do relato" />
+        </div>
+        <div class="form-group">
+            <label for="relato" id="titoloRelatosCD">Relato: </label>
+            <textarea id="note-entity" ng-model="assuntosCd.relato" class="form-control" placeholder="Digite a Relato"></textarea>
+        </div>
+        <div class="form-group">
+            <label >Selecione os assunto: </label>
+            <select class="form-control" ng-model="assuntosCd.descricao" ng-change="armTempAssunto(assuntosCd)" ng-options="assunto.descricao for assunto in assuntos">
+                <option value="">Selecione para adicionar um assunto</option>
+            </select>
+        </div>
+        <div class="form-group">
+           <div class="row">
+                <div class="form-group col-md-6" ng-repeat="assuntoSelecionado in assuntosSelecionados">
+                    <label class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="bottom" title="{{assuntoSelecionado.descricao}}" style="font-size: 12px;"><strong class="glyphicon glyphicon-remove pull-left" ng-click="removerAddUacom(assuntoSelecionado)"></strong> Assunto {{assuntoSelecionado.cod_assunto}}</label>
+                </div>
+            </div>
+    </div>
+
+    <div class="modal-footer">
+        <center>
+            <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" ng-click="enviarAssunto()">Registrar</button>
+        </center>
+    </div>
+    </div>
+</div>

@@ -180,4 +180,14 @@ angular.module('minhasDiretivas', [])
         ddo.templateUrl = 'js/directives/rodape.html';
 
         return ddo;
+    }).directive('addAcompanhamento', function () {
+
+        var ddo = {};
+
+        ddo.restrict = "AE";
+        ddo.transclude = true;
+
+        ddo.templateUrl = 'js/directives/add-acompanhamento.html';
+
+        return ddo;
     });

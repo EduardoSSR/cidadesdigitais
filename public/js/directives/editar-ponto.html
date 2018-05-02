@@ -1,73 +1,79 @@
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-    <h4 class="modal-title">Editar Ponto</h4>
-</div>
-
-<div class="modal-body">
-    <div class="row">
-        <div class="form-group col-sm-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o número do ponto">
-        </div>
-        <div class="form-group col-sm-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o nome"> </div>
+<div class="form-gruop" ng-controller="CdPontoController">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">Editar Ponto </h4>
     </div>
-    <div class="row">
-        <div class="form-group col-sm-12">
-            <select class="form-control" id="">
-            <option value="">Selecione o categoria</option>
-            <option value="categoria 1">categoria 1</option>
-            <option value="categoria 1">categoria 2</option>
-            <option value="categoria 1">categoria 3</option>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <input type="text" class="form-control" ng-model="editPontos.cod_ponto" readonly>
+            </div>
+            <div class="form-group col-sm-6">
+                <input type="text" class="form-control" ng-model="editPontos.nome" placeholder="Digite o nome do ponto"> </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+               <input type="text" class="form-control" ng-model="editPontos.categoria_descricao" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <select class="form-control" ng-model="editNovosPontos.tipologias" ng-change="armTempTipoEdit(editNovosPontos.tipologias)" ng-options="tipologia.descricao for tipologia in tipologias">
+           <option value="" ng-focus="focused = true">Selecione para adicionar uma tipologia no ponto</option>
         </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-sm-12">
-            <label for="">Selecione as tipologia: </label>
-        </div>
-        <div class="form-group col-sm-12" id="scroll">
-            <div>
-                <input type="checkbox" name="categoria1" value=""><label for="">&nbsp;Tipologia 1</label>
-            </div>
-            <div>
-                <input type="checkbox" name="categoria2" value=""><label for="">&nbsp;Tipologia 2</label>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-sm-12">
-            <a class="btn btn-primary"><span>&times;&nbsp;</span>Categoria 1</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-9 col-sm-6 col-xs-8">
-            <input type="text" class="form-control" id="" placeholder="Digite o endereço">
-        </div>
-        <div class="form-group col-md-3 col-sm-6 col-xs-4">
-            <input type="text" class="form-control" id="" placeholder="Digite o número">
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-8 col-sm-6 col-xs-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o bairro">
-        </div>
-        <div class="form-group col-md-4 col-sm-6 col-xs-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o cep">
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o latitude">
-        </div>
-        <div class="form-group col-md-6 col-sm-6">
-            <input type="text" class="form-control" id="" placeholder="Digite o longitude">
-        </div>
-    </div>
-</div>
 
-<div class="modal-footer">
-    <center>
-        <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary ">Registrar</button>
-    </center>
+        <div class="row">
+
+            <div class="form-group col-md-3" ng-if="mTipologia.cod_tipologia != null" ng-repeat="mTipologia in editPontos.tipologias">
+                <label class="btn btn-primary btn-block" style="font-size: 10px;"><strong class="glyphicon glyphicon-remove pull-left" 
+                ng-click="removerEditar(mTipologia, editPontos)"></strong>{{mTipologia.descricao}}
+                    </label>
+            </div>
+            <div class="form-group col-md-3" ng-if="novaTipologia.cod_tipologia != null" ng-repeat="novaTipologia in novasTipologias">
+                <label class="btn btn-primary btn-block" style="font-size: 10px;"><strong class="glyphicon glyphicon-remove pull-left" 
+                ng-click="removerNovasEdit(novaTipologia)"></strong>{{novaTipologia.descricao}}
+                    </label>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9 col-sm-6 col-xs-8">
+                <input type="text" class="form-control" ng-model="editPontos.endereco" placeholder="Digite o endereço">
+            </div>
+            <div class="form-group col-md-3 col-sm-6 col-xs-4">
+                <input type="text" class="form-control" ng-model="editPontos.numero" placeholder="Digite o número">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-8 col-sm-6 col-xs-6">
+                <input type="text" class="form-control" ng-model="editPontos.bairro" placeholder="Digite o bairro">
+            </div>
+            <div class="form-group col-md-4 col-sm-6 col-xs-6">
+                <input type="text" class="form-control" ng-model="editPontos.cep" placeholder="Digite o cep">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <input type="text" class="form-control" ng-model="editPontos.complemento" placeholder="Digite o complemento">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6">
+                <input type="text" class="form-control" ng-model="editPontos.latitude" placeholder="Digite o latitude">
+            </div>
+            <div class="form-group col-md-6 col-sm-6">
+                <input type="text" class="form-control" ng-model="editPontos.longitude" placeholder="Digite o longitude">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <center>
+            <button type="button" class="btn btn-default " data-dismiss="modal">Cancelar</button>
+            <button type="submit" ng-click="enviarPontoEdit(editPontos)" class="btn btn-primary ">Salvar alterações</button>
+        </center>
+    </div>
 </div>

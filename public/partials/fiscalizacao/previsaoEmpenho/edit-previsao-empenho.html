@@ -1,0 +1,105 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Fiscalização</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Previsão de Empenho</a></li> <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Editar Previsão de Empenho</li>
+    </ol>
+</nav>
+<div class="container">
+    <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="panel-heading">
+            <h4>Editar Previsão de Empenho</h4>
+        </div>
+        <div class="panel-body">
+            <form name="editPrevEmpenhoForm" method="post" ng-submit="editPrevEmpenho()">
+                <div class="row">
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="codEmpenho">Previsão de Empenho: </label>
+                        <p>{{prevEmpenhos.cod_previsao_empenho}}</p>
+                    </div>
+                    <div class="form-group col-md-2 col-sm-6">
+                        <label for="lote">Lote: </label>
+                        <p>{{prevEmpenhos.lote_cod_lote}}</p>
+                    </div>
+                    <div class="form-group col-md-4 col-sm-6">
+                        <label for="lote">Código - Natureza de despesas: </label>
+                        <p>{{prevEmpenhos.descricao}}</p>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="data">Data: </label>
+                        <input type="date" class="form-control" ng-model="prevEmpenhos.data" placeholder="Digite o data"> </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label>Tipo: </label>
+                        <select class="form-control" id="tipo" ng-required="true" ng-model="prevEmpenhos.tipo" ng-options="tipo.value as tipo.name for tipo in tipos">
+                                    <option value="">Selecione</option>
+                                </select>
+                    </div>
+                    <div class="form-group col-md-3 col-sm-6">
+                        <label for="tipo">Ano referência: </label>
+                        <input type="text" class="form-control" ng-model="prevEmpenhos.ano_referencia" placeholder="Digite o ano de referencia"> </div>
+                    <center>
+                        <div class="col-md-1">
+                            <label> &nbsp;</label>
+                            <button type="submit" ng-click="putPrevEmpenho(prevEmpenhos)" class="btn btn-primary">Salvar Alterações</button>
+                        </div>
+                    </center>
+                </div>
+            </form>
+            <div class="row">
+                <h3><strong>Itens</strong></h3>
+                <hr>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr class="background-starttable">
+                            <th class="col-md-4">Tipo - Código - Descrição do Item</th>
+                            <th class="col-md-1">Quantidade disponível</th>
+                            <th class="col-md-1">Quantidade</th>
+                            <th class="col-md-2">Valor</th>
+                            <th class="col-md-2">Total</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr ng-repeat="visuItensEmpenho in visuItensEmpenhos" ng-class="{'alert alert-danger': visuItensEmpenho.somaQuant <  visuItensEmpenho.quantidade}">
+                          
+                            <td>{{visuItensEmpenho.descricao}} </td>
+
+                            <td class="form-group">
+                                     <p>{{visuItensEmpenho.somaQuant}}</p>
+                                     </td>
+                            <td><input id="input-add" class="form-control quantidade" type="text" class="form-control" nome="quantidade" ng-model="visuItensEmpenho.quantidade" placeholder="Quantidade"></td>
+
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span>
+                                    <input  type="text" class="form-control valor" value="visuItensEmpenho.valor" nome="valor" ng-model="visuItensEmpenho.valor" placeholder="00,00" aria-label="Amount (to the nearest dollar)">
+                                </div>
+                            <script type="text/javascript" src="../js/services/formato-inputs.js"></script>
+                            </td>
+
+                            <td class="col-md-2">
+                                <p class="money">{{visuItensEmpenho.total | filter: quantiValor(visuItensEmpenho.quantidade, visuItensEmpenho.valor,$index) | currency }}</p>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="form-gruop col-xs-6">
+                        <button type="submit" ng-click="updatePrevEmpItens(visuItensEmpenhos)" class="btn btn-primary">Salvar alterações de itens</button>
+                    </div>
+                    <div class="input-group col-md-3 pull-right">
+                        <td> <label>Total:&nbsp;</label>
+                            <span class="money">{{visuItensEmpenhos.totalT | currency }}</span>
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<novo-menu></novo-menu>

@@ -1,0 +1,69 @@
+<cabecalho-tela-inicial></cabecalho-tela-inicial>
+<nav class="navbar navbar-default">
+    <ol class="navbar-menu">
+        <li class="navbar-menu-item"><a id="color-links">Home</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item"><a id="color-links">Lotes</a></li>
+        <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
+        <li class="navbar-menu-item active">Adicionar Lote</li>
+    </ol>
+</nav>
+
+<div class="container">
+   <a href="" class="button-other btn btn-default btn-lg pull-right" onclick="window.history.back()">Voltar</a>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading" id="panel-heading">
+                <h4>Adicionar Lote</h4>
+            </div>
+
+            <div class="panel-body" >
+                <div id="mesagemError"></div>
+                <form class="addUsuarioLotes" ng-submit="submitLotes()" name="formularioAddLotes">
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6" ng-class="{'has-error': formularioAddLotes.codLote.$invalid && !formularioAddLotes.codLote.$pristine}">
+                            <label>N° lote: </label>
+                            <input type="number" class="form-control" name="codLote" ng-model="lotes.codLote" placeholder="Digite o Nº do lote" ng-required="false" ng-maxlength="11">
+                            <span class="help-block" ng-show="formularioAddLotes.codLote.$error.maxlength">Número máximo de 11 caracteres.</span>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Entidade: </label>
+                            <select class="form-control" ng-controller="visuEntidadeController" ng-model="lotes.entidadeCnpj" ng-options="entidade.cnpj as entidade.nome for entidade in entidades" required>
+                                <option value="">Selecione a entidade</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6" ng-class="{'has-error': formularioAddLotes.contrato.$invalid && !formularioAddLotes.contrato.$pristine}">
+                            <label>Contrato: </label>
+                            <input type="text" class="form-control" name="contrato" ng-model="lotes.contrato" placeholder="Digite o contrato" ng-required="false" ng-maxlength="10">
+                            <span class="help-block" ng-show="formularioAddLotes.contrato.$error.maxlength">Número máximo de 10 caracteres.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data início da vigência: </label>
+                            <input type="date" class="form-control" ng-model="lotes.dtInicioVig" required>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data fim da vigência: </label>
+                            <input type="date" class="form-control" ng-model="lotes.dtFinalVig" required>
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-6">
+                            <label>Data de reajuste: </label>
+                            <input type="month" class="form-control" ng-model="lotes.dtReajuste" required>
+                        </div>
+
+                        <center>
+                            <button type="submit" class="btn btn-primary" ng-disabled="formularioAddLotes.$invalid">Cadastrar</button>
+                        </center>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<novo-menu></novo-menu>

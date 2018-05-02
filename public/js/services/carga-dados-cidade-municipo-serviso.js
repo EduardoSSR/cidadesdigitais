@@ -1,6 +1,6 @@
 /**
  * Originalmente escrito por DGmike, atualizado por roberto.cr e Ian Pacheco
- * http://code.google.com/p/cidades-estados-js/
+ * http://code.google.com/pades-estados-js/
  */
 
 /* Dom Ready */
