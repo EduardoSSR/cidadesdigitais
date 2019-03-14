@@ -4,10 +4,10 @@ var mysql = require('mysql');
 //Cria a conexão com o Banco de Dados.
 var connectMYSQL = function(){
 	return mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: 'root',
-			database: 'cidades_digitais_v9'
+			host: '172.25.116.18',
+			user: 'eduardo',
+			password: 'eduardo',
+			database: 'cidades_digitais_v10'
 	});
 }; 
 
