@@ -332,3 +332,8 @@ input[type=number] {
     margin-top: 6px;
     margin-bottom: 23px;
 }
+
+.powerBiHome{
+	width: 135vh;
+    height: 79vh;
+}
