@@ -1,7 +1,7 @@
 <cabecalho-tela-inicial></cabecalho-tela-inicial>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"
     <ol class="navbar-menu">
-        <li class="navbar-menu-item"><a id="color-links">Home</a></li>
+        <li class="navbar-menu-item"><a  href="/inicio" id="color-links">Home</a></li>
         <span id="color-links" class="glyphicon glyphicon-menu-right"></span>
         <li class="navbar-menu-item active">Cidades Digitais</li>
     </ol>
@@ -49,7 +49,7 @@
                                 <td>{{cidadeDigital.lote_cod_lote}}</td>
                                 <td>{{cidadeDigital.os_pe}}</td>
                                 <td>{{cidadeDigital.os_imp}}</td>
-                                <td style="text-align: center:">
+                                <td style="text-align: center">
                                     <a href="/editCD/{{cidadeDigital.municipio_cod_ibge}}"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <a ng-click="deletarCd(cidadeDigital)" class="action-button action-trash"><span class="glyphicon glyphicon-action-trash"></span></a>
                                 </td>
