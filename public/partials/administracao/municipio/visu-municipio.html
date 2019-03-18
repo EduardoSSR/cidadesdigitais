@@ -56,8 +56,9 @@
 						</thead>
 
 						<tbody>
-							<tr ng-repeat="municipio in municipios | filter:{'uf' : ufSelect} | filter:busca">
-								<td>{{municipio.cod_ibge}}</td>
+								<tr ng-repeat="municipio in municipios | filter:{'uf' : ufSelect} | filter:busca"> 
+							 	<!-- <tr dir-paginate = "municipio in municipios | itemsPerPage:15 | filter:{'uf' : ufSelect} | filter:busca">  -->
+							 	<td>{{municipio.cod_ibge}}</td>
 								<td>{{municipio.nome_municipio}}</td>
 								<td>AINDA Ñ TEM</td>
 								<td>{{municipio.populacao}}</td>
@@ -74,6 +75,7 @@
 							</tr>
 						</tbody>
 					</table>
+					<dir-pagination-controls max-size=”8″ direction-links=”true” boundary-links=”true”></dir-pagination-controls>
 				</div>
 				<center>
 					<div class="square" id="divLoading"></div>

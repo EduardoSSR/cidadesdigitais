@@ -1,4 +1,5 @@
 angular.module('cidadesdigitais').controller('visuMunicipiosController', function($scope, $http, InjecaoInfo, growl, $window){
+    
     /*============== Funcao para exibir as mensagens referentes ao banco =================*/
     function mensagem (msg, type, time) {
         growl.general(msg, {
@@ -27,7 +28,8 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
     $scope.municipios = [];
     
     var carregarMunicipios = function (){
-        $http.get("http://172.25.117.3:3000/read/municipios").success(function(data, status){
+        //$http.get("http://172.25.117.3:3000/read/municipios").success(function(data, status){
+            $http.get("/read/municipios").success(function(data, status){
             $scope.municipios = data;
              $('#divLoading').hide();
         });
@@ -53,4 +55,5 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
     };
     }
     valida();
+
 });

@@ -1,4 +1,4 @@
-angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', 'ngAnimate', 'ngMask', 'ngCookies', 'angular-growl'])
+angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', 'ngAnimate', 'ngMask', 'ngCookies', 'angular-growl'/* ,'angularUtils.directives.dirPagination' */])
     .config(function ($routeProvider, $locationProvider, growlProvider, $httpProvider) {
     
 //	 CorreiosProvider.default.endpoint  =  '/my.new.correios.api/{POSTAL_CODE}/json';
