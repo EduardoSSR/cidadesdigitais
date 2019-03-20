@@ -21,12 +21,10 @@ angular.module('ui.bootstrap.pagination', [])
             if(scope.currentPage<=6){
               for(var i = 1;i<=10;i++){
                 scope.pages.push(i);
-                console.log("Entrou no primeiro");
               }
             } else if(scope.currentPage > 6){
               for(var i= (scope.currentPage - 4);i<=(scope.currentPage+5);i++){
                 scope.pages.push(i);
-                console.log("Entrou no segundo");
               }
             } else{
               for (var i=scope.currentPage;i<=value;i++){
@@ -59,12 +57,10 @@ angular.module('ui.bootstrap.pagination', [])
           if(scope.currentPage<=6){
             for(var i = 1;i<=10;i++){
               scope.pages.push(i);
-              console.log("Entrou no primeiro");
             }
           }else if(scope.currentPage>6 && scope.currentPage<=scope.numPages - 4){
             for(var i = scope.currentPage - 4;i<=scope.currentPage + 5;i++){
               scope.pages.push(i);
-              console.log("Entrou no segundo");
             }
           }else{
             for (var i=scope.currentPage-3;i<=scope.numPages;i++){
