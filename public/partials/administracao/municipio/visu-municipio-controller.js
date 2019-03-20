@@ -1,4 +1,4 @@
-angular.module('cidadesdigitais').controller('visuMunicipiosController', function($scope, $http, InjecaoInfo, growl, $window){
+angular.module('cidadesdigitais').controller('visuMunicipiosController', function($scope, $http,$filter, InjecaoInfo, growl, $window){
     
     /*============== Funcao para exibir as mensagens referentes ao banco =================*/
     function mensagem (msg, type, time) {
@@ -30,7 +30,15 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
     var carregarMunicipios = function (){
         //$http.get("http://172.25.117.3:3000/read/municipios").success(function(data, status){
             $http.get("/read/municipios").success(function(data, status){
-            $scope.municipios = data;
+            //$scope.municipios = data;
+            $scope.numPerPage = 50;
+            $scope.noOfPages = Math.ceil(data.length/$scope.numPerPage);
+            $scope.currentPage = 1;
+
+            $scope.setPage = function(){
+                $scope.municipios = data.slice(($scope.currentPage-1)*$scope.numPerPage,(($scope.currentPage-1)*$scope.numPerPage)+$scope.numPerPage);
+            };
+            $scope.$watch('currentPage',$scope.setPage);
              $('#divLoading').hide();
         });
     };
@@ -39,14 +47,13 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
       $http.get('read/cd/estado')
         .success(function(estado){
            $scope.estados = estado;
-         
         })
         .error(function(error){
             console.log(error);
         });
     
-    
-    carregarMunicipios();
+    carregarMunicipios(); 
+
     }
     else {
         var msg = "<strong>Aviso</strong><br><p>Você não tem a permissão necessária para acessar essa página.</p>";
@@ -56,4 +63,4 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
     }
     valida();
 
-});
+})

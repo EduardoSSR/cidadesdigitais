@@ -1,6 +1,7 @@
-angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', 'ngAnimate', 'ngMask', 'ngCookies', 'angular-growl'/* ,'angularUtils.directives.dirPagination' */])
+//angular.module('cidadesdigitais',['ui.bootstrap']);
+angular.module('cidadesdigitais', ['minhasDiretivas','ui.bootstrap.pagination','ngRoute','ngResource', 'ngAnimate', 'ngMask', 'ngCookies', 'angular-growl'])
     .config(function ($routeProvider, $locationProvider, growlProvider, $httpProvider) {
-    
+
 //	 CorreiosProvider.default.endpoint  =  '/my.new.correios.api/{POSTAL_CODE}/json';
 //    'angular-correios'
 //    CorreiosProvider
@@ -286,3 +287,8 @@ angular.module('cidadesdigitais', ['minhasDiretivas', 'ngRoute', 'ngResource', '
             redirectTo: '/Erro404'
         });
     });
+   /*  .filter('startFrom',function(){
+        return function(data,start){
+            return data.slice(start);
+        }
+    }); */

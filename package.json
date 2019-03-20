@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-ui-bootstrap": "^2.5.6",
     "angular-utils-pagination": "^0.11.1",
     "body-parser": "^1.17.2",
     "consign": "^0.1.6",
@@ -19,6 +20,7 @@
     "jsonwebtoken": "8.1.0",
     "mysql": "^2.13.0",
     "nodemon": "^1.18.10",
+    "npm": "^6.9.0",
     "request": "^2.81.0"
   }
 }
