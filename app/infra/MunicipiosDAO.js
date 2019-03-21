@@ -7,7 +7,9 @@ function MunicipiosDAO(connection){
 MunicipiosDAO.prototype.listarMunicipio = function(callback){
 	this._connection.query('SELECT * FROM municipio', callback);
 }
-
+MunicipiosDAO.prototype.listarMunicipioBusca = function(municipio,callback){
+	this._connection.query('SELECT * FROM municipio WHERE ?',[municipio], callback);
+}
 //Salva uma nova tupla na tabela de Minicipio.
 MunicipiosDAO.prototype.salvarMunicipio = function(municipio, callback){
 	this._connection.query('INSERT INTO municipio SET ?', municipio, callback);

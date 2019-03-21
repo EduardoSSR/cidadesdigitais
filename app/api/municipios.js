@@ -56,7 +56,25 @@ module.exports = function(app){
 
         connection.end();
     };
-    
+
+    api.listaMunicipioBusca = function(req, res){
+        var connection = app.infra.connectionFactory();
+        var municipiosDAO = new app.infra.MunicipiosDAO(connection);
+        
+        municipiosDAO.listarMunicipio(function (erro, resultado){
+            if (erro){
+                console.log(erro);
+                res.sendStatus(500);
+            }else{
+                var municipio = resultado.find(function(municipio){
+                    return municipio.nome_municipio == req.params.busca;
+                });
+                res.status(200).json(municipio);
+            }
+        });
+
+        connection.end();
+    };
     
     //Edita um Municipio com base no ID.
     api.editaMunicipio = function(req, res){

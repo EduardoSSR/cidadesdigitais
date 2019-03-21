@@ -42,7 +42,28 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
              $('#divLoading').hide();
         });
     };
-    
+  
+    var filtraMunicipio = function(buscado){
+        /* var endereco = "/read/municipios/:";
+        var end = endereco.concat(buscado);  */
+        $http.get("/read/municipios/").success(function(data, status){
+            $scope.municipios = data.filter((municipio) => {
+                return municipio.nome_municipio == buscado;
+            });
+            console.log(data.find((municipio) => {
+                return municipio.nome_municipio == buscado;
+            }));
+            $scope.numPerPage = 50;
+            $scope.noOfPages = Math.ceil(data.length/$scope.numPerPage);
+            $scope.currentPage = 1;
+
+            $scope.setPage = function(){
+                $scope.municipios = $scope.municipios.slice(($scope.currentPage-1)*$scope.numPerPage,(($scope.currentPage-1)*$scope.numPerPage)+$scope.numPerPage);
+            };
+            $scope.$watch('currentPage',$scope.setPage);
+             $('#divLoading').hide();
+        });
+    };
     //    Metodo para retorna o array de estado armazenado no servidor
       $http.get('read/cd/estado')
         .success(function(estado){
@@ -51,9 +72,21 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
         .error(function(error){
             console.log(error);
         });
+    $scope.filtroMun = function(){
+        var buscado = $scope.busca;
+        if($scope.busca == ""){
+            carregarMunicipios(); 
+        }else{
+            filtraMunicipio(buscado);
+        }
+    }
+    if($scope.busca){
+        filtraMunicipio();
+    }else{
+        carregarMunicipios(); 
     
-    carregarMunicipios(); 
-
+    }
+    
     }
     else {
         var msg = "<strong>Aviso</strong><br><p>Você não tem a permissão necessária para acessar essa página.</p>";

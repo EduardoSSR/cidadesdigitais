@@ -54,17 +54,23 @@ angular.module('ui.bootstrap.pagination', [])
         if ( ! scope.isActive(page) ) {
           scope.currentPage = page;
           scope.onSelectPage({ page: page });
-          if(scope.currentPage<=6){
-            for(var i = 1;i<=10;i++){
-              scope.pages.push(i);
-            }
-          }else if(scope.currentPage>6 && scope.currentPage<=scope.numPages - 4){
-            for(var i = scope.currentPage - 4;i<=scope.currentPage + 5;i++){
+          if(scope.numPages<10){
+            for(var i = 1;i<=scope.numPages;i++){
               scope.pages.push(i);
             }
           }else{
-            for (var i=scope.currentPage-3;i<=scope.numPages;i++){
-              scope.pages.push(i);
+            if(scope.currentPage<=6){
+              for(var i = 1;i<=10;i++){
+                scope.pages.push(i);
+              }
+            }else if(scope.currentPage>6 && scope.currentPage<=scope.numPages - 4){
+              for(var i = scope.currentPage - 4;i<=scope.currentPage + 5;i++){
+                scope.pages.push(i);
+              }
+            }else{
+              for (var i=scope.currentPage-3;i<=scope.numPages;i++){
+                scope.pages.push(i);
+              }
             }
           }
         }

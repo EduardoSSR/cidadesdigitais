@@ -342,8 +342,9 @@ module.exports = function(app){
     app.route('/read/municipios/:id')
         .get(municipio.listaMunicipioPorId)
         .delete(municipio.apagaMunicipio);
-    
-    
+        
+    app.route('/read/municipios/:busca')
+        .get(municipio.listaMunicipioBusca);
     
 //*************** Rotas em NaturazaDespesa ***************//
     //---------Rotas de Natureza_Despesa---------//
