@@ -23,10 +23,10 @@
 					</div>
 					<div class="col-md-offset-8 col-md-4 input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-						<input type="text" class="form-control" ng-model="busca" ng-change="filtroMun()" placeholder="Procure por" />
+						<input type="text" class="form-control" name="mun" ng-model="filtros.mun" ng-change="filtroMunicipio(filtros)" placeholder="Procure por" />
 					</div>
 					<div class="col-md-offset-8 col-md-4 input-group">
-						<select name="" class="form-control" id="" ng-model="ufSelect" ng-options="estado.uf as estado.nome for estado in estados">
+						<select name="" class="form-control" id="" ng-model="filtros.uf" ng-change = "filtroMunicipio(filtros)" ng-options="estado.uf as estado.nome for estado in estados">
                            <option value="">Seleciona o estado que deseja filtrar</option></select>
 						<span class="input-group-addon btn" ng-click="ufSelect = undefined">Mostrar Todos</span>
 					</div>
