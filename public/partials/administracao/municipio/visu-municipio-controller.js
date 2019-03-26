@@ -90,7 +90,7 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
              });
          }
     }
-  
+   
     //    Metodo para retorna o array de estado armazenado no servidor
       $http.get('read/cd/estado')
         .success(function(estado){
@@ -99,6 +99,8 @@ angular.module('cidadesdigitais').controller('visuMunicipiosController', functio
         .error(function(error){
             console.log(error);
         });
+
+
     }
     else {
         var msg = "<strong>Aviso</strong><br><p>Você não tem a permissão necessária para acessar essa página.</p>";

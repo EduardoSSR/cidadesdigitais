@@ -143,9 +143,10 @@ angular.module('cidadesdigitais', ['minhasDiretivas','ui.bootstrap.pagination','
             controller: 'editPagamentoController'
         });
     
-        $routeProvider.when('/fiscalicacao', {
-            templateUrl: 'partials/fiscalicacao.html'
-        });
+        $routeProvider.when('/fiscalizacao', {
+            templateUrl: 'partials/fiscalizacao.html'
+        }); 
+        
         $routeProvider.when('/administracao', {
             templateUrl: 'partials/administracao.html'
         });
