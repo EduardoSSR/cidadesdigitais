@@ -335,5 +335,6 @@ input[type=number] {
 
 .powerBiHome{
 	width: 135vh;
-    height: 79vh;
+	height: 79vh;
+	box-shadow: 4px 10px 13px #000;
 }
